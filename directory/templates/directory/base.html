@@ -1,0 +1,985 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Serviko — Каталог компаний{% endblock %}</title>
+    {# --- ФАВИКОНКИ И ИКОНКИ ДЛЯ ВСЕХ УСТРОЙСТВ --- #}
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'icons/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'icons/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'icons/favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'icons/site.webmanifest' %}">
+    <link rel="mask-icon" href="{% static 'icons/safari-pinned-tab.svg' %}" color="#5bbad5"> {# Если у вас есть safari-pinned-tab.svg #}
+    <link rel="shortcut icon" href="{% static 'icons/favicon.ico' %}">
+    <meta name="msapplication-TileColor" content="#da532c"> {# Цвет плитки Windows #}
+    <meta name="theme-color" content="#ffffff"> {# Цвет темы для Chrome/Android #}
+    {# --- КОНЕЦ ФАВИКОНОК И ИКОНОК --- #}
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* ========== RESET ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            zoom: 99%;
+        }
+
+        /* ========== VARIABLES ========== */
+        :root {
+            /* Colors - Строгие */
+            --text: #111827;
+            --text-light: #6b7280;
+            --text-lighter: #9ca3af;
+            --border: #e5e7eb;
+            --bg: #ffffff;
+            --bg-secondary: #f9fafb;
+            --bg-tertiary: #f3f4f6;
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --success: #10b981;
+            --danger: #ef4444;
+            
+            /* Typography */
+            --font: 'Inter', -apple-system, sans-serif;
+            
+            /* Spacing */
+            --s1: 0.25rem;
+            --s2: 0.5rem;
+            --s3: 0.75rem;
+            --s4: 1rem;
+            --s5: 1.25rem;
+            --s6: 1.5rem;
+            --s8: 2rem;
+            --s10: 2.5rem;
+            --s12: 3rem;
+            
+            /* Radius - Строже */
+            --r-sm: 0.25rem;
+            --r-md: 0.375rem;
+            --r-lg: 0.5rem;
+            --r-full: 9999px;
+            
+            /* Shadows - Минимальные */
+            --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 4px 6px rgba(0, 0, 0, 0.07);
+        }
+
+        /* ========== BASE ========== */
+        html {
+            -webkit-font-smoothing: antialiased;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font);
+            font-weight: 400;
+            color: var(--text);
+            background: var(--bg-secondary);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ========== HEADER ========== */
+        .header {
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: var(--s4) var(--s6);
+            display: flex;
+            align-items: center;
+            gap: var(--s8);
+        }
+
+        /* Logo */
+/* Logo */
+.logo {
+    flex-shrink: 0;
+}
+
+.logo a {
+    display: flex;
+    align-items: center;
+    gap: var(--s3);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+    transition: opacity 0.2s;
+}
+
+.logo a:hover {
+    opacity: 0.7;
+}
+
+.logo-image {
+    height: 32px;
+    width: auto;
+    display: block;
+    border-radius: var(--r-md);
+}
+
+.logo-text {
+    display: block;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+    .logo a {
+        font-size: 1.125rem;
+        gap: var(--s2);
+    }
+    
+    .logo-image {
+        height: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-image {
+        height: 24px;
+    }
+}
+        /* Navigation */
+        .nav-wrapper {
+            flex: 0;
+        }
+
+        .main-nav {
+            list-style: none;
+            display: flex;
+            gap: var(--s1);
+        }
+
+        .main-nav a {
+            padding: var(--s2) var(--s4);
+            font-size: 0.9375rem;
+            font-weight: 500;
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: var(--r-md);
+            transition: all 0.15s;
+            display: flex;
+            align-items: center;
+            gap: var(--s2);
+            white-space: nowrap;
+        }
+
+        .main-nav a:hover {
+            background: var(--bg-tertiary);
+            color: var(--text);
+        }
+
+        .main-nav a i {
+            font-size: 0.875rem;
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.25rem;
+            color: var(--text);
+            cursor: pointer;
+            padding: var(--s2);
+            margin-left: var(--s2);
+        }
+
+        /* User Actions */
+        .user-actions {
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+
+        /* User Menu */
+        .user-menu-wrapper {
+            position: relative;
+        }
+
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: var(--r-full);
+            object-fit: cover;
+            cursor: pointer;
+            border: 2px solid var(--border);
+            transition: border-color 0.15s;
+        }
+
+        .user-avatar:hover {
+            border-color: var(--text-light);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            top: calc(100% + var(--s2));
+            background: var(--bg);
+            min-width: 220px;
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            box-shadow: var(--shadow-lg);
+            padding: var(--s2) 0;
+        }
+
+        .dropdown-content.show {
+            display: block;
+        }
+
+        .dropdown-item-text {
+            padding: var(--s3) var(--s4);
+            font-size: 0.875rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .dropdown-item-text strong {
+            font-weight: 600;
+            color: var(--text);
+            display: block;
+            margin-bottom: var(--s1);
+        }
+
+        .dropdown-item-text small {
+            color: var(--text-lighter);
+        }
+
+        .dropdown-divider {
+            height: 1px;
+            background: var(--border);
+            margin: var(--s2) 0;
+        }
+
+        .dropdown-content a {
+            display: flex;
+            align-items: center;
+            gap: var(--s3);
+            padding: var(--s2) var(--s4);
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text);
+            text-decoration: none;
+            transition: background 0.1s;
+        }
+
+        .dropdown-content a:hover {
+            background: var(--bg-secondary);
+        }
+
+        .dropdown-content a i {
+            width: 14px;
+            font-size: 0.875rem;
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        .logout-form {
+            margin: 0;
+        }
+
+        .logout-form button {
+            width: 100%;
+            padding: var(--s2) var(--s4);
+            background: none;
+            border: none;
+            font-family: var(--font);
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--danger);
+            text-align: left;
+            cursor: pointer;
+            transition: background 0.1s;
+            display: flex;
+            align-items: center;
+            gap: var(--s3);
+        }
+
+        .logout-form button:hover {
+            background: var(--bg-secondary);
+        }
+
+        .logout-form button i {
+            width: 14px;
+            font-size: 0.875rem;
+            text-align: center;
+        }
+
+        /* Auth Links */
+        .auth-links {
+            display: flex;
+            gap: var(--s3);
+            align-items: center;
+        }
+
+        .auth-links a {
+            font-size: 0.875rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.15s;
+        }
+
+        .auth-links a:first-child {
+            color: var(--text-light);
+            padding: var(--s2) var(--s4);
+            border-radius: var(--r-md);
+        }
+
+        .auth-links a:first-child:hover {
+            background: var(--bg-tertiary);
+            color: var(--text);
+        }
+
+        .btn-primary {
+            padding: var(--s2) var(--s4);
+            background: var(--text);
+            color: var(--bg);
+            border-radius: var(--r-md);
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        /* ========== MESSAGES ========== */
+        .messages {
+            position: fixed;
+            top: var(--s6);
+            right: var(--s6);
+            z-index: 1000;
+            list-style: none;
+            max-width: 400px;
+        }
+
+        .messages li {
+            padding: var(--s4);
+            margin-bottom: var(--s3);
+            border-radius: var(--r-lg);
+            font-size: 0.875rem;
+            font-weight: 500;
+            border-left: 3px solid;
+            background: var(--bg);
+            box-shadow: var(--shadow-md);
+        }
+
+        .messages .success {
+            border-left-color: var(--success);
+            color: var(--success);
+        }
+
+        .messages .error {
+            border-left-color: var(--danger);
+            color: var(--danger);
+        }
+
+        .messages .info {
+            border-left-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* ========== MAIN ========== */
+        main {
+            flex: 1;
+            max-width: 1280px;
+            width: 100%;
+            margin: 0 auto;
+            padding: var(--s8) var(--s6);
+        }
+
+        /* ========== FOOTER ========== */
+        .footer {
+            background: var(--text);
+            color: #f9fafb;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: var(--s10) var(--s6) var(--s6);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--s8);
+            margin-bottom: var(--s8);
+        }
+
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+            gap: var(--s4);
+        }
+
+        .footer-logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: white;
+        }
+
+        .footer-description {
+            font-size: 0.875rem;
+            font-weight: 400;
+            color: #d1d5db;
+            line-height: 1.7;
+            max-width: 320px;
+        }
+
+        .footer-section h4 {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: var(--s4);
+        }
+
+        .footer-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: var(--s2);
+        }
+
+        .footer-links a {
+            font-size: 0.875rem;
+            font-weight: 400;
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.15s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            padding-top: var(--s6);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: var(--s4);
+        }
+
+        .footer-copyright {
+            font-size: 0.875rem;
+            font-weight: 400;
+            color: #9ca3af;
+        }
+
+        /* .footer-social {
+            display: flex;
+            gap: var(--s3);
+        } */
+
+        /* .footer-social a {
+            width: 36px;
+            height: 36px;
+            border-radius: var(--r-md);
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d1d5db;
+            text-decoration: none;
+            transition: all 0.15s;
+            font-size: 0.875rem;
+        }
+
+        .footer-social a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        } */
+
+        /* ========== FAVORITE BUTTON ========== */
+        .favorite-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--s2);
+            padding: var(--s2) var(--s3);
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: var(--r-md);
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-light);
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+
+        .favorite-btn:hover {
+            border-color: var(--text-light);
+            color: var(--text);
+        }
+
+        .favorite-btn.favorited {
+            background: var(--text);
+            border-color: var(--text);
+            color: var(--bg);
+        }
+
+        .favorite-btn.favorited:hover {
+            opacity: 0.9;
+        }
+
+        /* ========== RESPONSIVE ========== */
+        
+        /* Tablet - 1024px */
+        @media (max-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: var(--s6);
+            }
+
+            .footer-brand {
+                grid-column: 1 / -1;
+                max-width: 100%;
+            }
+        }
+
+        /* Tablet Small - 768px */
+        @media (max-width: 768px) {
+            .header-container {
+                padding: var(--s3) var(--s4);
+                gap: var(--s4);
+            }
+
+            /* Mobile Menu */
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-wrapper {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--bg);
+                border-bottom: 1px solid var(--border);
+                box-shadow: var(--shadow-md);
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+            }
+
+            .nav-wrapper.active {
+                max-height: 300px;
+            }
+
+            .main-nav {
+                flex-direction: column;
+                padding: var(--s4);
+                gap: 0;
+            }
+
+            .main-nav li {
+                border-bottom: 1px solid var(--border);
+            }
+
+            .main-nav li:last-child {
+                border-bottom: none;
+            }
+
+            .main-nav a {
+                padding: var(--s3) var(--s4);
+                border-radius: 0;
+            }
+
+            main {
+                padding: var(--s6) var(--s4);
+            }
+
+            .messages {
+                right: var(--s4);
+                left: var(--s4);
+                max-width: none;
+            }
+
+            .footer-container {
+                padding: var(--s8) var(--s4) var(--s6);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: var(--s6);
+            }
+
+            .footer-brand {
+                padding-bottom: var(--s4);
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .footer-description {
+                max-width: 100%;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-copyright {
+                order: 2;
+            }
+/* 
+            .footer-social {
+                order: 1;
+            } */
+        }
+
+        /* Mobile - 640px */
+        @media (max-width: 640px) {
+            .logo a {
+                font-size: 1.125rem;
+            }
+
+            .auth-links {
+                gap: var(--s2);
+            }
+
+            .auth-links a {
+                font-size: 0.8125rem;
+            }
+
+            .btn-primary {
+                padding: var(--s2) var(--s3);
+            }
+
+            .footer-section h4 {
+                margin-bottom: var(--s3);
+            }
+
+            .footer-links {
+                gap: var(--s1);
+            }
+        }
+
+        /* Mobile Small - 480px */
+        @media (max-width: 480px) {
+            .header-container {
+                padding: var(--s3);
+                gap: var(--s3);
+            }
+
+            main {
+                padding: var(--s4) var(--s3);
+            }
+
+            .footer-container {
+                padding: var(--s6) var(--s3) var(--s4);
+            }
+
+            .footer-grid {
+                gap: var(--s4);
+            }
+
+            .messages {
+                top: var(--s3);
+                right: var(--s3);
+                left: var(--s3);
+            }
+        }
+    </style>
+    
+    {% block styles %}{% endblock %}
+</head>
+<body>
+    <!-- Messages -->
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">
+                <a href="{% url 'homepage' %}">
+                    <img src="{% static 'images/image.png' %}" alt="Serviko Logo" class="logo-image">
+                    <span class="logo-text">Serviko</span>
+                </a>
+            </div>
+
+            <div class="nav-wrapper" id="navWrapper">
+                <nav>
+                    <ul class="main-nav">
+                    <li><a href="{% url 'company-list' %}"><i class="fa-solid fa-search"></i> Каталог</a></li>
+                    <li><a href="{% url 'homepage' %}#about"><i class="fa-solid fa-info-circle"></i> О нас</a></li>
+                    <li><a href="{% url 'partnership-request' %}"><i class="fa-solid fa-handshake"></i> Партнерам</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Меню">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="user-actions">
+                {% if user.is_authenticated %}
+                    <div class="user-menu-wrapper">
+                        <img 
+                            src="{{ user.userprofile.avatar.url }}" 
+                            alt="Аватар" 
+                            class="user-avatar" 
+                            id="avatarMenuButton"
+                        >
+                        <div id="userDropdownMenu" class="dropdown-content">
+                            <div class="dropdown-item-text">
+                                <strong>{{ user.get_full_name|default:user.username }}</strong>
+                                <small>{{ user.email }}</small>
+                            </div>
+                            <a href="{% url 'profile' %}?tab=edit"><i class="fa-solid fa-user"></i> Личный кабинет</a>
+                            <a href="{% url 'profile' %}?tab=favorites"><i class="fa-solid fa-star"></i> Мои избранные</a>
+                            <a href="{% url 'profile' %}?tab=applications"><i class="fa-solid fa-file-lines"></i> Мои заявки</a>
+                            <a href="{% url 'profile' %}?tab=reviews"><i class="fa-solid fa-comment"></i> Мои отзывы</a>
+                            <a href="{% url 'profile' %}?tab=history"><i class="fa-solid fa-clock-rotate-left"></i> История просмотров</a>
+                            <div class="dropdown-divider"></div>
+                            <form action="{% url 'logout' %}" method="post" class="logout-form">
+                                {% csrf_token %}
+                                <button type="submit"><i class="fa-solid fa-arrow-right-from-bracket"></i> Выйти</button>
+                            </form>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="auth-links">
+                        <a href="{% url 'login' %}">Войти</a>
+                        <a href="{% url 'register' %}" class="btn-primary">Регистрация</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">Serviko</div>
+                    <p class="footer-description">
+                        Найдите лучших исполнителей для любых задач. 
+                        Проверенные компании, реальные отзывы.
+                    </p>
+                </div>
+
+                <div class="footer-section">
+                    <h4>Компания</h4>
+                    <ul class="footer-links">
+                        <li><a href="{% url 'homepage' %}">О нас</a></li>
+                        <li><a href="{% url 'company-list' %}">Каталог</a></li>
+                        <li><a href="{% url 'partnership-request' %}">Партнерам</a></li>
+                    </ul>
+                </div>
+
+
+
+                <div class="footer-section">
+                    <h4>Поддержка</h4>
+                    <ul class="footer-links">
+                        <li><a href="{% url 'legal-info' %}#user-terms">Условия Использования</a></li>
+                        <li><a href="{% url 'legal-info' %}#user-privacy">Конфиденциальность</a></li>
+                    </ul>
+                </div>
+
+                                <div class="footer-section">
+                <h4>Контакты</h4>
+                <ul class="footer-links">
+                    <li>
+                        <a href="tel:+7712224664">
+                            <i class="fa-solid fa-phone" style="width:18px; text-align:center;"></i>
+                            +7 (771) 222-46-64
+                        </a>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <!-- <div class="footer-social">
+                    <a href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div> -->
+                <p class="footer-copyright">© {% now "Y" %} Serviko. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navWrapper = document.getElementById('navWrapper');
+
+            if (mobileMenuBtn && navWrapper) {
+                mobileMenuBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    navWrapper.classList.toggle('active');
+                    const icon = this.querySelector('i');
+                    if (navWrapper.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-xmark');
+                    } else {
+                        icon.classList.remove('fa-xmark');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+
+                // Close mobile menu when clicking outside
+                window.addEventListener('click', function(e) {
+                    if (!navWrapper.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+                        navWrapper.classList.remove('active');
+                        const icon = mobileMenuBtn.querySelector('i');
+                        icon.classList.remove('fa-xmark');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+
+                // Close mobile menu when clicking on a link
+                navWrapper.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navWrapper.classList.remove('active');
+                        const icon = mobileMenuBtn.querySelector('i');
+                        icon.classList.remove('fa-xmark');
+                        icon.classList.add('fa-bars');
+                    });
+                });
+            }
+
+            // User Dropdown
+            const avatarButton = document.getElementById('avatarMenuButton');
+            const dropdownMenu = document.getElementById('userDropdownMenu');
+
+            if (avatarButton && dropdownMenu) {
+                avatarButton.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    dropdownMenu.classList.toggle('show');
+                });
+
+                window.addEventListener('click', function(e) {
+                    if (!dropdownMenu.contains(e.target) && !avatarButton.contains(e.target)) {
+                        dropdownMenu.classList.remove('show');
+                    }
+                });
+            }
+
+            // Favorite Buttons - Universal handler for both .favorite-btn and .favorite-btn-card
+            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]')?.value;
+
+            function handleFavoriteClick(button) {
+                // Prevent double-clicking
+                if (button.disabled) return;
+                button.disabled = true;
+
+                const url = button.dataset.url;
+                
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': csrfToken,
+                        'Content-Type': 'application/json'
+                    },
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.status === 'ok') {
+                        // Update button state
+                        const icon = button.querySelector('i');
+                        
+                        if (data.is_favorited) {
+                            button.classList.add('favorited');
+                            if (icon) {
+                                icon.classList.remove('fa-regular');
+                                icon.classList.add('fa-solid');
+                            } else {
+                                button.innerHTML = '<i class="fa-solid fa-star"></i> В избранном';
+                            }
+                        } else {
+                            button.classList.remove('favorited');
+                            if (icon) {
+                                icon.classList.remove('fa-solid');
+                                icon.classList.add('fa-regular');
+                            } else {
+                                button.innerHTML = '<i class="fa-regular fa-star"></i> В избранное';
+                            }
+                        }
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                })
+                .finally(() => {
+                    // Re-enable button after 500ms
+                    setTimeout(() => {
+                        button.disabled = false;
+                    }, 500);
+                });
+            }
+
+            // Attach handlers to all favorite buttons
+            document.querySelectorAll('.favorite-btn, .favorite-btn-card').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    handleFavoriteClick(this);
+                });
+            });
+
+            // Auto-hide messages
+            document.querySelectorAll('.messages li').forEach(msg => {
+                setTimeout(() => {
+                    msg.style.opacity = '0';
+                    msg.style.transition = 'opacity 0.3s';
+                    setTimeout(() => msg.remove(), 300);
+                }, 5000);
+            });
+        });
+    </script>
+
+    <!-- Yandex.Metrika -->
+    <script type="text/javascript">
+        (function(m,e,t,r,i,k,a){
+            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();
+            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=104614321', 'ym');
+        ym(104614321, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/104614321" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>

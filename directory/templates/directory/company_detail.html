@@ -1,0 +1,1445 @@
+{% extends 'directory/base.html' %}
+
+{% block title %}{{ company.name }} | Serviko{% endblock %}
+
+{% block styles %}
+<style>
+    /* Container */
+    .detail-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: var(--s8) var(--s6);
+    }
+
+    /* Back Link */
+    .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--s2);
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--text-light);
+        text-decoration: none;
+        margin-bottom: var(--s8);
+        transition: all 0.2s;
+    }
+
+    .back-link:hover {
+        color: var(--text);
+        gap: var(--s3);
+    }
+
+    /* Hero Section */
+    .company-hero {
+        background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg) 100%);
+        border: 1px solid var(--border);
+        border-radius: var(--r-lg);
+        padding: var(--s8);
+        margin-bottom: var(--s8);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .company-hero::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 60%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
+        pointer-events: none;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: var(--s8);
+        align-items: start;
+    }
+
+    /* Logo */
+.company-logo-hero {
+    /* больше площадь под логотип */
+    width: 180px;
+    height: 180px;
+
+    /* делаем аккуратную «рамку-витрину» */
+    background: #fff;
+    padding: 12px;
+    border-radius: 16px;
+    border: 1.5px solid rgba(0,0,0,0.08);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+
+    /* выравнивание */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* фиксируем квадрат и убираем прежнее обрезание */
+    aspect-ratio: 1 / 1;       /* держим квадрат даже если размеры поменяются */
+    overflow: visible;         /* раньше было hidden — из-за этого «резало» */
+    flex-shrink: 0;
+
+    /* убираем старую белую жирную рамку, которая съедала площадь */
+    border-width: 1.5px;
+}
+
+.company-logo-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;       /* ключ: больше не cover */
+    object-position: center;
+    background: #fff;          /* PNG/SVG с прозрачностью выглядят чисто */
+    border-radius: 12px;
+    border: 0;
+    box-shadow: none;
+}
+
+
+.no-logo-hero {
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: var(--text-lighter);
+}
+
+    /* Info */
+    .hero-info {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .company-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        margin-bottom: var(--s3);
+        line-height: 1.2;
+    }
+
+    .company-subtitle {
+        font-size: 1.125rem;
+        font-weight: 400;
+        color: var(--text-light);
+        margin-bottom: var(--s5);
+        line-height: 1.6;
+    }
+
+    .hero-badges {
+        display: flex;
+        gap: var(--s2);
+        flex-wrap: wrap;
+        margin-bottom: var(--s5);
+    }
+
+    .badge {
+        padding: var(--s2) var(--s4);
+        border-radius: var(--r-full);
+        font-size: 0.8125rem;
+        font-weight: 600;
+        display: inline-flex;
+        align-items: center;
+        gap: var(--s2);
+    }
+
+    .badge-verified {
+        background: #d1fae5;
+        color: #065f46;
+    }
+
+    .badge-popular {
+        background: #fef3c7;
+        color: #92400e;
+    }
+
+    .badge-feature {
+        background: #dbeafe;
+        color: #1e40af;
+    }
+
+
+
+    /* Meta */
+    .hero-meta {
+        display: flex;
+        gap: var(--s6);
+        flex-wrap: wrap;
+    }
+
+    .meta-item {
+        display: flex;
+        align-items: center;
+        gap: var(--s2);
+        font-size: 0.9375rem;
+        font-weight: 500;
+        color: var(--text);
+    }
+
+    .meta-item i {
+        color: var(--text-lighter);
+    }
+
+    /* Actions */
+    .hero-actions {
+        display: flex;
+        flex-direction: column;
+        gap: var(--s3);
+    }
+
+    .btn-primary {
+        padding: var(--s3) var(--s6);
+        background: var(--text);
+        color: var(--bg);
+        border: none;
+        border-radius: var(--r-md);
+        font-size: 0.9375rem;
+        font-weight: 600;
+        text-decoration: none;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.2s;
+        white-space: nowrap;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-secondary {
+        padding: var(--s3) var(--s6);
+        background: white;
+        color: var(--text);
+        border: 1px solid var(--border);
+        border-radius: var(--r-md);
+        font-size: 0.9375rem;
+        font-weight: 600;
+        text-decoration: none;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--s2);
+    }
+
+    .btn-secondary:hover {
+        background: var(--bg-secondary);
+    }
+
+    .btn-secondary.favorited {
+        background: var(--text);
+        color: white;
+        border-color: var(--text);
+    }
+
+    /* Tabs Navigation */
+    .tabs-nav {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--r-lg);
+        padding: var(--s2);
+        margin-bottom: var(--s8);
+        display: flex;
+        gap: var(--s2);
+        overflow-x: auto;
+    }
+
+    .tab-btn {
+        padding: var(--s3) var(--s5);
+        background: transparent;
+        border: none;
+        border-radius: var(--r-md);
+        font-size: 0.9375rem;
+        font-weight: 500;
+        color: var(--text-light);
+        cursor: pointer;
+        transition: all 0.2s;
+        white-space: nowrap;
+        display: flex;
+        align-items: center;
+        gap: var(--s2);
+    }
+
+    .tab-btn:hover {
+        background: var(--bg-secondary);
+        color: var(--text);
+    }
+
+    .tab-btn.active {
+        background: var(--text);
+        color: var(--bg);
+    }
+
+    /* Tab Content */
+    .tab-content {
+        display: none;
+    }
+
+    .tab-content.active {
+        display: block;
+    }
+
+    /* Content Grid */
+    .content-grid {
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: var(--s8);
+        align-items: start;
+    }
+
+    /* Section */
+    .section {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--r-lg);
+        padding: var(--s6);
+        margin-bottom: var(--s6);
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: var(--s5);
+    }
+
+    .section-content {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.7;
+        color: var(--text);
+    }
+
+    /* Sidebar Card */
+    .sidebar-card {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--r-lg);
+        padding: var(--s6);
+        position: sticky;
+        top: 80px;
+    }
+
+    .sidebar-card h3 {
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin-bottom: var(--s5);
+    }
+
+    .info-list {
+        list-style: none;
+    }
+
+    .info-item {
+        padding: var(--s3) 0;
+        border-bottom: 1px solid var(--border);
+        font-size: 0.875rem;
+    }
+
+    .info-item:last-child {
+        border-bottom: none;
+    }
+
+    .info-label {
+        font-weight: 600;
+        color: var(--text);
+        display: block;
+        margin-bottom: var(--s1);
+    }
+
+    .info-value {
+        font-weight: 400;
+        color: var(--text-light);
+        display: flex;
+        align-items: center;
+        gap: var(--s2);
+    }
+
+    .info-value a {
+        color: var(--text-light);
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    .info-value a:hover {
+        color: var(--text);
+    }
+
+    /* Tags */
+    .tags-grid {
+        display: flex;
+        gap: var(--s2);
+        flex-wrap: wrap;
+    }
+
+    .tag {
+        padding: var(--s2) var(--s3);
+        background: var(--bg-secondary);
+        border-radius: var(--r-md);
+        font-size: 0.8125rem;
+        font-weight: 500;
+        color: var(--text-light);
+    }
+
+    /* Services Grid */
+    .services-grid {
+        display: grid;
+        gap: var(--s4);
+    }
+
+    .service-card {
+        background: var(--bg-secondary);
+        border-radius: var(--r-lg);
+        padding: var(--s5);
+        transition: all 0.2s;
+    }
+
+    .service-card:hover {
+        background: var(--bg-tertiary);
+    }
+
+    .service-name {
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin-bottom: var(--s2);
+    }
+
+    .service-price {
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: var(--s3);
+    }
+
+    .service-description {
+        font-size: 0.9375rem;
+        font-weight: 400;
+        color: var(--text-light);
+        line-height: 1.6;
+    }
+
+    /* Portfolio Grid */
+    .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: var(--s4);
+    }
+
+    .portfolio-item {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--r-lg);
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+
+    .portfolio-item:hover {
+        transform: scale(1.02);
+    }
+
+    .portfolio-item img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+    }
+
+    .portfolio-caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: var(--s4);
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+        color: white;
+        font-size: 0.875rem;
+    }
+
+    /* Rating Section */
+    .rating-header {
+        text-align: center;
+        padding: var(--s8);
+        background: var(--bg-secondary);
+        border-radius: var(--r-lg);
+        margin-bottom: var(--s6);
+    }
+
+    .rating-score {
+        font-size: 4rem;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        margin-bottom: var(--s2);
+    }
+
+    .rating-stars {
+        color: #fbbf24;
+        font-size: 1.5rem;
+        margin-bottom: var(--s3);
+    }
+
+    .rating-text {
+        font-size: 1rem;
+        font-weight: 400;
+        color: var(--text-light);
+    }
+
+    /* Review Form */
+    .review-form {
+        background: var(--bg-secondary);
+        border-radius: var(--r-lg);
+        padding: var(--s6);
+        margin-bottom: var(--s6);
+    }
+
+    .review-form h4 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: var(--s5);
+    }
+
+    .review-form p {
+        display: flex;
+        flex-direction: column;
+        gap: var(--s2);
+        margin-bottom: var(--s4);
+    }
+
+    .review-form label {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--text);
+    }
+
+    .review-form input,
+    .review-form select,
+    .review-form textarea {
+        width: 100%;
+        padding: var(--s3);
+        border: 1px solid var(--border);
+        border-radius: var(--r-md);
+        font-family: var(--font);
+        font-size: 0.9375rem;
+        font-weight: 400;
+        background: white;
+    }
+
+    .review-form textarea {
+        min-height: 120px;
+        resize: vertical;
+    }
+
+    .review-form input:focus,
+    .review-form select:focus,
+    .review-form textarea:focus {
+        outline: none;
+        border-color: var(--text-light);
+    }
+
+    /* Review Card */
+        .review-card {
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--r-lg);
+            padding: var(--s6);
+            margin-bottom: var(--s4);
+        }
+
+    .review-card.my-review {
+        border-color: var(--primary);
+        background: var(--bg-secondary);
+    }
+
+    .review-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--s4);
+    }
+
+    .review-author-info {
+        display: flex;
+        align-items: center;
+        gap: var(--s3);
+    }
+
+    .review-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: var(--r-full);
+        overflow: hidden;
+        flex-shrink: 0;
+    }
+
+    .review-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .review-author {
+        font-weight: 600;
+        margin-bottom: var(--s1);
+    }
+
+    .review-date {
+        font-size: 0.875rem;
+        color: var(--text-lighter);
+    }
+
+    .review-rating {
+        display: flex;
+        align-items: center;
+        gap: var(--s2);
+    }
+
+    .review-stars {
+        color: #fbbf24;
+    }
+
+
+
+.review-content-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--s3);
+}
+
+.review-content {
+    flex: 1;
+    font-size: 0.9375rem;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.7;
+}
+
+.review-delete-inline {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    background: var(--bg-secondary);
+    border: none;
+    border-radius: var(--r-full);
+    color: var(--danger);
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+}
+
+.review-delete-inline:hover {
+    background: var(--danger);
+    color: white;
+    transform: scale(1.1);
+}
+
+
+    /* Empty State */
+    .empty-state {
+        text-align: center;
+        padding: var(--s12);
+        background: var(--bg-secondary);
+        border-radius: var(--r-lg);
+    }
+
+    .empty-icon {
+        font-size: 3rem;
+        margin-bottom: var(--s4);
+        opacity: 0.3;
+    }
+
+    .empty-text {
+        font-size: 1rem;
+        font-weight: 400;
+        color: var(--text-light);
+    }
+
+    .empty-text a {
+        color: var(--text);
+        text-decoration: underline;
+    }
+
+    /* Social Links */
+    .social-links {
+        display: flex;
+        gap: var(--s3);
+        margin-top: var(--s4);
+    }
+
+    .social-link {
+        width: 40px;
+        height: 40px;
+        border-radius: var(--r-full);
+        background: var(--bg-tertiary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text);
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .social-link:hover {
+        background: var(--text);
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    /* Certificates */
+    .certificates-list {
+        display: grid;
+        gap: var(--s3);
+    }
+
+    .certificate-item {
+        padding: var(--s4);
+        background: var(--bg-secondary);
+        border-radius: var(--r-md);
+        transition: background 0.2s;
+    }
+
+    .certificate-item:hover {
+        background: var(--bg-tertiary);
+    }
+
+    .certificate-item a {
+        color: var(--text);
+        text-decoration: none;
+        font-size: 0.9375rem;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: var(--s3);
+    }
+
+    .certificate-item a i {
+        font-size: 1.25rem;
+        color: var(--text-light);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+        .hero-content {
+            grid-template-columns: 1fr;
+        }
+
+        .hero-actions {
+            flex-direction: row;
+        }
+
+        .content-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .sidebar-card {
+            position: static;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .detail-container {
+            padding: var(--s6) var(--s4);
+        }
+
+        .company-hero {
+            padding: var(--s6);
+        }
+
+        .company-logo-hero {
+            width: 140px;
+            height: 140px;
+            padding: 10px;
+            border-radius: 14px;
+        }
+    .no-logo-hero { font-size: 2.4rem; }
+
+        .company-title {
+            font-size: 2rem;
+        }
+
+        .tabs-nav {
+            padding: var(--s2);
+        }
+
+        .tab-btn {
+            padding: var(--s2) var(--s4);
+            font-size: 0.875rem;
+        }
+
+        .portfolio-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .hero-actions {
+            flex-direction: column;
+        }
+    }
+
+    /* ==== Locked / Blurred Contacts ==== */
+.locked {
+  position: relative;
+  border: 1px dashed var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+
+.locked-inner {
+  filter: blur(6px);
+  pointer-events: none; /* контакты не кликаются */
+  user-select: none;
+}
+
+.locked-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(60% 60% at 50% 40%, rgba(255,255,255,0.6), rgba(255,255,255,0.9)),
+    linear-gradient(135deg, rgba(0,0,0,0.03), rgba(0,0,0,0.05));
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  padding: var(--s6);
+}
+
+.locked-panel {
+  background: rgba(255,255,255,0.85);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  padding: var(--s6);
+  text-align: center;
+  max-width: 420px;
+}
+
+.locked-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: var(--s2);
+  letter-spacing: -0.01em;
+}
+
+.locked-text {
+  font-size: 0.9375rem;
+  color: var(--text-light);
+  margin-bottom: var(--s5);
+  line-height: 1.6;
+}
+
+.locked-actions {
+  display: flex;
+  gap: var(--s3);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.locked-btn {
+  padding: var(--s3) var(--s5);
+  border-radius: var(--r-md);
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  border: 1px solid var(--border);
+  background: white;
+  color: var(--text);
+  transition: all .2s;
+}
+
+.locked-btn.primary {
+  background: var(--text);
+  color: var(--bg);
+  border-color: var(--text);
+}
+
+.locked-btn:hover { transform: translateY(-1px); }
+.locked-btn.primary:hover { box-shadow: 0 8px 16px rgba(0,0,0,0.12); }
+
+/* маленькие маскированные значения — «**** 34» */
+.masked {
+  letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+  background: var(--bg-secondary);
+  border-radius: var(--r-md);
+  padding: 2px 6px;
+}
+
+/* чтобы тень в «заблюренной» карточке не уезжала */
+.sidebar-card.lock-aside { padding: 0; }
+.sidebar-card.lock-aside .locked-inner { padding: var(--s6); }
+
+/* Размытие контактов для гостей */
+.blurred {
+  filter: blur(6px);
+  opacity: .85;
+  pointer-events: none;  /* не кликается */
+  user-select: none;     /* нельзя скопировать */
+  position: relative;
+}
+
+/* Поясняющая плашка под блоком */
+.locked-note {
+  margin-top: var(--s4);
+  font-size: 0.875rem;
+  color: var(--text-light);
+  background: var(--bg-secondary);
+  border: 1px dashed var(--border);
+  border-radius: var(--r-md);
+  padding: var(--s3) var(--s4);
+  text-align: center;
+}
+.locked-note a {
+  color: var(--text);
+  font-weight: 600;
+  text-decoration: none;
+}
+.locked-note a:hover { text-decoration: underline; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="detail-container">
+    <!-- Back Link -->
+    <a href="{% url 'company-list' %}" class="back-link">
+        <i class="fa-solid fa-arrow-left"></i> Назад к списку
+    </a>
+
+    <!-- Hero Section -->
+    <div class="company-hero">
+        <div class="hero-content">
+            <!-- Logo -->
+            <div class="company-logo-hero">
+                {% if company.logo %}
+                    <img src="{{ company.logo.url }}" alt="{{ company.name }}">
+                {% else %}
+                    <div class="no-logo-hero">
+                        <i class="fa-solid fa-building" style="color: var(--text-lighter);"></i>
+                    </div>
+                {% endif %}
+            </div>
+
+            <!-- Info -->
+            <div class="hero-info">
+                <h1 class="company-title">{{ company.name }}</h1>
+                <p class="company-subtitle">{{ company.short_description }}</p>
+
+                <!-- Badges -->
+                <div class="hero-badges">
+                    {% if company.is_verified %}
+                        <span class="badge badge-verified">
+                            <i class="fa-solid fa-circle-check"></i> Верифицирована
+                        </span>
+                    {% endif %}
+                    {% if company.is_popular %}
+                        <span class="badge badge-popular">
+                            <i class="fa-solid fa-star"></i> Популярна
+                        </span>
+                    {% endif %}
+                    {% if company.has_fast_response %}
+                        <span class="badge badge-feature">
+                            <i class="fa-solid fa-bolt"></i> Быстрый ответ
+                        </span>
+                    {% endif %}
+                </div>
+
+                <!-- Meta -->
+                <div class="hero-meta">
+                    {% if company.service_area %}
+                        <div class="meta-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            {{ company.service_area }}
+                        </div>
+                    {% endif %}
+                    {% if company.founding_year %}
+                        <div class="meta-item">
+                            <i class="fa-solid fa-calendar"></i>
+                            Год основания: {{ company.founding_year }} год
+                        </div>
+                    {% endif %}
+                    {% if average_rating %}
+                        <div class="meta-item">
+                            <i class="fa-solid fa-star" style="color: #fbbf24;"></i>
+                            {{ average_rating|floatformat:1 }} ({{ reviews|length }})
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="hero-actions">
+                <a href="#request" class="btn-primary">
+                    <i class="fa-solid fa-paper-plane"></i> Отправить заявку
+                </a>
+                {% if user.is_authenticated %}
+                    <button 
+                        class="btn-secondary favorite-btn {% if user in company.favorited_by.all %}favorited{% endif %}"
+                        data-url="{% url 'toggle-favorite' company.id %}">
+                        {% if user in company.favorited_by.all %}
+                            <i class="fa-solid fa-star"></i> В избранном
+                        {% else %}
+                            <i class="fa-regular fa-star"></i> В избранное
+                        {% endif %}
+                    </button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <!-- Tabs Navigation -->
+    <div class="tabs-nav">
+        <button class="tab-btn active" data-tab="overview">
+            <i class="fa-solid fa-circle-info"></i> Обзор
+        </button>
+        <button class="tab-btn" data-tab="services">
+            <i class="fa-solid fa-list"></i> Услуги
+        </button>
+        {% if company.portfolio_items.all %}
+            <button class="tab-btn" data-tab="portfolio">
+                <i class="fa-solid fa-images"></i> Портфолио
+            </button>
+        {% endif %}
+        <button class="tab-btn" data-tab="reviews">
+            <i class="fa-solid fa-comments"></i> Отзывы ({{ reviews|length }})
+        </button>
+        <button class="tab-btn" data-tab="contacts">
+            <i class="fa-solid fa-address-card"></i>Связаться с нами
+        </button>
+    </div>
+
+    <!-- Tab: Overview -->
+    <div id="overview" class="tab-content active">
+        <div class="content-grid">
+            <div>
+                <!-- Description -->
+                <div class="section">
+                    <h2 class="section-title">О компании</h2>
+                    <div class="section-content">{{ company.description|linebreaks }}</div>
+                </div>
+
+                <!-- Tags -->
+                {% if company.tags %}
+                    <div class="section">
+                        <h2 class="section-title">Специализация</h2>
+                        <div class="tags-grid">
+                            {% for tag in company.tags.split %}
+                                <span class="tag">{{ tag|cut:"," }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+
+<!-- Sidebar -->
+<aside>
+  <div class="sidebar-card">
+    <h3>Информация</h3>
+    <ul class="info-list">
+      {% if company.categories.all %}
+        <li class="info-item">
+          <div class="info-label">Категории</div>
+          <div class="info-value">
+            {% for category in company.categories.all %}
+              {{ category.name }}{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+          </div>
+        </li>
+      {% endif %}
+
+      {% if company.phone_number %}
+        <li class="info-item">
+          <div class="info-label">Телефон</div>
+          <div class="info-value {% if not user.is_authenticated %}blurred{% endif %}">
+            <a href="tel:{{ company.phone_number }}">{{ company.phone_number }}</a>
+          </div>
+        </li>
+      {% endif %}
+
+      {% if company.email %}
+        <li class="info-item">
+          <div class="info-label">Email</div>
+          <div class="info-value {% if not user.is_authenticated %}blurred{% endif %}">
+            <a href="mailto:{{ company.email }}">{{ company.email }}</a>
+          </div>
+        </li>
+      {% endif %}
+
+      {% if company.website %}
+        <li class="info-item">
+          <div class="info-label">Сайт</div>
+          <div class="info-value {% if not user.is_authenticated %}blurred{% endif %}">
+            <a href="{{ company.website }}" target="_blank" rel="noopener">Перейти</a>
+          </div>
+        </li>
+      {% endif %}
+    </ul>
+
+    {% if company.instagram_url or company.facebook_url or company.whatsapp_contact or company.telegram_contact %}
+      <div class="social-links {% if not user.is_authenticated %}blurred{% endif %}">
+        {% if company.instagram_url %}
+          <a href="{{ company.instagram_url }}" target="_blank" class="social-link" title="Instagram" rel="noopener">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+        {% endif %}
+        {% if company.facebook_url %}
+          <a href="{{ company.facebook_url }}" target="_blank" class="social-link" title="Facebook" rel="noopener">
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+        {% endif %}
+        {% if company.whatsapp_contact %}
+          <a href="https://wa.me/{{ company.whatsapp_contact }}" target="_blank" class="social-link" title="WhatsApp" rel="noopener">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+        {% endif %}
+        {% if company.telegram_contact %}
+          <a href="https://t.me/{{ company.telegram_contact }}" target="_blank" class="social-link" title="Telegram" rel="noopener">
+            <i class="fa-brands fa-telegram"></i>
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if not user.is_authenticated %}
+      <div class="locked-note">
+        <i class="fa-solid fa-lock"></i>
+        Контактные данные скрыты. <a href="{% url 'login' %}?next={{ request.path }}">Войдите</a> или
+        <a href="{% url 'register' %}">зарегистрируйтесь</a>, чтобы увидеть номер, email, сайт и соцсети.
+      </div>
+    {% endif %}
+  </div>
+</aside>
+        </div>
+    </div>
+
+    <!-- Tab: Services -->
+    <div id="services" class="tab-content">
+        <div class="section">
+            <h2 class="section-title">Наши услуги</h2>
+            {% if company.services.all %}
+                <div class="services-grid">
+                    {% for service in company.services.all %}
+                        <div class="service-card">
+                            <div class="service-name">{{ service.name }}</div>
+                            {% if service.price %}
+                                <div class="service-price">
+                                    {{ service.price }} ₸ {% if service.unit %}/ {{ service.unit }}{% endif %}
+                                </div>
+                            {% endif %}
+                            {% if service.description %}
+                                <div class="service-description">{{ service.description }}</div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="empty-state">
+                    <div class="empty-icon"><i class="fa-solid fa-list"></i></div>
+                    <p class="empty-text">Список услуг пока не заполнен</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Tab: Portfolio -->
+    {% if company.portfolio_items.all %}
+        <div id="portfolio" class="tab-content">
+            <div class="section">
+                <h2 class="section-title">Наши работы</h2>
+                <div class="portfolio-grid">
+                    {% for item in company.portfolio_items.all %}
+                        <div class="portfolio-item">
+                            <img src="{{ item.image.url }}" alt="{{ item.description }}">
+                            {% if item.description %}
+                                <div class="portfolio-caption">{{ item.description }}</div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    <!-- Tab: Reviews -->
+    <div id="reviews" class="tab-content">
+        <div class="section">
+            <h2 class="section-title">Отзывы клиентов</h2>
+
+            {% if average_rating %}
+                <div class="rating-header">
+                    <div class="rating-score">{{ average_rating|floatformat:1 }}</div>
+                    <div class="rating-stars">
+                        {% for i in "12345" %}
+                            {% if forloop.counter <= average_rating %}
+                                <i class="fa-solid fa-star"></i>
+                            {% else %}
+                                <i class="fa-regular fa-star"></i>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                    <div class="rating-text">На основе {{ reviews|length }} отзывов</div>
+                </div>
+            {% endif %}
+
+            <!-- Review Form -->
+            <div class="review-form"> {# Или ваш класс для контейнера формы #}
+                <h4>Оставить отзыв</h4>
+                {% if user.is_authenticated %}
+                    {% if can_leave_review %}
+                        {# Если пользователь может оставить отзыв, показываем форму #}
+                        <form method="POST">
+                            {% csrf_token %}
+                            {{ review_form.as_p }}
+                            <button type="submit" name="submit_review" class="btn-primary">Отправить отзыв</button> {# Используйте ваш класс для кнопки #}
+                        </form>
+                    {% else %}
+                        {# Если оставить отзыв нельзя, показываем причину #}
+                        <div class="info-message"> {# Используйте ваш класс для информационных сообщений #}
+                            {% if has_already_reviewed %}
+                                <p>Вы уже оставили отзыв для этой компании. Спасибо!</p>
+                            {% else %}
+                                {# Сообщение, если не было заявки #}
+                                <p>
+                                    Чтобы оставить отзыв, сначала необходимо отправить заявку в эту компанию. <br>
+                                    Это помогает нам убедиться в актуальности и достоверности отзывов.
+                                </p>
+                                {# Можно добавить ссылку на форму заявки, если она не рядом #}
+                                {# <a href="#requestForm" class="btn-secondary">Отправить заявку</a> #}
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% else %}
+                    {# Если пользователь не вошел в систему #}
+                    <div class="info-message">
+                        <p>Для того чтобы оставить отзыв, пожалуйста, <a href="{% url 'login' %}?next={{ request.path }}">войдите в свой аккаунт</a> или <a href="{% url 'register' %}">зарегистрируйтесь</a>.</p>
+                    </div>
+                {% endif %}
+            </div>
+
+                <!-- Reviews List -->
+                {% for review in reviews %}
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="review-author-info">
+                            <div class="review-avatar">
+                                <img
+                                    src="{{ review.user.userprofile.avatar.url }}"
+                                    alt="Аватар"
+                                >
+                            </div>
+                            <div>
+                                <div class="review-author">{{ review.user.get_full_name|default:review.user.username }}</div>
+                                <div class="review-date">{{ review.created_at|date:"d.m.Y" }}</div>
+                            </div>
+                        </div>
+                        <div class="review-rating">
+                            <div class="review-stars">
+                                {% for i in "12345" %}
+                                    {% if forloop.counter <= review.rating %}
+                                        <i class="fa-solid fa-star"></i>
+                                    {% else %}
+                                        <i class="fa-regular fa-star"></i>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="review-content-wrapper">
+                        <div class="review-content">{{ review.comment|linebreaks }}</div>
+                        
+                        {% if review.user == user %}
+                            <form action="{% url 'delete-review' review.id %}" method="POST" onsubmit="return confirm('Вы уверены, что хотите удалить этот отзыв?');" style="display: inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="review-delete-inline" title="Удалить отзыв">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+                {% empty %}
+                <div class="empty-state">
+                    <div class="empty-icon"><i class="fa-solid fa-comments"></i></div>
+                    <p class="empty-text">Для этой компании еще нет отзывов. Станьте первым!</p>
+                </div>
+                {% endfor %}
+        </div>
+    </div>
+
+    <!-- Tab: Contacts -->
+    <div id="contacts" class="tab-content">
+        <div class="content-grid">
+            <div>
+                <!-- Contact Form -->
+                <div class="section">
+                    <h2 class="section-title">Отправить заявку</h2>
+                    <div id="request">
+                    {% if user.is_authenticated %}
+                        <form method="POST" enctype="multipart/form-data" class="review-form">
+                            {% csrf_token %}
+                            {{ request_form.as_p }}
+                            <button type="submit" name="submit_request" class="btn-primary">Отправить</button>
+                        </form>
+                    {% else %}
+                        <div class="empty-state">
+                            <p class="empty-text">
+                                <a href="{% url 'login' %}?next={{ request.path }}">Войдите</a> или 
+                                <a href="{% url 'register' %}">зарегистрируйтесь</a>, чтобы отправить заявку.
+                            </p>
+                        </div>
+                    {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <aside>
+            {% if user.is_authenticated %}
+                <div class="sidebar-card">
+                <h3>Контактная информация</h3>
+                <ul class="info-list">
+                    <li class="info-item"><div class="info-label">Адрес</div><div class="info-value">{{ company.address }}</div></li>
+                    <li class="info-item"><div class="info-label">График работы</div><div class="info-value">{{ company.working_hours }}</div></li>
+                    <li class="info-item"><div class="info-label">Телефон</div><div class="info-value"><a href="tel:{{ company.phone_number }}">{{ company.phone_number }}</a></div></li>
+                    <li class="info-item"><div class="info-label">Email</div><div class="info-value"><a href="mailto:{{ company.email }}">{{ company.email }}</a></div></li>
+                </ul>
+                </div>
+            {% else %}
+                <div class="sidebar-card lock-aside">
+                <div class="locked">
+                    <div class="locked-inner">
+                    <h3 style="padding: var(--s6) var(--s6) 0;">Контактная информация</h3>
+                    <ul class="info-list" style="padding: 0 var(--s6) var(--s6); margin:0;">
+                        <li class="info-item"><div class="info-label">Адрес</div><div class="info-value"><span class="masked">*********</span></div></li>
+                        <li class="info-item"><div class="info-label">График работы</div><div class="info-value"><span class="masked">**:**–**:**</span></div></li>
+                        <li class="info-item"><div class="info-label">Телефон</div><div class="info-value"><span class="masked">+7 (***) ***-**-**</span></div></li>
+                        <li class="info-item"><div class="info-label">Email</div><div class="info-value"><span class="masked">****@****.**</span></div></li>
+                    </ul>
+                    </div>
+
+                    <div class="locked-overlay">
+                    <div class="locked-panel">
+                        <div class="locked-title"><i class="fa-solid fa-lock"></i> Контакты доступны после входа</div>
+                        <div class="locked-text">Войдите, чтобы связаться с компанией напрямую.</div>
+                        <div class="locked-actions">
+                        <a class="locked-btn primary" href="{% url 'login' %}?next={{ request.path }}"><i class="fa-solid fa-right-to-bracket"></i> Войти</a>
+                        <a class="locked-btn" href="{% url 'register' %}"><i class="fa-solid fa-user-plus"></i> Регистрация</a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            {% endif %}
+
+            {# Сертификаты — оставляем как было #}
+            {% if company.certificates.all %}
+                <div class="sidebar-card" style="margin-top: var(--s6);">
+                <h3>Сертификаты</h3>
+                <div class="certificates-list">
+                    {% for certificate in company.certificates.all %}
+                    <div class="certificate-item">
+                        <a href="{{ certificate.file.url }}" target="_blank">
+                        <i class="fa-solid fa-file-certificate"></i>
+                        {{ certificate.description }}
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>
+                </div>
+            {% endif %}
+            </aside>
+        </div>
+    </div>
+</div>
+
+<script>
+// Tabs functionality
+const tabButtons = document.querySelectorAll('.tab-btn');
+const tabContents = document.querySelectorAll('.tab-content');
+
+tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const targetTab = button.dataset.tab;
+
+        // Remove active class from all
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        tabContents.forEach(content => content.classList.remove('active'));
+
+        // Add active class to clicked
+        button.classList.add('active');
+        document.getElementById(targetTab).classList.add('active');
+    });
+});
+
+// Handle click on request button in hero section
+document.querySelector('a[href="#request"]').addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    // Switch to contacts tab
+    const contactsTab = document.querySelector('[data-tab="contacts"]');
+    if (contactsTab) {
+        // Get current scroll position
+        const currentScroll = window.pageYOffset;
+        
+        // Switch tab
+        contactsTab.click();
+        
+        // Wait for tab to switch then scroll to form
+        setTimeout(() => {
+            const requestElement = document.getElementById('request');
+            if (requestElement) {
+                // Calculate position relative to document
+                const elementPosition = requestElement.getBoundingClientRect().top + currentScroll;
+                const offsetPosition = elementPosition - 100; // 100px offset from top
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }, 150);
+    }
+});
+
+// Check URL hash on load and handle #request specifically
+if (window.location.hash) {
+    const hash = window.location.hash.substring(1);
+    
+    if (hash === 'request') {
+        // Switch to contacts tab and scroll to request form
+        const contactsTab = document.querySelector('[data-tab="contacts"]');
+        if (contactsTab) {
+            contactsTab.click();
+            // Wait for tab to switch then scroll to form
+            setTimeout(() => {
+                const requestElement = document.getElementById('request');
+                if (requestElement) {
+                    const elementPosition = requestElement.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = elementPosition - 100;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 150);
+        }
+    } else {
+        const targetButton = document.querySelector(`[data-tab="${hash}"]`);
+        if (targetButton) {
+            targetButton.click();
+        }
+    }
+}
+</script>
+{% endblock %}

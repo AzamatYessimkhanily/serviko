@@ -1,0 +1,1037 @@
+{% extends 'directory/base.html' %}
+
+{% block title %}Каталог компаний | Serviko{% endblock %}
+
+{% block styles %}
+<style>
+    /* Page Header */
+    .catalog-header {
+        background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg) 100%);
+        padding: var(--s10) 0 var(--s8);
+        margin-bottom: var(--s8);
+    }
+
+    .catalog-header-content {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 var(--s6);
+    }
+
+    .page-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        margin-bottom: var(--s4);
+    }
+
+    .page-subtitle {
+        font-size: 1.125rem;
+        font-weight: 400;
+        color: var(--text-light);
+        margin-bottom: var(--s8);
+    }
+
+    /* Search Bar */
+    .search-bar {
+        display: flex;
+        gap: var(--s3);
+        background: white;
+        padding: var(--s2);
+        border-radius: var(--r-lg);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        max-width: 800px;
+    }
+
+    .autocomplete-wrapper {
+        position: relative;
+        flex: 1;
+    }
+
+    .search-input {
+        width: 100%;
+        padding: var(--s3) var(--s4);
+        border: none;
+        border-radius: var(--r-md);
+        font-family: var(--font);
+        font-size: 1rem;
+        font-weight: 400;
+        background: var(--bg-secondary);
+    }
+
+    .search-input:focus {
+        outline: none;
+        background: var(--bg-tertiary);
+    }
+
+    .search-button {
+        padding: var(--s3) var(--s8);
+        background: var(--text);
+        color: var(--bg);
+        border: none;
+        border-radius: var(--r-md);
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: all 0.2s;
+    }
+
+    .search-button:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Autocomplete */
+    .autocomplete-results {
+        position: absolute;
+        top: calc(100% + var(--s3));
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--r-lg);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        max-height: 350px;
+        overflow-y: auto;
+        z-index: 1000;
+        display: none;
+    }
+
+    .autocomplete-results.active {
+        display: block;
+    }
+
+    .autocomplete-item {
+        padding: var(--s4);
+        cursor: pointer;
+        border-bottom: 1px solid var(--bg-secondary);
+        font-size: 0.9375rem;
+        transition: background 0.1s;
+    }
+
+    .autocomplete-item:last-child {
+        border-bottom: none;
+    }
+
+    .autocomplete-item:hover {
+        background: var(--bg-secondary);
+    }
+
+    /* Content Layout */
+    .catalog-container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 var(--s6);
+    }
+
+    .content-layout {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        gap: var(--s8);
+        align-items: start;
+    }
+
+    /* Filters Sidebar */
+    .filters-sidebar {
+        position: sticky;
+        top: 80px;
+    }
+
+    .filters-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    /* overflow: hidden;  — оставим скрытие, но добавим управление ниже */
+    overflow: hidden;
+
+    /* NEW: внутренний лэйаут */
+    display: flex;
+    flex-direction: column;
+
+    /* NEW: ограничиваем высоту относительно окна,
+        чтобы внутри появился собственный скролл */
+    max-height: calc(100vh - 120px);
+    }
+
+    .filters-header {
+    padding: var(--s5);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    }
+
+    .filters-title {
+        font-size: 1.125rem;
+        font-weight: 600;
+    }
+
+    .filters-reset {
+        padding: var(--s2) var(--s3);
+        background: transparent;
+        border: 1px solid var(--border);
+        border-radius: var(--r-md);
+        font-size: 0.8125rem;
+        font-weight: 500;
+        color: var(--text-light);
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .filters-reset:hover {
+        background: var(--bg-secondary);
+    }
+
+.filters-body {
+  padding: var(--s5);
+
+  /* NEW: занимаем всё доступное место между хедером и фуутером */
+  flex: 1 1 auto;
+
+  /* NEW: собственный скролл */
+  overflow: auto;
+
+  /* NEW: не отдаём скролл наружу (убираем scroll chaining) */
+  /* overscroll-behavior: contain; */
+
+  /* NEW: приятная прокрутка на iOS */
+  -webkit-overflow-scrolling: touch;
+
+  /* Опционально: стабилизируем появление скроллбара,
+     чтобы вёрстка не подпрыгивала */
+  scrollbar-gutter: stable;
+}
+
+
+    .filter-group {
+        margin-bottom: var(--s6);
+        padding-bottom: var(--s6);
+        border-bottom: 1px solid var(--border);
+    }
+
+    .filter-group:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .filter-group-title {
+        font-size: 0.9375rem;
+        font-weight: 600;
+        margin-bottom: var(--s4);
+        color: var(--text);
+    }
+
+    .filter-option {
+        display: flex;
+        align-items: center;
+        gap: var(--s3);
+        padding: var(--s2) 0;
+        cursor: pointer;
+        transition: all 0.15s;
+    }
+
+    .filter-option:hover {
+        padding-left: var(--s2);
+    }
+
+    .filter-checkbox {
+        width: 18px;
+        height: 18px;
+        cursor: pointer;
+        accent-color: var(--text);
+    }
+
+    .filter-label {
+        flex: 1;
+        font-size: 0.875rem;
+        font-weight: 400;
+        color: var(--text);
+        cursor: pointer;
+    }
+
+    .filter-count {
+        font-size: 0.8125rem;
+        font-weight: 500;
+        color: var(--text-lighter);
+    }
+
+    /* Rating Filter */
+    .rating-slider-wrapper {
+        padding: var(--s3) 0;
+    }
+
+    .rating-value {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: var(--s3);
+    }
+
+    .rating-value-text {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--text);
+    }
+
+    .rating-stars {
+        color: #fbbf24;
+        font-size: 0.875rem;
+    }
+
+    .rating-slider {
+        width: 100%;
+        height: 6px;
+        border-radius: var(--r-full);
+        background: var(--bg-secondary);
+        outline: none;
+        cursor: pointer;
+        appearance: none;
+    }
+
+    .rating-slider::-webkit-slider-thumb {
+        appearance: none;
+        width: 18px;
+        height: 18px;
+        border-radius: var(--r-full);
+        background: var(--text);
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .rating-slider::-webkit-slider-thumb:hover {
+        transform: scale(1.2);
+    }
+
+    .rating-slider::-moz-range-thumb {
+        width: 18px;
+        height: 18px;
+        border-radius: var(--r-full);
+        background: var(--text);
+        cursor: pointer;
+        border: none;
+    }
+
+    /* Filter Actions */
+        .filter-actions {
+        padding: var(--s5);
+        border-top: 1px solid var(--border);
+        display: flex;
+        gap: var(--s3);
+
+        /* NEW: остаётся внизу видимой области внутри карточки */
+        position: sticky;
+        bottom: 0;
+
+        background: var(--bg);
+        box-shadow: 0 -6px 12px rgba(0,0,0,0.04);
+        z-index: 1;
+        }
+
+    .btn-apply {
+        flex: 1;
+        padding: var(--s3);
+        background: var(--text);
+        color: var(--bg);
+        border: none;
+        border-radius: var(--r-md);
+        font-size: 0.9375rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .btn-apply:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Results Section */
+    .results-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: var(--s5);
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--r-lg);
+        margin-bottom: var(--s6);
+        
+    }
+
+    .results-info {
+        display: flex;
+        align-items: center;
+        gap: var(--s4);
+    }
+
+    .results-count {
+        font-size: 0.9375rem;
+        font-weight: 400;
+        color: var(--text-light);
+    }
+
+    .results-count strong {
+        font-weight: 600;
+        color: var(--text);
+    }
+
+    .active-filters {
+        display: flex;
+        gap: var(--s2);
+        flex-wrap: wrap;
+    }
+
+    .active-filter-tag {
+        padding: var(--s1) var(--s3);
+        background: var(--bg-secondary);
+        border-radius: var(--r-full);
+        font-size: 0.8125rem;
+        font-weight: 500;
+        color: var(--text);
+        display: flex;
+        align-items: center;
+        gap: var(--s2);
+    }
+
+    .active-filter-tag button {
+        background: none;
+        border: none;
+        color: var(--text-light);
+        cursor: pointer;
+        padding: 0;
+        font-size: 0.875rem;
+    }
+
+    .active-filter-tag button:hover {
+        color: var(--text);
+    }
+
+    .sort-control {
+        display: flex;
+        align-items: center;
+        gap: var(--s3);
+    }
+
+    .sort-label {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--text-light);
+    }
+
+    .sort-select {
+        padding: var(--s2) var(--s4);
+        border: 1px solid var(--border);
+        border-radius: var(--r-md);
+        font-family: var(--font);
+        font-size: 0.875rem;
+        font-weight: 500;
+        background: var(--bg);
+        cursor: pointer;
+        transition: all 0.15s;
+    }
+
+    .sort-select:focus {
+        outline: none;
+        border-color: var(--text-light);
+    }
+
+    .sort-select:hover {
+        background: var(--bg-secondary);
+    }
+
+    /* Companies Grid */
+    .companies-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: var(--s6);
+    }
+
+    /* Empty State */
+    .empty-state {
+        text-align: center;
+        padding: var(--s12);
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--r-lg);
+    }
+
+    .empty-icon {
+        font-size: 4rem;
+        margin-bottom: var(--s4);
+        opacity: 0.3;
+    }
+
+    .empty-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: var(--s3);
+    }
+
+    .empty-text {
+        font-size: 1rem;
+        font-weight: 400;
+        color: var(--text-light);
+    }
+
+    /* Pagination */
+    .pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: var(--s2);
+        margin-top: var(--s8);
+        padding: var(--s6) 0;
+    }
+
+    .pagination-btn {
+        min-width: 40px;
+        height: 40px;
+        padding: 0 var(--s3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid var(--border);
+        border-radius: var(--r-md);
+        font-size: 0.875rem;
+        font-weight: 500;
+        text-decoration: none;
+        color: var(--text);
+        background: var(--bg);
+        transition: all 0.15s;
+    }
+
+    .pagination-btn:hover {
+        border-color: var(--text-light);
+        background: var(--bg-secondary);
+    }
+
+    .pagination-btn.current {
+        background: var(--text);
+        color: var(--bg);
+        border-color: var(--text);
+    }
+
+    .pagination-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    /* Mobile Filter Toggle */
+    .mobile-filter-toggle {
+        display: none;
+        width: 100%;
+        padding: var(--s3);
+        background: var(--text);
+        color: var(--bg);
+        border: none;
+        border-radius: var(--r-md);
+        font-size: 0.9375rem;
+        font-weight: 600;
+        cursor: pointer;
+        margin-bottom: var(--s6);
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+        .content-layout {
+            grid-template-columns: 1fr;
+        }
+
+        .filters-sidebar {
+            position: static;
+        }
+
+        .mobile-filter-toggle {
+            display: block;
+        }
+
+
+        .companies-grid {
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        }
+
+
+
+  /* ВАЖНО: когда открыт, карточка остаётся flex-колонкой и скроллится внутри */
+  .filters-card {
+    display: none;
+    max-height: 80vh;   /* собственный скролл в пределах экрана */
+  }
+  .filters-card.active {
+    display: flex;      /* не block! нужно сохранить flex-колонку */
+  }
+    }
+
+    @media (max-width: 768px) {
+        .catalog-header {
+            padding: var(--s8) 0 var(--s6);
+        }
+
+        .page-title {
+            font-size: 2rem;
+        }
+
+        .search-bar {
+            flex-direction: column;
+            padding: var(--s4);
+        }
+
+        .catalog-container {
+            padding: 0 var(--s4);
+        }
+
+        .results-header {
+            flex-direction: column;
+            gap: var(--s4);
+            align-items: stretch;
+        }
+
+        .results-info {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: var(--s3);
+        }
+
+        .companies-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .pagination {
+            flex-wrap: wrap;
+        }
+    }
+
+    @media (max-width: 640px) {
+        .page-title {
+            font-size: 1.75rem;
+        }
+
+        .page-subtitle {
+            font-size: 1rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Catalog Header -->
+<div class="catalog-header">
+    <div class="catalog-header-content">
+        <h1 class="page-title">Каталог компаний</h1>
+        <p class="page-subtitle">Найдите лучших исполнителей для вашего проекта</p>
+
+        <!-- Search Bar -->
+        <form method="GET" action="{% url 'company-list' %}" class="search-bar" id="searchForm">
+            <div class="autocomplete-wrapper">
+                <input 
+                    type="text" 
+                    name="q" 
+                    value="{{ search_query }}" 
+                    placeholder="Поиск компаний, услуг, категорий..."
+                    id="searchInput"
+                    class="search-input"
+                    autocomplete="off"
+                >
+                <div class="autocomplete-results" id="autocompleteResults"></div>
+            </div>
+            <button type="submit" class="search-button">
+                <i class="fa-solid fa-magnifying-glass"></i> Найти
+            </button>
+        </form>
+    </div>
+</div>
+
+<!-- Main Content -->
+<div class="catalog-container">
+    <!-- Mobile Filter Toggle -->
+    <button class="mobile-filter-toggle" id="mobileFilterToggle">
+        <i class="fa-solid fa-filter"></i> Фильтры
+    </button>
+
+    <div class="content-layout">
+        <!-- Filters Sidebar -->
+        <aside class="filters-sidebar">
+            <form method="GET" action="{% url 'company-list' %}" id="filtersForm" class="filters-card">
+                <input type="hidden" name="q" value="{{ search_query }}">
+                <input type="hidden" name="sort" value="{{ sort_by }}">
+
+                <!-- Filters Header -->
+                <div class="filters-header">
+                    <h3 class="filters-title">Фильтры</h3>
+                    <button type="button" class="filters-reset" id="clearAllBtn">
+                        Очистить
+                    </button>
+                </div>
+
+                <!-- Filters Body -->
+                <div class="filters-body">
+                    <!-- Categories -->
+                    <div class="filter-group" id="categoriesGroup">
+                    <h4 class="filter-group-title">Категории</h4>
+
+                    {# первые 5 #}
+                    {% for category in all_categories|slice:":5" %}
+                        <label class="filter-option">
+                        <input
+                            type="checkbox"
+                            name="category"
+                            value="{{ category.id }}"
+                            class="filter-checkbox"
+                            {% if category.id|stringformat:"s" in selected_category_ids %}checked{% endif %}
+                        >
+                        <span class="filter-label">{{ category.name }}</span>
+                        <span class="filter-count">{{ category.company_count }}</span>
+                        </label>
+                    {% endfor %}
+
+                    {# остальные, скрытые по умолчанию #}
+                    {% if all_categories|length > 5 %}
+                        <div id="moreCategories" style="display:none">
+                        {% for category in all_categories|slice:"5:" %}
+                            <label class="filter-option">
+                            <input
+                                type="checkbox"
+                                name="category"
+                                value="{{ category.id }}"
+                                class="filter-checkbox"
+                                {% if category.id|stringformat:"s" in selected_category_ids %}checked{% endif %}
+                            >
+                            <span class="filter-label">{{ category.name }}</span>
+                            <span class="filter-count">{{ category.company_count }}</span>
+                            </label>
+                        {% endfor %}
+                        </div>
+
+                        <button type="button"
+                                class="filters-reset"
+                                id="toggleCategoriesBtn"
+                                data-expanded="false"
+                                style="margin-top: var(--s3);">
+                        Показать все категории
+                        </button>
+                    {% endif %}
+                    </div>
+
+                    {% if available_cities %}
+                    <div class="filter-group" id="citiesGroup">
+                    <h4 class="filter-group-title">Города</h4>
+
+                    {# первые 5 #}
+                    {% for city in available_cities|slice:":5" %}
+                        <label class="filter-option">
+                        <input
+                            type="checkbox"
+                            name="city"
+                            value="{{ city }}"
+                            class="filter-checkbox"
+                            {% if city in selected_cities %}checked{% endif %}
+                        >
+                        <span class="filter-label">{{ city }}</span>
+                        </label>
+                    {% endfor %}
+
+                    {# остальные, скрытые по умолчанию #}
+                    {% if available_cities|length > 5 %}
+                        <div id="moreCities" style="display:none">
+                        {% for city in available_cities|slice:"5:" %}
+                            <label class="filter-option">
+                            <input
+                                type="checkbox"
+                                name="city"
+                                value="{{ city }}"
+                                class="filter-checkbox"
+                                {% if city in selected_cities %}checked{% endif %}
+                            >
+                            <span class="filter-label">{{ city }}</span>
+                            </label>
+                        {% endfor %}
+                        </div>
+
+                        <button type="button"
+                                class="filters-reset"
+                                id="toggleCitiesBtn"
+                                data-expanded="false"
+                                style="margin-top: var(--s3);">
+                        Показать все города
+                        </button>
+                    {% endif %}
+                    </div>
+                    {% endif %}
+
+                    <!-- Rating -->
+                    <div class="filter-group">
+                        <h4 class="filter-group-title">Минимальный рейтинг</h4>
+                        <div class="rating-slider-wrapper">
+                            <div class="rating-value">
+                                <span class="rating-value-text" id="ratingValueText">От {{ min_rating|default:"0.0" }}</span>
+                                <span class="rating-stars" id="ratingStars"></span>
+                            </div>
+                            <input 
+                                type="range" 
+                                id="ratingSlider" 
+                                name="min_rating" 
+                                min="0" 
+                                max="5" 
+                                step="0.5"
+                                value="{{ min_rating|default:'0' }}" 
+                                class="rating-slider"
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filter Actions -->
+                <div class="filter-actions">
+                    <button type="submit" class="btn-apply">
+                        Применить фильтры
+                    </button>
+                </div>
+            </form>
+        </aside>
+
+        <!-- Results -->
+        <main>
+            <!-- Results Header -->
+            <div class="results-header">
+                <div class="results-info">
+                    <div class="results-count">
+                        {% if search_query %}
+                            Найдено: <strong>{{ total_results }}</strong> компаний
+                        {% else %}
+                            Показано: <strong>{{ page_obj.paginator.count }}</strong> компаний
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="sort-control">
+                    <span class="sort-label">Сортировка:</span>
+                    <select id="sortSelect" class="sort-select" onchange="changeSort(this.value)">
+                        <option value="relevance" {% if sort_by == 'relevance' %}selected{% endif %}>По релевантности</option>
+                        <option value="newest" {% if sort_by == 'newest' %}selected{% endif %}>Сначала новые</option>
+                        <option value="oldest" {% if sort_by == 'oldest' %}selected{% endif %}>Сначала старые</option>
+                        <option value="name" {% if sort_by == 'name' %}selected{% endif %}>По алфавиту</option>
+                        <option value="rating" {% if sort_by == 'rating' %}selected{% endif %}>По рейтингу</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Companies Grid -->
+            {% if company_list %}
+                <div class="companies-grid">
+                    {% for company in company_list %}
+                        {% include 'directory/_company_card.html' %}
+                    {% endfor %}
+                </div>
+
+                <!-- Pagination -->
+                {% if page_obj.has_other_pages %}
+                    <div class="pagination">
+                        {% if page_obj.has_previous %}
+                            <a href="?page=1{% if search_query %}&q={{ search_query }}{% endif %}{% if sort_by %}&sort={{ sort_by }}{% endif %}" class="pagination-btn">
+                                <i class="fa-solid fa-angles-left"></i>
+                            </a>
+                            <a href="?page={{ page_obj.previous_page_number }}{% if search_query %}&q={{ search_query }}{% endif %}{% if sort_by %}&sort={{ sort_by }}{% endif %}" class="pagination-btn">
+                                <i class="fa-solid fa-angle-left"></i>
+                            </a>
+                        {% endif %}
+
+                        {% for num in page_obj.paginator.page_range %}
+                            {% if page_obj.number == num %}
+                                <span class="pagination-btn current">{{ num }}</span>
+                            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                                <a href="?page={{ num }}{% if search_query %}&q={{ search_query }}{% endif %}{% if sort_by %}&sort={{ sort_by }}{% endif %}" class="pagination-btn">{{ num }}</a>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if page_obj.has_next %}
+                            <a href="?page={{ page_obj.next_page_number }}{% if search_query %}&q={{ search_query }}{% endif %}{% if sort_by %}&sort={{ sort_by }}{% endif %}" class="pagination-btn">
+                                <i class="fa-solid fa-angle-right"></i>
+                            </a>
+                            <a href="?page={{ page_obj.paginator.num_pages }}{% if search_query %}&q={{ search_query }}{% endif %}{% if sort_by %}&sort={{ sort_by }}{% endif %}" class="pagination-btn">
+                                <i class="fa-solid fa-angles-right"></i>
+                            </a>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% else %}
+                <!-- Empty State -->
+                <div class="empty-state">
+                    <div class="empty-icon">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <h3 class="empty-title">Ничего не найдено</h3>
+                    <p class="empty-text">Попробуйте изменить параметры поиска или фильтры</p>
+                </div>
+            {% endif %}
+        </main>
+    </div>
+</div>
+
+<script>
+
+      function bindToggle(btnId, containerId, showText, hideText) {
+    const btn = document.getElementById(btnId);
+    const box = document.getElementById(containerId);
+    if (!btn || !box) return;
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('data-expanded') === 'true';
+      box.style.display = expanded ? 'none' : 'block';
+      btn.textContent = expanded ? showText : hideText;
+      btn.setAttribute('data-expanded', expanded ? 'false' : 'true');
+    });
+  }
+
+  // Категории: показать все / скрыть
+  bindToggle('toggleCategoriesBtn', 'moreCategories', 'Показать все категории', 'Скрыть категории');
+
+  // Города: показать все / скрыть
+  bindToggle('toggleCitiesBtn', 'moreCities', 'Показать все города', 'Скрыть города');
+    // Autocomplete
+    const searchInput = document.getElementById('searchInput');
+    const autocompleteResults = document.getElementById('autocompleteResults');
+
+    function debounce(func, wait) {
+        let timeout;
+        return function(...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func(...args), wait);
+        };
+    }
+
+    async function fetchSuggestions(query) {
+        if (query.length < 2) {
+            autocompleteResults.classList.remove('active');
+            return;
+        }
+
+        try {
+            const response = await fetch(`/api/search/autocomplete/?q=${encodeURIComponent(query)}`);
+            const data = await response.json();
+            
+            if (data.suggestions.length > 0) {
+                autocompleteResults.innerHTML = data.suggestions.map(item => `
+                    <div class="autocomplete-item" data-text="${item.text}">
+                        ${item.icon} ${item.text}
+                    </div>
+                `).join('');
+                
+                autocompleteResults.classList.add('active');
+                
+                document.querySelectorAll('.autocomplete-item').forEach(item => {
+                    item.addEventListener('click', () => {
+                        searchInput.value = item.dataset.text;
+                        autocompleteResults.classList.remove('active');
+                        document.getElementById('searchForm').submit();
+                    });
+                });
+            }
+        } catch (error) {
+            console.error('Ошибка:', error);
+        }
+    }
+
+    searchInput.addEventListener('input', debounce(e => fetchSuggestions(e.target.value), 300));
+    
+    document.addEventListener('click', e => {
+        if (!searchInput.contains(e.target) && !autocompleteResults.contains(e.target)) {
+            autocompleteResults.classList.remove('active');
+        }
+    });
+
+    // Rating Slider
+    const ratingSlider = document.getElementById('ratingSlider');
+    const ratingValueText = document.getElementById('ratingValueText');
+    const ratingStars = document.getElementById('ratingStars');
+
+    function updateRatingDisplay(value) {
+        const rating = parseFloat(value);
+        ratingValueText.textContent = `От ${rating.toFixed(1)}`;
+        
+        let stars = '';
+        for (let i = 1; i <= 5; i++) {
+            if (i <= Math.floor(rating)) {
+                stars += '<i class="fa-solid fa-star"></i>';
+            } else if (i === Math.ceil(rating) && rating % 1 !== 0) {
+                stars += '<i class="fa-solid fa-star-half-stroke"></i>';
+            } else {
+                stars += '<i class="fa-regular fa-star"></i>';
+            }
+        }
+        ratingStars.innerHTML = stars;
+    }
+
+    if (ratingSlider) {
+        updateRatingDisplay(ratingSlider.value);
+        ratingSlider.addEventListener('input', () => updateRatingDisplay(ratingSlider.value));
+    }
+
+    // Clear All Filters
+    document.getElementById('clearAllBtn')?.addEventListener('click', () => {
+        window.location.href = '{% url "company-list" %}' + (window.location.search.includes('q=') ? '?q={{ search_query|urlencode }}' : '');
+    });
+
+    // Mobile Filter Toggle
+    document.getElementById('mobileFilterToggle')?.addEventListener('click', function() {
+        document.querySelector('.filters-card').classList.toggle('active');
+        const icon = this.querySelector('i');
+        icon.classList.toggle('fa-filter');
+        icon.classList.toggle('fa-xmark');
+    });
+
+    // Sort
+    function changeSort(sortValue) {
+        const url = new URL(window.location.href);
+        url.searchParams.set('sort', sortValue);
+        url.searchParams.delete('page');
+        window.location.href = url.toString();
+    }
+
+    (function () {
+  const scroller = document.querySelector('.filters-body');
+  if (!scroller) return;
+
+  // Помогает корректно передавать скролл странице на границах контейнера
+  function onWheel(e) {
+    const delta = e.deltaY;
+    const atTop = scroller.scrollTop <= 0;
+    const atBottom = Math.ceil(scroller.scrollTop + scroller.clientHeight) >= scroller.scrollHeight;
+
+    // если внутри есть куда скроллить — выходим (пусть браузер крутит .filters-body)
+    if ((delta < 0 && !atTop) || (delta > 0 && !atBottom)) return;
+
+    // иначе — не крутим внутренность и передаём скролл странице
+    e.preventDefault();
+    window.scrollBy({ top: delta, left: 0, behavior: 'auto' });
+  }
+
+  // для мышиных колёсиков
+  scroller.addEventListener('wheel', onWheel, { passive: false });
+
+  // поддержка тач-скролла
+  let lastY = null;
+  function onTouchStart(e) {
+    if (e.touches.length === 1) lastY = e.touches[0].clientY;
+  }
+  function onTouchMove(e) {
+    if (lastY == null) return;
+    const currentY = e.touches[0].clientY;
+    const delta = lastY - currentY; // >0 — скроллим вниз
+    const atTop = scroller.scrollTop <= 0;
+    const atBottom = Math.ceil(scroller.scrollTop + scroller.clientHeight) >= scroller.scrollHeight;
+
+    if ((delta < 0 && atTop) || (delta > 0 && atBottom)) {
+      // внутренность упёрлась — скроллим страницу
+      e.preventDefault();
+      window.scrollBy({ top: delta, left: 0, behavior: 'auto' });
+    }
+    // иначе — пусть скролл уйдёт в .filters-body
+  }
+  function onTouchEnd() { lastY = null; }
+
+  scroller.addEventListener('touchstart', onTouchStart, { passive: true });
+  scroller.addEventListener('touchmove', onTouchMove, { passive: false });
+  scroller.addEventListener('touchend', onTouchEnd, { passive: true });
+})();
+</script>
+{% endblock %}

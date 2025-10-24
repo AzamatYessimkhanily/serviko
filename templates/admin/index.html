@@ -1,0 +1,185 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+<div id="content-main">
+
+    <div id="dashboardRoot"
+         data-endpoint="{% url 'admin-dashboard-data' %}"
+         data-is-superuser="{{ user.is_superuser|yesno:'true,false' }}">
+    </div>
+
+    <style>
+        .dashboard-header { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; padding-bottom:10px; border-bottom:1px solid #eee; margin-bottom:20px; gap:15px; }
+        .filters-container { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+        .quick-filters button { background: #f0f0f0; border: 1px solid #ddd; border-radius: 4px; padding: 5px 10px; cursor: pointer; }
+        .quick-filters button:hover { background: #e0e0e0; }
+        .stat-cards { display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:20px; margin-bottom:30px; }
+        .card { background:#fff; border:1px solid #ddd; border-radius:8px; padding:20px; text-align:center; }
+        .card h4 { margin-top:0; color:#555; font-size:1em; font-weight:normal; }
+        .card .number { font-size:2.2em; font-weight:bold; }
+        .chart-container { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+        .chart-item { border:1px solid #ddd; padding:15px; border-radius:8px; background:#fff; position:relative; height:400px; }
+        @media (max-width:1200px){ .chart-container { grid-template-columns:1fr; } }
+    </style>
+
+    <div class="dashboard-header">
+        <h2 id="dashboardTitle">Загрузка аналитики...</h2>
+        <div class="filters-container">
+            <form id="filterForm" style="display:inline-block;">
+                <select name="company_id" id="companySelect" style="padding:5px;"></select>
+                <input type="date" name="start" style="padding:4px;"> - 
+                <input type="date" name="end" style="padding:4px;">
+                <button type="submit">Применить</button>
+            </form>
+            <div class="quick-filters" style="display:inline-block; margin-left: 10px;">
+                <button data-range="today">Сегодня</button>
+                <button data-range="7days">7 дней</button>
+                <button data-range="30days">30 дней</button>
+                <button data-range="this_month">Этот месяц</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="stat-cards" id="kpiContainer"></div>
+    <div class="chart-container" id="chartContainer"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    {% verbatim %}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const chartInstances = {};
+            const root = document.getElementById('dashboardRoot');
+            const endpoint = root.dataset.endpoint;
+            const isSuperuser = (root.dataset.isSuperuser === 'true');
+            const filterForm = document.getElementById('filterForm');
+            const companySelect = document.getElementById('companySelect');
+            const startDateInput = filterForm.elements.start;
+            const endDateInput = filterForm.elements.end;
+
+            const getFormattedDate = (date) => {
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+                return `${year}-${month}-${day}`;
+            };
+
+            const fetchAndRenderDashboard = () => {
+                const companyId = companySelect.value;
+                const startDate = startDateInput.value;
+                const endDate = endDateInput.value;
+                
+                let apiUrl = endpoint + '?';
+                if (companyId) apiUrl += `company_id=${companyId}&`;
+                if (startDate && endDate) apiUrl += `start=${startDate}&end=${endDate}`;
+
+                fetch(apiUrl)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (companySelect.options.length <= 1) { 
+                            let defaultOption = isSuperuser ? '<option value="">-- Общая аналитика --</option>' : '';
+                            companySelect.innerHTML = defaultOption;
+                            data.filters.companies_for_select.forEach(company => {
+                                companySelect.innerHTML += `<option value="${company.id}">${company.name}</option>`;
+                            });
+                        }
+                        const selectedCompanyText = companyId ? companySelect.options[companySelect.selectedIndex].text : '';
+                        document.getElementById('dashboardTitle').textContent = companyId
+                            ? `Аналитика по компании "${selectedCompanyText}"`
+                            : (isSuperuser ? 'Общая аналитика по сайту' : 'Аналитика по вашим компаниям');
+
+                        const kpi = data.kpi;
+                        const kpiContainer = document.getElementById('kpiContainer');
+                        kpiContainer.innerHTML = '';
+                        if (kpi.total_users !== undefined) kpiContainer.innerHTML += `<div class="card"><h4>Всего пользователей</h4><div class="number">${kpi.total_users}</div></div>`;
+                        if (kpi.total_companies !== undefined) kpiContainer.innerHTML += `<div class="card"><h4>Всего компаний</h4><div class="number">${kpi.total_companies}</div></div>`;
+                        kpiContainer.innerHTML += `<div class="card"><h4>Заявок</h4><div class="number">${kpi.total_applications}</div></div>`;
+                        kpiContainer.innerHTML += `<div class="card"><h4>Отзывов</h4><div class="number">${kpi.total_reviews}</div></div>`;
+                        kpiContainer.innerHTML += `<div class="card"><h4>Средний рейтинг</h4><div class="number">${parseFloat(kpi.average_rating).toFixed(1)}</div></div>`;
+                        
+                        const charts = data.charts;
+                        const extra = data.extra_metrics;
+                        const chartContainer = document.getElementById('chartContainer');
+                        chartContainer.innerHTML = ''; 
+
+                        const createChartElement = (id, title) => { chartContainer.innerHTML += `<div class="chart-item"><h3>${title}</h3><canvas id="${id}"></canvas></div>`; };
+                        
+                        if (charts.registrations) createChartElement('registrationsChart', 'Регистрации пользователей');
+                        createChartElement('applicationsChart', 'Новые заявки');
+                        createChartElement('reviewsChart', 'Новые отзывы');
+                        
+                        if (extra.top_companies_by_apps && extra.top_companies_by_apps.length > 0) createChartElement('topCompaniesChart', 'Топ-5 компаний по заявкам');
+                        if (extra.rating_distribution && extra.rating_distribution.length > 0) createChartElement('ratingDistributionChart', 'Распределение оценок');
+                        if (extra.most_active_users && extra.most_active_users.length > 0) {
+                            let userListHtml = '<div class="card"><h4>Самые активные клиенты</h4><ol style="text-align: left;">';
+                            extra.most_active_users.forEach(user => { userListHtml += `<li>${user.username} (${user.count} отзывов)</li>`; });
+                            userListHtml += '</ol></div>';
+                            chartContainer.innerHTML += userListHtml;
+                        }
+
+                        setTimeout(() => {
+                            if (charts.registrations) createOrUpdateChart('registrationsChart', 'Новые пользователи', {labels: charts.labels, data: charts.registrations}, '#3498db', 'line');
+                            createOrUpdateChart('applicationsChart', 'Новые заявки', {labels: charts.labels, data: charts.applications}, '#2ecc71', 'line');
+                            createOrUpdateChart('reviewsChart', 'Новые отзывы', {labels: charts.labels, data: charts.reviews}, '#e74c3c', 'line');
+                            if (extra.top_companies_by_apps && extra.top_companies_by_apps.length > 0) createOrUpdateChart('topCompaniesChart', 'Кол-во заявок', {labels: extra.top_companies_by_apps.map(c => c.name), data: extra.top_companies_by_apps.map(c => c.count)}, '#36a2eb', 'bar');
+                            if (extra.rating_distribution && extra.rating_distribution.length > 0) createOrUpdateChart('ratingDistributionChart', '', {labels: extra.rating_distribution.map(r => `${r.rating} звезд(ы)`), data: extra.rating_distribution.map(r => r.count)}, '', 'pie');
+                        }, 0);
+                    });
+            };
+
+            const createOrUpdateChart = (elementId, label, chartData, color, type) => {
+                const ctx = document.getElementById(elementId);
+                if (!ctx) return;
+                if (chartInstances[elementId]) chartInstances[elementId].destroy();
+
+                let datasetOptions = { label: label, data: chartData.data, fill: type === 'line' };
+
+                // Задаем цвета для круговых диаграмм
+                if (type === 'pie' || type === 'doughnut') {
+                    datasetOptions.backgroundColor = ['#3498db', '#e74c3c', '#f1c40f', '#2ecc71', '#9b59b6'];
+                } else {
+                    datasetOptions.borderColor = color;
+                    datasetOptions.backgroundColor = (type === 'bar') ? color : (type === 'line' ? (color + '33') : undefined);
+                }
+                
+                chartInstances[elementId] = new Chart(ctx, {
+                    type: type,
+                    data: { labels: chartData.labels, datasets: [datasetOptions] },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        // Добавляем опцию для позиционирования легенды
+                        plugins: {
+                            legend: {
+                                position: 'right', // Легенда будет справа
+                            }
+                        }
+                    }
+                });
+            };
+
+
+            document.querySelectorAll('.quick-filters button').forEach(button => {
+                button.addEventListener('click', () => {
+                    const range = button.dataset.range;
+                    const today = new Date();
+                    let startDate = new Date();
+                    if (range === 'today') { startDate = today; } 
+                    else if (range === '7days') { startDate.setDate(today.getDate() - 6); }
+                    else if (range === '30days') { startDate.setDate(today.getDate() - 29); }
+                    else if (range === 'this_month') { startDate = new Date(today.getFullYear(), today.getMonth(), 1); }
+                    startDateInput.value = getFormattedDate(startDate);
+                    endDateInput.value = getFormattedDate(today);
+                    fetchAndRenderDashboard();
+                });
+            });
+
+            filterForm.addEventListener('submit', (e) => { e.preventDefault(); fetchAndRenderDashboard(); });
+            
+            fetchAndRenderDashboard();
+        });
+    </script>
+    {% endverbatim %}
+
+</div>
+{% endblock %}

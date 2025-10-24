@@ -1,0 +1,1025 @@
+{% extends 'directory/base.html' %}
+
+{% block title %}Serviko — Найди своего партнера{% endblock %}
+
+{% block styles %}
+<style>
+    /* Remove default main padding */
+    main {
+        padding: 0;
+        max-width: 100%;
+    }
+
+    /* Hero - Full Screen
+    .hero {
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 70%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(37, 99, 235, 0.05) 0%, transparent 70%);
+        pointer-events: none;
+    }
+
+    .hero-content {
+        max-width: 1280px;
+        width: 100%;
+        padding: 0 var(--s6);
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+
+    .hero h1 {
+        font-size: 4rem;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        margin-bottom: var(--s6);
+        line-height: 1.1;
+    }
+
+    .hero .lead {
+        font-size: 1.25rem;
+        font-weight: 400;
+        color: var(--text-light);
+        margin-bottom: var(--s10);
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Search Form - Hero */
+    /* .search-form {
+        display: flex;
+        gap: var(--s3);
+        max-width: 700px;
+        margin: 0 auto;
+        background: white;
+        padding: var(--s2);
+        border-radius: var(--r-lg);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    } */
+
+    .autocomplete-wrapper {
+        position: relative;
+        flex: 1;
+    }
+
+    /* .search-form input {
+        width: 100%;
+        padding: var(--s4);
+        border: none;
+        border-radius: var(--r-md);
+        font-family: var(--font);
+        font-size: 1rem;
+        font-weight: 400;
+        background: var(--bg-secondary);
+    }
+
+    .search-form input:focus {
+        outline: none;
+        background: var(--bg-tertiary);
+    }
+
+    .search-form button {
+        padding: var(--s4) var(--s8);
+        background: var(--text);
+        color: var(--bg);
+        border: none;
+        border-radius: var(--r-md);
+        font-family: var(--font);
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: all 0.2s;
+    }
+
+    .search-form button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    } */ */
+
+    /* Autocomplete */
+    .autocomplete-results {
+        position: absolute;
+        top: calc(100% + var(--s3));
+        left: 0;
+        right: 0;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--r-lg);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        max-height: 350px;
+        overflow-y: auto;
+        z-index: 1000;
+        display: none;
+    }
+
+    .autocomplete-results.active {
+        display: block;
+    }
+
+    .autocomplete-item {
+        padding: var(--s4);
+        cursor: pointer;
+        border-bottom: 1px solid var(--bg-secondary);
+        font-size: 0.9375rem;
+        transition: background 0.1s;
+    }
+
+    .autocomplete-item:last-child {
+        border-bottom: none;
+    }
+
+    .autocomplete-item:hover {
+        background: var(--bg-secondary);
+    }
+
+    /* Section Container */
+    .section {
+        padding: var(--s12) var(--s6);
+    }
+
+    .section-alt {
+        background: var(--bg);
+    }
+
+    .section-container {
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: var(--s10);
+    }
+
+    .section-title {
+        font-size: 2.5rem;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        margin-bottom: var(--s4);
+    }
+
+    .section-subtitle {
+        font-size: 1.125rem;
+        font-weight: 400;
+        color: var(--text-light);
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    /* How It Works - Horizontal Timeline */
+    .how-it-works-timeline {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--s8);
+        position: relative;
+    }
+
+    .how-it-works-timeline::before {
+        content: '';
+        position: absolute;
+        top: 60px;
+        left: 16.666%;
+        right: 16.666%;
+        height: 2px;
+        background: var(--border);
+        z-index: 0;
+    }
+
+    .timeline-item {
+        text-align: center;
+        position: relative;
+    }
+
+    .timeline-icon {
+        width: 120px;
+        height: 120px;
+        margin: 0 auto var(--s5);
+        background: linear-gradient(135deg, #141920 0%, #111827 100%);    border-radius: var(--r-lg);
+        border-radius: var(--r-full);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 3rem;
+        position: relative;
+        z-index: 1;
+        box-shadow: 0 8px 24px rgba(37, 99, 235, 0.2);
+    }
+
+    /* .timeline-number {
+        position: absolute;
+        top: -10px;
+        right: -10px;
+        width: 40px;
+        height: 40px;
+        background: var(--text);
+        color: white;
+        border-radius: var(--r-full);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        font-weight: 700;
+    } */
+
+    .timeline-item h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: var(--s3);
+    }
+
+    .timeline-item p {
+        font-size: 1rem;
+        font-weight: 400;
+        color: var(--text-light);
+        line-height: 1.6;
+    }
+
+    /* Categories - Grid with Images */
+    .category-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+        gap: var(--s4);
+    }
+
+    .category-card {
+        position: relative;
+        height: 140px;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--r-lg);
+        overflow: hidden;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .category-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        border-color: var(--text-light);
+    }
+
+    .category-card::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, rgba(37, 99, 235, 0.05) 0%, transparent 100%);
+    }
+
+    .category-name {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: var(--s4);
+        background: linear-gradient(to top, rgba(255, 255, 255, 0.98), transparent);
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--text);
+    }
+
+    /* Testimonials - Cards */
+    .testimonial-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: var(--s6);
+    }
+
+    .testimonial-card {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--r-lg);
+        padding: var(--s6);
+        transition: all 0.2s;
+    }
+
+    .testimonial-card:hover {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+        transform: translateY(-2px);
+    }
+
+    .testimonial-stars {
+        color: #fbbf24;
+        margin-bottom: var(--s4);
+        font-size: 1.125rem;
+    }
+
+    .testimonial-card blockquote {
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.7;
+        color: var(--text);
+        margin-bottom: var(--s4);
+    }
+
+    .testimonial-footer {
+        display: flex;
+        align-items: center;
+        gap: var(--s3);
+        padding-top: var(--s4);
+        border-top: 1px solid var(--border);
+    }
+
+        .testimonial-avatar {
+            width: 48px;
+            height: 48px;
+            background: var(--bg-tertiary);
+            border-radius: var(--r-full);
+            
+            /* ▼▼▼ ДОБАВЬТЕ ЭТУ СТРОКУ ▼▼▼ */
+            object-fit: cover; /* Гарантирует, что картинка заполнит круг без искажений */
+
+            /* Старые стили ниже больше не нужны для <img>, но не мешают */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-light);
+        }
+
+    .testimonial-author {
+        flex: 1;
+    }
+
+    .testimonial-author strong {
+        display: block;
+        font-size: 0.9375rem;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: var(--s1);
+    }
+
+    .testimonial-author small {
+        font-size: 0.875rem;
+        color: var(--text-light);
+    }
+
+    .testimonial-author a {
+        color: var(--text-light);
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    .testimonial-author a:hover {
+        color: var(--text);
+    }
+
+    /* Companies - Full Width */
+    .companies-section {
+        background: var(--bg);
+    }
+
+    .companies-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: var(--s6);
+    }
+
+    /* CTA Section */
+    .cta-section {
+        background: var(--text);
+        color: white;
+        text-align: center;
+        padding: var(--s12) var(--s6);
+    }
+
+    .cta-section h2 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-bottom: var(--s4);
+    }
+
+    .cta-section p {
+        font-size: 1.125rem;
+        margin-bottom: var(--s8);
+        opacity: 0.9;
+    }
+
+    .cta-button {
+        display: inline-block;
+        padding: var(--s4) var(--s8);
+        background: white;
+        color: var(--text);
+        border-radius: var(--r-md);
+        font-size: 1rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .cta-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(255, 255, 255, 0.3);
+    }
+
+
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+        .how-it-works-timeline {
+            grid-template-columns: 1fr;
+            gap: var(--s10);
+        }
+
+        .how-it-works-timeline::before {
+            display: none;
+        }
+
+        .category-grid {
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        }
+    }
+
+    @media (max-width: 768px) {
+        .hero {
+            min-height: 70vh;
+            padding: var(--s8) 0;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+        }
+
+        .hero .lead {
+            font-size: 1rem;
+            margin-bottom: var(--s8);
+        }
+
+        .search-form {
+            flex-direction: column;
+            padding: var(--s4);
+        }
+
+        .section {
+            padding: var(--s8) var(--s4);
+        }
+
+        .section-title {
+            font-size: 2rem;
+        }
+
+        .section-subtitle {
+            font-size: 1rem;
+        }
+
+        .timeline-icon {
+            width: 100px;
+            height: 100px;
+            font-size: 2.5rem;
+        }
+
+        .testimonial-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .companies-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+        }
+
+    }
+
+    @media (max-width: 480px) {
+        .hero h1 {
+            font-size: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+        }
+
+        .category-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+
+    }
+
+
+    /* About Section */
+.about-section {
+    padding: var(--s12) 0;
+    background: var(--bg);
+}
+
+.about-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--s6);
+}
+
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--s12);
+    align-items: center;
+}
+
+.about-text {
+    max-width: 600px;
+}
+
+.about-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s2);
+    padding: var(--s2) var(--s4);
+    background: var(--bg-tertiary);
+    border-radius: var(--r-full);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: var(--s6);
+}
+
+.about-tag i {
+    color: #fbbf24;
+}
+
+.about-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    margin-bottom: var(--s4);
+}
+
+.about-description {
+    font-size: 1.125rem;
+    font-weight: 400;
+    color: var(--text-light);
+    line-height: 1.7;
+    margin-bottom: var(--s8);
+}
+
+/* Features */
+.about-features {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s5);
+    margin-bottom: var(--s8);
+}
+
+.feature-item {
+    display: flex;
+    gap: var(--s4);
+    align-items: start;
+}
+
+.feature-icon {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, #141920 0%, #111827 100%);    border-radius: var(--r-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: white;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.feature-text h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: var(--s2);
+}
+
+.feature-text p {
+    font-size: 0.9375rem;
+    font-weight: 400;
+    color: var(--text-light);
+    line-height: 1.6;
+}
+
+/* CTA Buttons */
+.about-cta {
+    display: flex;
+    gap: var(--s4);
+    flex-wrap: wrap;
+}
+
+.btn-primary1,
+.btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--s2);
+    padding: var(--s4) var(--s6);
+    border-radius: var(--r-md);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s;
+}
+
+.btn-primary1 {
+    background: var(--text);
+    color: white;
+}
+
+.btn-primary1:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.btn-secondary {
+    background: var(--bg-secondary);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+    background: var(--bg-tertiary);
+}
+
+/* Image Side */
+.about-image {
+    position: relative;
+}
+
+.about-image-wrapper {
+    position: relative;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+}
+
+.about-img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Floating Stats */
+/* .about-stats-float {
+    position: absolute;
+    bottom: var(--s6);
+    right: var(--s6);
+    display: flex;
+    gap: var(--s4);
+}
+
+.stat-float-item {
+    background: white;
+    border-radius: var(--r-lg);
+    padding: var(--s5);
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    min-width: 120px;
+}
+
+.stat-float-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: var(--s2);
+} */
+
+/* .stat-float-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-light);
+} */
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: var(--s8);
+    }
+
+    .about-image {
+        order: -1;
+    }
+
+    .about-title {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-section {
+        padding: var(--s8) 0;
+    }
+
+    .about-title {
+        font-size: 1.75rem;
+    }
+
+    .about-description {
+        font-size: 1rem;
+    }
+
+    .about-img {
+        height: 400px;
+    }
+
+    /* .about-stats-float {
+        flex-direction: column;
+        bottom: var(--s4);
+        right: var(--s4);
+    }
+
+    .stat-float-item {
+        min-width: 100px;
+        padding: var(--s4);
+    } */
+
+    /* .stat-float-number {
+        font-size: 1.5rem;
+    } */
+
+    .about-cta {
+        flex-direction: column;
+    }
+
+    .btn-primary1,
+    .btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 640px) {
+    .feature-item {
+        flex-direction: column;
+    }
+
+    .feature-icon {
+        width: 48px;
+        height: 48px;
+        font-size: 1.25rem;
+    }
+}
+</style>
+{% endblock %}
+
+{% block content %}
+
+
+        <!-- About Section -->
+<!-- About Section -->
+<section id="about" class="about-section">
+    <div class="about-container">
+        <div class="about-content">
+            <div class="about-text">
+
+                <h2 class="about-title">Найдите лучших исполнителей для любой задачи</h2>
+                <p class="about-description">
+                    Serviko — это современная платформа, которая помогает людям находить проверенных 
+                    специалистов и надежные компании для решения любых задач. От ремонта квартиры 
+                    до организации праздника — у нас есть исполнители на все случаи жизни.
+                </p>
+                
+                <div class="about-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Проверенные компании</h4>
+                            <p>Все исполнители проходят верификацию</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Реальные отзывы</h4>
+                            <p>Прозрачная система рейтингов и оценок</p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>Быстрый отклик</h4>
+                            <p>Получайте предложения в течение часа</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-cta">
+                    <a href="{% url 'partnership-request' %}" class="btn-primary1">
+                        <i class="fa-solid fa-handshake"></i> Стать партнером
+                    </a>
+                    <a href="{% url 'company-list' %}" class="btn-secondary">
+                        <i class="fa-solid fa-search"></i> Найти компанию
+                    </a>
+                </div>
+            </div>
+            
+            <div class="about-image">
+                <div class="about-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&h=600&fit=crop" alt="О нас" class="about-img">
+                    <!-- <div class="about-stats-float">
+                        <div class="stat-float-item">
+                            <div class="stat-float-number">1000+</div>
+                            <div class="stat-float-label">Компаний</div>
+                        </div>
+                        <div class="stat-float-item">
+                            <div class="stat-float-number">5000+</div>
+                            <div class="stat-float-label">Клиентов</div>
+                        </div>                      
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <!-- Hero Section -->
+    <!-- <section class="hero" id="search">
+        <div class="hero-content">
+            <h1>Найди надежного партнера</h1>
+            <p class="lead">Тысячи проверенных компаний готовы помочь с вашим проектом. Быстро, качественно, безопасно.</p>
+            
+            <form method="GET" action="{% url 'company-list' %}" class="search-form" id="searchForm">
+                <div class="autocomplete-wrapper">
+                    <input type="text" name="q" placeholder="Что вам нужно? Ремонт, дизайн, доставка..." id="searchInput" autocomplete="off">
+                    <div class="autocomplete-results" id="autocompleteResults"></div>
+                </div>
+                <button type="submit">Найти</button>
+            </form>
+        </div>
+    </section> -->
+    <!-- How It Works -->
+    <section class="section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Как это работает</h2>
+                <p class="section-subtitle">Три простых шага до идеального результата</p>
+            </div>
+
+            <div class="how-it-works-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fa-solid fa-magnifying-glass" style="color: white;"></i>
+                        <!-- <div class="timeline-number">1</div> -->
+                    </div>
+                    <h3>Найдите</h3>
+                    <p>Используйте умный поиск или выберите категорию. Мы подберем лучших исполнителей для вашей задачи.</p>
+                </div>
+
+                <div class="timeline-item">
+                <div class="timeline-icon">
+                    <i class="fa-solid fa-paper-plane" style="color: white;"></i>
+                </div>
+                <h3>Свяжитесь</h3>
+                <p>Отправьте заявку компании — укажите детали запроса и получите обратную связь напрямую от исполнителя.</p>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <i class="fa-solid fa-handshake" style="color: white;"></i>
+                        <!-- <div class="timeline-number">3</div> -->
+                    </div>
+                    <h3>Начните работу</h3>
+                    <p>Обсудите детали и получите качественный результат в срок.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="section section-alt">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Популярные категории</h2>
+                <p class="section-subtitle">Выберите нужную категорию и найдите лучших специалистов</p>
+            </div>
+
+            <div class="category-grid">
+                {% for category in popular_categories %}
+                    <a href="{% url 'company-list' %}?category={{ category.id }}" class="category-card">
+                        <div class="category-name">{{ category.name }}</div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    {% if latest_reviews %}
+    <section class="section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">Отзывы клиентов</h2>
+                <p class="section-subtitle">Реальные истории наших пользователей</p>
+            </div>
+
+            <div class="testimonial-grid">
+                {% for review in latest_reviews %}
+                    <div class="testimonial-card">
+                        <div class="testimonial-stars">
+                            {% for i in "12345" %}
+                                {% if forloop.counter <= review.rating %}
+                                    <i class="fa-solid fa-star"></i>
+                                {% else %}
+                                    <i class="fa-regular fa-star"></i>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <blockquote>{{ review.comment|truncatechars:180 }}</blockquote>
+                        <div class="testimonial-footer">
+                        <img src="{{ review.user.userprofile.avatar.url }}" alt="Аватар {{ review.user.username }}" class="testimonial-avatar">
+                            <div class="testimonial-author">
+                                <strong>{{ review.user.username }}</strong>
+                                <small>Клиент <a href="{% url 'company-detail' review.company.id %}">{{ review.company.name }}</a></small>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    {% endif %}
+
+    <!-- Popular Companies -->
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="section-container">
+            <h2>Готовы начать?</h2>
+            <p>Найдите идеального партнера для вашего проекта прямо сейчас</p>
+            <a href="{% url 'company-list' %}" class="cta-button">Смотреть все компании</a>
+        </div>
+    </section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const searchInput = document.getElementById('searchInput');
+    const autocompleteResults = document.getElementById('autocompleteResults');
+
+    function debounce(func, wait) {
+        let timeout;
+        return function(...args) {
+            clearTimeout(timeout);
+            timeout = setTimeout(() => func(...args), wait);
+        };
+    }
+
+    async function fetchSuggestions(query) {
+        if (query.length < 2) {
+            autocompleteResults.classList.remove('active');
+            return;
+        }
+
+        try {
+            const response = await fetch(`/api/search/autocomplete/?q=${encodeURIComponent(query)}`);
+            const data = await response.json();
+            
+            if (data.suggestions.length > 0) {
+                autocompleteResults.innerHTML = data.suggestions.map(item => `
+                    <div class="autocomplete-item" data-text="${item.text}">
+                        ${item.icon} ${item.text}
+                    </div>
+                `).join('');
+                
+                autocompleteResults.classList.add('active');
+                
+                document.querySelectorAll('.autocomplete-item').forEach(item => {
+                    item.addEventListener('click', () => {
+                        searchInput.value = item.dataset.text;
+                        autocompleteResults.classList.remove('active');
+                        document.getElementById('searchForm').submit();
+                    });
+                });
+            }
+        } catch (error) {
+            console.error('Ошибка:', error);
+        }
+    }
+
+    searchInput.addEventListener('input', debounce(e => fetchSuggestions(e.target.value), 300));
+    
+    document.addEventListener('click', e => {
+        if (!searchInput.contains(e.target) && !autocompleteResults.contains(e.target)) {
+            autocompleteResults.classList.remove('active');
+        }
+    });
+</script>
+{% endblock %}

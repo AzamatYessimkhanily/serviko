@@ -1,0 +1,301 @@
+{% extends 'directory/base.html' %}
+
+{% block title %}Регистрация | Serviko{% endblock %}
+
+{% block styles %}
+<style>
+    main {
+        padding: 0;
+        max-width: 100%;
+    }
+
+    .auth-wrapper {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg) 100%);
+        padding: var(--s8) var(--s4);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .auth-wrapper::before {
+        content: '';
+        position: absolute;
+        top: -40%;
+        right: -15%;
+        width: 60%;
+        height: 200%;
+        background: radial-gradient(40% 40% at 50% 50%, rgba(17,24,39,.06), transparent 70%);
+        pointer-events: none;
+    }
+
+    .auth-container {
+        width: 100%;
+        max-width: 550px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .auth-card {
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: var(--r-lg);
+        padding: var(--s8);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .auth-logo {
+        text-align: center;
+        margin-bottom: var(--s6);
+    }
+
+    .auth-logo-text {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text);
+    }
+
+    .auth-title {
+        font-size: 1.75rem;
+        font-weight: 600;
+        letter-spacing: -0.03em;
+        text-align: center;
+        margin-bottom: var(--s2);
+    }
+
+    .auth-subtitle {
+        font-size: 0.9375rem;
+        font-weight: 400;
+        color: var(--text-light);
+        text-align: center;
+        margin-bottom: var(--s8);
+    }
+
+    /* --- Сетка формы --- */
+    .auth-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: var(--s5) var(--s6);
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: var(--s2);
+    }
+
+    .col-12 {
+        grid-column: 1 / -1;
+    }
+
+    @media (max-width: 768px) {
+        .auth-form {
+            grid-template-columns: 1fr;
+        }
+        .col-12 {
+            grid-column: 1;
+        }
+    }
+
+    /* Поля */
+    .auth-form label {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--text);
+    }
+
+    .auth-form input {
+        width: 100%;
+        padding: var(--s3) var(--s4);
+        border: 1px solid var(--border);
+        border-radius: var(--r-md);
+        font-family: var(--font);
+        font-size: 0.9375rem;
+        background: #fff;
+        transition: all 0.2s;
+    }
+
+    .auth-form input:focus {
+        outline: none;
+        border-color: var(--text);
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .form-help {
+        font-size: 0.8125rem;
+        color: var(--text-lighter);
+        margin-top: .25rem;
+    }
+
+    .form-error {
+        color: #ef4444;
+        font-size: 0.8125rem;
+        margin-top: .25rem;
+    }
+
+    /* Кнопка */
+    .auth-button {
+        width: 100%;
+        padding: var(--s4);
+        background: var(--text);
+        color: #fff;
+        border: none;
+        border-radius: var(--r-md);
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--s2);
+    }
+
+    .auth-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Разделитель и ссылки */
+    .auth-divider {
+        text-align: center;
+        margin: var(--s6) 0;
+        position: relative;
+    }
+
+    .auth-divider::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: var(--border);
+    }
+
+    .auth-divider span {
+        position: relative;
+        background: var(--bg);
+        padding: 0 var(--s4);
+        font-size: 0.875rem;
+        color: var(--text-lighter);
+    }
+
+    .auth-footer {
+        text-align: center;
+    }
+
+    .auth-link {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--text-light);
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+
+    .auth-link:hover {
+        color: var(--text);
+    }
+
+    .auth-link-primary {
+        color: var(--text);
+        font-weight: 600;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="auth-wrapper">
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-logo">
+                <div class="auth-logo-text">
+                    <i class="fa-solid fa-handshake"></i> Serviko
+                </div>
+            </div>
+
+            <h1 class="auth-title">Создайте аккаунт</h1>
+            <p class="auth-subtitle">Начните находить лучших исполнителей</p>
+
+            <form method="POST" class="auth-form" novalidate>
+                {% csrf_token %}
+
+                {# Имя и Фамилия на одной строке #}
+                <div class="form-group">
+                    <label for="{{ form.first_name.id_for_label }}">{{ form.first_name.label }}</label>
+                    {{ form.first_name }}
+                    {% if form.first_name.errors %}
+                        <span class="form-error">{{ form.first_name.errors.0 }}</span>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.last_name.id_for_label }}">{{ form.last_name.label }}</label>
+                    {{ form.last_name }}
+                    {% if form.last_name.errors %}
+                        <span class="form-error">{{ form.last_name.errors.0 }}</span>
+                    {% endif %}
+                </div>
+
+                {# Логин и Email #}
+                <div class="form-group">
+                    <label for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
+                    {{ form.username }}
+                    {% if form.username.errors %}
+                        <span class="form-error">{{ form.username.errors.0 }}</span>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+                    {{ form.email }}
+                    {% if form.email.errors %}
+                        <span class="form-error">{{ form.email.errors.0 }}</span>
+                    {% endif %}
+                </div>
+
+                {# Пароли (без подсказок вообще) #}
+                <div class="form-group">
+                    <label for="{{ form.password1.id_for_label }}">{{ form.password1.label }}</label>
+                    {{ form.password1 }}
+                    {% if form.password1.errors %}
+                        <span class="form-error">{{ form.password1.errors.0 }}</span>
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    <label for="{{ form.password2.id_for_label }}">{{ form.password2.label }}</label>
+                    {{ form.password2 }}
+                    {% if form.password2.errors %}
+                        <span class="form-error">{{ form.password2.errors.0 }}</span>
+                    {% endif %}
+                </div>
+
+                {# Кнопка регистрации #}
+                <div class="form-group col-12">
+                    <button type="submit" class="auth-button">
+                        <i class="fa-solid fa-user-plus"></i> Зарегистрироваться
+                    </button>
+                </div>
+            </form>
+            <div class="auth-footer" style="margin-top: var(--s4);">
+                    <span style="font-size: 0.875rem; color: var(--text-light);">Нажимая на кнопку, вы соглашаетесь с</span> 
+                    <a href="{% url 'legal-info' %}#user-terms"class="auth-link auth-link-primary" target="_blank">условиями использования</a> и 
+                    <a href="{% url 'legal-info' %}#user-privacy"class="auth-link auth-link-primary" target="_blank">политикой конфиденциальности</a>
+            </div>
+            <div class="auth-divider">
+                <span>или</span>
+            </div>
+
+            <div class="auth-footer">
+                
+
+                <span style="font-size: 0.875rem; color: var(--text-light);">Уже есть аккаунт? </span>
+                <a href="{% url 'login' %}" class="auth-link auth-link-primary">Войти</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

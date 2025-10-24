@@ -1,0 +1,20 @@
+# Django stuff
+__pycache__/
+*.pyc
+*.sqlite3
+.DS_Store
+.env
+venv/
+env/
+
+# Сгенерированные Django папки
+staticfiles_collected/
+
+# Игнорировать все содержимое папки media_files
+media_files/
+
+# Но ОТМЕНИТЬ игнорирование ТОЛЬКО для default.png
+!media_files/avatars/default.png
+
+# Игнорировать старую корневую папку media (если она есть)
+media/

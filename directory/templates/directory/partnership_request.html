@@ -1,0 +1,449 @@
+{% extends 'directory/base.html' %}
+
+{% block title %}Стать партнером | Serviko{% endblock %}
+
+{% block styles %}
+<style>
+    /* Reset main padding */
+    main {
+        padding: 0;
+        max-width: 100%;
+    }
+
+    /* Split Layout */
+    .partner-split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 100vh;
+    }
+
+    /* Left Side - Info */
+    .info-side {
+        background: var(--text);
+        color: white;
+        padding: var(--s10);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; /* ВМЕСТО center */
+        padding-top: var(--s12); /* добавляем контролируемый отступ */        position: relative;
+        overflow: hidden;
+    }
+
+
+    .info-side::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        right: -20%;
+        width: 80%;
+        height: 200%;
+        pointer-events: none;
+    }
+
+    .info-content {
+        max-width: 600px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+        margin-top: var(--s4); /* Добавляем отступ сверху */
+    }
+
+    @media (max-width: 1024px) {
+    .info-content {
+        margin-top: var(--s4);
+    }
+}
+.info-logo {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: var(--s6); /* Уменьшаем отступ */
+}
+
+.info-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: var(--s3); /* Уменьшаем отступ */
+    line-height: 1.2;
+}
+
+.info-subtitle {
+    font-size: 1.125rem;
+    font-weight: 400;
+    opacity: 0.9;
+    margin-bottom: var(--s8); /* Уменьшаем отступ */
+    line-height: 1.7;
+}
+
+    /* Benefits List */
+    .benefits-list {
+        display: flex;
+        flex-direction: column;
+        gap: var(--s6);
+        margin-bottom: var(--s10);
+    }
+
+    .benefit-item {
+        display: flex;
+        gap: var(--s4);
+    }
+
+    .benefit-icon {
+        width: 56px;
+        height: 56px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: var(--r-lg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        flex-shrink: 0;
+        color: #ffffff;
+    }
+
+    .benefit-content h3 {
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin-bottom: var(--s2);
+    }
+
+    .benefit-content p {
+        font-size: 0.9375rem;
+        opacity: 0.8;
+        line-height: 1.6;
+    }
+
+    /* Stats */
+    .info-stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--s6);
+        padding-top: var(--s8);
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .stat-box {
+        text-align: center;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+        font-weight: 700;
+        color: #ffffff;
+        margin-bottom: var(--s2);
+    }
+
+    .stat-text {
+        font-size: 0.875rem;
+        opacity: 0.7;
+    }
+
+    /* Right Side - Form */
+    .form-side {
+        background: var(--bg);
+        padding: var(--s10);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .form-container {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .form-header {
+        margin-bottom: var(--s8);
+    }
+
+    .form-tag {
+        display: inline-block;
+        padding: var(--s2) var(--s3);
+        background: var(--bg-tertiary);
+        border-radius: var(--r-full);
+        font-size: 0.8125rem;
+        font-weight: 600;
+        color: var(--text);
+        margin-bottom: var(--s4);
+    }
+
+    .form-title {
+        font-size: 2rem;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        margin-bottom: var(--s3);
+        color: var(--text);
+    }
+
+    .form-description {
+        font-size: 1rem;
+        color: var(--text-light);
+        line-height: 1.7;
+    }
+
+    /* Form */
+    .partner-form {
+        display: flex;
+        flex-direction: column;
+        gap: var(--s5);
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: var(--s2);
+    }
+
+    .partner-form label {
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: var(--text);
+    }
+
+    .partner-form input,
+    .partner-form textarea,
+    .partner-form select {
+        width: 100%;
+        padding: var(--s3) var(--s4);
+        border: 1px solid var(--border);
+        border-radius: var(--r-md);
+        font-family: var(--font);
+        font-size: 0.9375rem;
+        font-weight: 400;
+        background: white;
+        transition: all 0.2s;
+    }
+
+    .partner-form input:focus,
+    .partner-form textarea:focus,
+    .partner-form select:focus {
+        outline: none;
+        border-color: var(--text);
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .partner-form textarea {
+        min-height: 100px;
+        resize: vertical;
+    }
+
+    .partner-form input[type="file"] {
+        padding: var(--s3);
+        cursor: pointer;
+    }
+
+    .form-help {
+        font-size: 0.8125rem;
+        color: var(--text-lighter);
+    }
+
+    .partner-form p {
+        margin: 0;
+    }
+
+    .btn-submit {
+        padding: var(--s4);
+        background: var(--text);
+        color: white;
+        border: none;
+        border-radius: var(--r-md);
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        margin-top: var(--s3);
+    }
+
+    .btn-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-footer {
+        margin-top: var(--s6);
+        padding-top: var(--s6);
+        border-top: 1px solid var(--border);
+        text-align: center;
+    }
+
+    .form-footer-text {
+        font-size: 0.8125rem;
+        color: var(--text-lighter);
+        line-height: 1.6;
+    }
+
+    .form-footer-text a {
+        color: var(--text);
+        text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+        .partner-split {
+            grid-template-columns: 1fr;
+        }
+
+        .info-side {
+            min-height: auto;
+            padding: var(--s8) var(--s6);
+        }
+
+        .form-side {
+            padding: var(--s8) var(--s6);
+        }
+
+        .info-stats {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+
+    @media (max-width: 768px) {
+        .info-title {
+            font-size: 2rem;
+        }
+
+        .form-title {
+            font-size: 1.75rem;
+        }
+
+        .info-stats {
+            grid-template-columns: 1fr;
+            gap: var(--s4);
+        }
+
+        .stat-box {
+            text-align: left;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="partner-split">
+    <!-- Left Side - Info -->
+    <div class="info-side">
+        <div class="info-content">
+            <!-- Logo -->
+            <div class="info-logo">
+                <i class="fa-solid fa-handshake"></i>
+                Serviko Partners
+            </div>
+
+            <!-- Title -->
+            <h1 class="info-title">Станьте нашим партнером</h1>
+            <p class="info-subtitle">
+                Присоединяйтесь к лидирующей платформе поиска услуг и получайте прямые заявки от клиентов
+            </p>
+
+            <!-- Benefits -->
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>Поток новых клиентов</h3>
+                        <p>Получайте целевые заявки от заинтересованных клиентов каждый день</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fa-solid fa-chart-line"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>Рост продаж на 40%</h3>
+                        <p>В среднем наши партнеры увеличивают выручку на 40% в первые 3 месяца</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>Проверенная репутация</h3>
+                        <p>Система отзывов и рейтингов помогает привлекать больше клиентов</p>
+                    </div>
+                </div>
+
+                <div class="benefit-item">
+                    <div class="benefit-icon">
+                        <i class="fa-solid fa-rocket"></i>
+                    </div>
+                    <div class="benefit-content">
+                        <h3>Быстрый старт</h3>
+                        <p>Начните получать заявки уже через 24 часа после одобрения</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="info-stats">
+                <div class="stat-box">
+                    <div class="stat-number">1000+</div>
+                    <div class="stat-text">Активных партнеров</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">5000+</div>
+                    <div class="stat-text">Заявок в месяц</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">4.8</div>
+                    <div class="stat-text">Средний рейтинг</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Side - Form -->
+    <div class="form-side">
+        <div class="form-container">
+            <!-- Form Header -->
+            <div class="form-header">
+                <span class="form-tag">
+                    <i class="fa-solid fa-clock"></i> Ответ в течение 24 часов
+                </span>
+                <h2 class="form-title">Заявка на партнерство</h2>
+                <p class="form-description">
+                    Заполните форму, и мы свяжемся с вами для обсуждения деталей сотрудничества
+                </p>
+            </div>
+
+            <!-- Form -->
+            <form method="POST" enctype="multipart/form-data" class="partner-form">
+                {% csrf_token %}
+                
+                {% for field in form %}
+                    <div class="form-group">
+                        <label for="{{ field.id_for_label }}">
+                            {{ field.label }}
+                            {% if field.field.required %}
+                                <span style="color: #ef4444;">*</span>
+                            {% endif %}
+                        </label>
+                        {{ field }}
+                        {% if field.help_text %}
+                            <span class="form-help">{{ field.help_text }}</span>
+                        {% endif %}
+                        {% if field.errors %}
+                            <span style="color: #ef4444; font-size: 0.8125rem;">{{ field.errors.0 }}</span>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+
+                <button type="submit" class="btn-submit">
+                    <i class="fa-solid fa-paper-plane"></i> Отправить заявку
+                </button>
+            </form>
+
+            <!-- Footer -->
+            <div class="form-footer">
+                <p class="form-footer-text">
+Отправляя заявку, я подтверждаю согласие с <a href="{% url 'legal-info' %}#partner-terms" target="_blank">Условиями для Партнеров</a> и <a href="{% url 'legal-info' %}#partner-privacy" target="_blank">Политикой конфиденциальности для Партнеров</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
