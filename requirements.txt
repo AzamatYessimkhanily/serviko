@@ -1,6 +1,6 @@
 asgiref==3.10.0
 datetime-truncate==1.1.1
-Django==5.2.7
+Django==4.2.25
 django-admin-sortable2==2.2.8
 django-bower==5.2.0
 django-cleanup==9.0.0
