@@ -25,15 +25,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-y7ko^_+x)y%ln#83i_qybur4*d+k_b!lbxy+ps!11uybeo#q72')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False # ОБЯЗАТЕЛЬНО False на продакшене!
-
+DEBUG = False
 ALLOWED_HOSTS = ['serviko.kz', 'www.serviko.kz', '85.202.193.80'] # Уберите '*' для продакшена
 
 # Application definition
 
 INSTALLED_APPS = [
     'jazzmin',
-    'adminsortable2',
+    'adminsortable2', 
+    'modeltranslation', # Добавляем здесь
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -46,6 +46,15 @@ INSTALLED_APPS = [
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
 
+LANGUAGES = (
+    ('ru', 'Русский'),
+    ('en', 'English'),
+    ('kk', 'Қазақ'), # Казахский
+)
+
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru' # Язык по умолчанию для modeltranslation
+MODELTRANSLATION_FALLBACK_LANGUAGES = ('ru', 'en', 'kk') # Порядок, в котором modeltranslation будет искать переводы, если основной отсутствует
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -54,7 +63,11 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.locale.LocaleMiddleware', # Добавляем здесь для автоматического определения языка
 ]
+
+# Если у вас уже есть LANGUAGE_CODE, измените его на язык по умолчанию:
+LANGUAGE_CODE = 'ru' # Язык по умолчанию для Django
 
 ROOT_URLCONF = 'servico_project.urls'
 
@@ -69,6 +82,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.i18n',
             ],
         },
     },
@@ -78,6 +92,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'servico_project.wsgi.application'
 
 
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, 'locale'),
+]
+
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
@@ -86,8 +104,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'servico_db',        # Имя вашей базы данных
         'USER': 'servico_user',      # Имя пользователя БД
-        'PASSWORD': 'h8$Nq7!Vx2@Rz4%YpK9&Lm3#Tf6^BwQ', # <--- ВАШ СГЕНЕРИРОВАННЫЙ ПАРОЛЬ!
-        'HOST': 'localhost',         # БД будет на том же сервере
+        'PASSWORD': 'DjangoPass123', # <--- ВАШ СГЕНЕРИРОВАННЫЙ ПАРОЛЬ!
+        'HOST': '127.0.0.1',         # БД будет на том же сервере
         'PORT': '',                  # Пустое поле, чтобы использовался порт по умолчанию (5432)
     }
 }
@@ -115,7 +133,6 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'ru-ru'
 
 TIME_ZONE = 'Asia/Almaty'
 
@@ -127,18 +144,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',             # Корневая папка static
-    BASE_DIR / 'directory/static',   # Статика из вашего приложения directory
+    os.path.join(BASE_DIR, 'static'),   # Статика из вашего приложения directory
 ]
 
-STATIC_ROOT = BASE_DIR / 'staticfiles_collected' # Сюда Django будет собирать всю статику для продакшена
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media_files' # Сюда будут загружаться медиафайлы
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = '/var/www/serviko_static/' 
 
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = '/var/www/serviko_media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
@@ -198,9 +216,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST='smtp.gmail.com'
 EMAIL_PORT=587
 EMAIL_USE_TLS=True
-EMAIL_HOST_USER='uteevmiras64@gmail.com'
-# Используйте переменную окружения для пароля почты
-EMAIL_HOST_PASSWORD=os.environ.get('EMAIL_HOST_PASSWORD', 'retn lcuw ccfb pyrt')
+EMAIL_HOST_USER='serviko.kz@gmail.com'# Используйте переменную окружения для пароля почты
+EMAIL_HOST_PASSWORD=os.environ.get('EMAIL_HOST_PASSWORD', 'zgau qcvn oxrv nalb')
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
-ADMIN_EMAIL = 'uteevmiras64@gmail.com' # <-- Замените на ваш email
+ADMIN_EMAIL = 'serviko.kz@gmail.com' # <-- Замените на ваш email
