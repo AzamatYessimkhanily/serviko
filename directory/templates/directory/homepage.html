@@ -1,4 +1,5 @@
 {% extends 'directory/base.html' %}
+{% load i18n %}
 
 {% block title %}Serviko — Найди своего партнера{% endblock %}
 
@@ -783,11 +784,9 @@
         <div class="about-content">
             <div class="about-text">
 
-                <h2 class="about-title">Найдите лучших исполнителей для любой задачи</h2>
+                <h2 class="about-title">{% trans "Найдите лучших исполнителей для любой задачи" %}</h2>
                 <p class="about-description">
-                    Serviko — это современная платформа, которая помогает людям находить проверенных 
-                    специалистов и надежные компании для решения любых задач. От ремонта квартиры 
-                    до организации праздника — у нас есть исполнители на все случаи жизни.
+                    {% trans "Serviko — это современная платформа, которая помогает людям находить проверенных специалистов и надежные компании для решения любых задач. От ремонта квартиры до организации праздника — у нас есть исполнители на все случаи жизни." %}
                 </p>
                 
                 <div class="about-features">
@@ -796,8 +795,8 @@
                             <i class="fa-solid fa-shield-halved"></i>
                         </div>
                         <div class="feature-text">
-                            <h4>Проверенные компании</h4>
-                            <p>Все исполнители проходят верификацию</p>
+                            <h4>{% trans "Проверенные компании" %}</h4>
+                            <p>{% trans "Все исполнители проходят верификацию" %}</p>
                         </div>
                     </div>
                     
@@ -806,8 +805,8 @@
                             <i class="fa-solid fa-star"></i>
                         </div>
                         <div class="feature-text">
-                            <h4>Реальные отзывы</h4>
-                            <p>Прозрачная система рейтингов и оценок</p>
+                            <h4>{% trans "Реальные отзывы" %}</h4>
+                            <p>{% trans "Прозрачная система рейтингов и оценок" %}</p>
                         </div>
                     </div>
                     
@@ -816,157 +815,131 @@
                             <i class="fa-solid fa-bolt"></i>
                         </div>
                         <div class="feature-text">
-                            <h4>Быстрый отклик</h4>
-                            <p>Получайте предложения в течение часа</p>
+                            <h4>{% trans "Быстрый отклик" %}</h4>
+                            <p>{% trans "Получайте предложения в течение часа" %}</p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="about-cta">
                     <a href="{% url 'partnership-request' %}" class="btn-primary1">
-                        <i class="fa-solid fa-handshake"></i> Стать партнером
+                        <i class="fa-solid fa-handshake"></i> {% trans "Стать партнером" %}
                     </a>
                     <a href="{% url 'company-list' %}" class="btn-secondary">
-                        <i class="fa-solid fa-search"></i> Найти компанию
+                        <i class="fa-solid fa-search"></i> {% trans "Найти компанию" %}
                     </a>
                 </div>
             </div>
             
             <div class="about-image">
                 <div class="about-image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&h=600&fit=crop" alt="О нас" class="about-img">
-                    <!-- <div class="about-stats-float">
-                        <div class="stat-float-item">
-                            <div class="stat-float-number">1000+</div>
-                            <div class="stat-float-label">Компаний</div>
-                        </div>
-                        <div class="stat-float-item">
-                            <div class="stat-float-number">5000+</div>
-                            <div class="stat-float-label">Клиентов</div>
-                        </div>                      
-                    </div> -->
+                    <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&h=600&fit=crop" alt="{% trans 'О нас' %}" class="about-img">
+                    <!-- локализуемые стат-лейблы закомментированы, поэтому не трогал -->
                 </div>
             </div>
         </div>
     </div>
 </section>
-    <!-- Hero Section -->
-    <!-- <section class="hero" id="search">
-        <div class="hero-content">
-            <h1>Найди надежного партнера</h1>
-            <p class="lead">Тысячи проверенных компаний готовы помочь с вашим проектом. Быстро, качественно, безопасно.</p>
-            
-            <form method="GET" action="{% url 'company-list' %}" class="search-form" id="searchForm">
-                <div class="autocomplete-wrapper">
-                    <input type="text" name="q" placeholder="Что вам нужно? Ремонт, дизайн, доставка..." id="searchInput" autocomplete="off">
-                    <div class="autocomplete-results" id="autocompleteResults"></div>
-                </div>
-                <button type="submit">Найти</button>
-            </form>
+
+<!-- How It Works -->
+<section class="section">
+    <div class="section-container">
+        <div class="section-header">
+            <h2 class="section-title">{% trans "Как это работает" %}</h2>
+            <p class="section-subtitle">{% trans "Три простых шага до идеального результата" %}</p>
         </div>
-    </section> -->
-    <!-- How It Works -->
-    <section class="section">
-        <div class="section-container">
-            <div class="section-header">
-                <h2 class="section-title">Как это работает</h2>
-                <p class="section-subtitle">Три простых шага до идеального результата</p>
+
+        <div class="how-it-works-timeline">
+            <div class="timeline-item">
+                <div class="timeline-icon">
+                    <i class="fa-solid fa-magnifying-glass" style="color: white;"></i>
+                </div>
+                <h3>{% trans "Найдите" %}</h3>
+                <p>{% trans "Используйте умный поиск или выберите категорию. Мы подберем лучших исполнителей для вашей задачи." %}</p>
             </div>
 
-            <div class="how-it-works-timeline">
-                <div class="timeline-item">
-                    <div class="timeline-icon">
-                        <i class="fa-solid fa-magnifying-glass" style="color: white;"></i>
-                        <!-- <div class="timeline-number">1</div> -->
-                    </div>
-                    <h3>Найдите</h3>
-                    <p>Используйте умный поиск или выберите категорию. Мы подберем лучших исполнителей для вашей задачи.</p>
-                </div>
-
-                <div class="timeline-item">
+            <div class="timeline-item">
                 <div class="timeline-icon">
                     <i class="fa-solid fa-paper-plane" style="color: white;"></i>
                 </div>
-                <h3>Свяжитесь</h3>
-                <p>Отправьте заявку компании — укажите детали запроса и получите обратную связь напрямую от исполнителя.</p>
+                <h3>{% trans "Свяжитесь" %}</h3>
+                <p>{% trans "Отправьте заявку компании — укажите детали запроса и получите обратную связь напрямую от исполнителя." %}</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="timeline-icon">
+                    <i class="fa-solid fa-handshake" style="color: white;"></i>
                 </div>
+                <h3>{% trans "Начните работу" %}</h3>
+                <p>{% trans "Обсудите детали и получите качественный результат в срок." %}</p>
+            </div>
+        </div>
+    </div>
+</section>
 
-                <div class="timeline-item">
-                    <div class="timeline-icon">
-                        <i class="fa-solid fa-handshake" style="color: white;"></i>
-                        <!-- <div class="timeline-number">3</div> -->
+<!-- Categories -->
+<section class="section section-alt">
+    <div class="section-container">
+        <div class="section-header">
+            <h2 class="section-title">{% trans "Популярные категории" %}</h2>
+            <p class="section-subtitle">{% trans "Выберите нужную категорию и найдите лучших специалистов" %}</p>
+        </div>
+
+        <div class="category-grid">
+            {% for category in popular_categories %}
+                <a href="{% url 'company-list' %}?category={{ category.id }}" class="category-card">
+                    <div class="category-name">{{ category.name }}</div>
+                </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials -->
+{% if latest_reviews %}
+<section class="section">
+    <div class="section-container">
+        <div class="section-header">
+            <h2 class="section-title">{% trans "Отзывы клиентов" %}</h2>
+            <p class="section-subtitle">{% trans "Реальные истории наших пользователей" %}</p>
+        </div>
+
+        <div class="testimonial-grid">
+            {% for review in latest_reviews %}
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        {% for i in "12345" %}
+                            {% if forloop.counter <= review.rating %}
+                                <i class="fa-solid fa-star"></i>
+                            {% else %}
+                                <i class="fa-regular fa-star"></i>
+                            {% endif %}
+                        {% endfor %}
                     </div>
-                    <h3>Начните работу</h3>
-                    <p>Обсудите детали и получите качественный результат в срок.</p>
+                    <blockquote>{{ review.comment|truncatechars:180 }}</blockquote>
+                    <div class="testimonial-footer">
+                        {% blocktrans with uname=review.user.username %}{% endblocktrans %}
+                        <img src="{{ review.user.userprofile.avatar.url }}" alt="{% blocktrans with uname=review.user.username %}Аватар {{ uname }}{% endblocktrans %}" class="testimonial-avatar">
+                        <div class="testimonial-author">
+                            <strong>{{ review.user.username }}</strong>
+                            <small>{% trans "Клиент" %} <a href="{% url 'company-detail' review.company.id %}">{{ review.company.name }}</a></small>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            {% endfor %}
         </div>
-    </section>
+    </div>
+</section>
+{% endif %}
 
-    <!-- Categories -->
-    <section class="section section-alt">
-        <div class="section-container">
-            <div class="section-header">
-                <h2 class="section-title">Популярные категории</h2>
-                <p class="section-subtitle">Выберите нужную категорию и найдите лучших специалистов</p>
-            </div>
-
-            <div class="category-grid">
-                {% for category in popular_categories %}
-                    <a href="{% url 'company-list' %}?category={{ category.id }}" class="category-card">
-                        <div class="category-name">{{ category.name }}</div>
-                    </a>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials -->
-    {% if latest_reviews %}
-    <section class="section">
-        <div class="section-container">
-            <div class="section-header">
-                <h2 class="section-title">Отзывы клиентов</h2>
-                <p class="section-subtitle">Реальные истории наших пользователей</p>
-            </div>
-
-            <div class="testimonial-grid">
-                {% for review in latest_reviews %}
-                    <div class="testimonial-card">
-                        <div class="testimonial-stars">
-                            {% for i in "12345" %}
-                                {% if forloop.counter <= review.rating %}
-                                    <i class="fa-solid fa-star"></i>
-                                {% else %}
-                                    <i class="fa-regular fa-star"></i>
-                                {% endif %}
-                            {% endfor %}
-                        </div>
-                        <blockquote>{{ review.comment|truncatechars:180 }}</blockquote>
-                        <div class="testimonial-footer">
-                        <img src="{{ review.user.userprofile.avatar.url }}" alt="Аватар {{ review.user.username }}" class="testimonial-avatar">
-                            <div class="testimonial-author">
-                                <strong>{{ review.user.username }}</strong>
-                                <small>Клиент <a href="{% url 'company-detail' review.company.id %}">{{ review.company.name }}</a></small>
-                            </div>
-                        </div>
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    </section>
-    {% endif %}
-
-    <!-- Popular Companies -->
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="section-container">
-            <h2>Готовы начать?</h2>
-            <p>Найдите идеального партнера для вашего проекта прямо сейчас</p>
-            <a href="{% url 'company-list' %}" class="cta-button">Смотреть все компании</a>
-        </div>
-    </section>
+<!-- CTA Section -->
+<section class="cta-section">
+    <div class="section-container">
+        <h2>{% trans "Готовы начать?" %}</h2>
+        <p>{% trans "Найдите идеального партнера для вашего проекта прямо сейчас" %}</p>
+        <a href="{% url 'company-list' %}" class="cta-button">{% trans "Смотреть все компании" %}</a>
+    </div>
+</section>
 {% endblock %}
 
 {% block scripts %}

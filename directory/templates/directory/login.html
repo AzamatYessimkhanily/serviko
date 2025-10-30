@@ -1,4 +1,5 @@
 {% extends 'directory/base.html' %}
+{% load i18n %}
 
 {% block title %}Вход | Serviko{% endblock %}
 
@@ -220,8 +221,8 @@
                 </div>
             </div>
 
-            <h1 class="auth-title">Добро пожаловать!</h1>
-            <p class="auth-subtitle">Войдите в свой аккаунт</p>
+            <h1 class="auth-title">{% trans "Добро пожаловать!" %}</h1>
+            <p class="auth-subtitle">{% trans "Войдите в свой аккаунт" %}</p>
 
             <form method="POST" class="auth-form">
                 {% csrf_token %}
@@ -237,17 +238,17 @@
                 {% endfor %}
 
                 <button type="submit" class="auth-button">
-                    <i class="fa-solid fa-right-to-bracket"></i> Войти
+                    <i class="fa-solid fa-right-to-bracket"></i> {% trans "Войти" %}
                 </button>
             </form>
 
             <div class="auth-divider">
-                <span>или</span>
+                <span>{% trans "или" %}</span>
             </div>
 
             <div class="auth-links">
-                <a href="{% url 'register' %}" class="auth-link auth-link-primary">Создать аккаунт</a>
-                <a href="{% url 'password_reset' %}" class="auth-link">Забыли пароль?</a>
+                <a href="{% url 'register' %}" class="auth-link auth-link-primary">{% trans "Создать аккаунт" %}</a>
+                <a href="{% url 'password_reset' %}" class="auth-link">{% trans "Забыли пароль?" %}</a>
             </div>
         </div>
     </div>

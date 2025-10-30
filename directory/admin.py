@@ -4,12 +4,12 @@ from django.contrib import admin
 from .models import *
 from django.contrib.auth.models import User # <-- Добавьте этот импорт вверху файла
 import copy
-
+from modeltranslation.admin import TranslationAdmin, TranslationTabularInline # Добавляем TranslationTabularInline
 # ============================================
 # УЛУЧШЕННАЯ АДМИНКА ДЛЯ КАТЕГОРИЙ
 # ============================================
 @admin.register(Category)
-class CategoryAdmin(admin.ModelAdmin):
+class CategoryAdmin(TranslationAdmin): # Изменяем с admin.ModelAdmin на TranslationAdmin
     list_display = ('name', 'company_count_display')
     search_fields = ('name',)
 
@@ -25,7 +25,7 @@ class CategoryAdmin(admin.ModelAdmin):
 # INLINES ДЛЯ КОМПАНИЙ
 # ============================================
 
-class ServiceInline(admin.TabularInline):
+class ServiceInline(TranslationTabularInline): # Изменяем на TranslationTabularInline
     model = Service
     extra = 1
     verbose_name = "Услуга"
@@ -33,7 +33,7 @@ class ServiceInline(admin.TabularInline):
     fields = ('name', 'description', 'price', 'unit')
 
 
-class PortfolioItemInline(admin.TabularInline):
+class PortfolioItemInline(TranslationTabularInline): # Изменяем на TranslationTabularInline
     model = PortfolioItem
     extra = 1
     verbose_name = "Элемент портфолио"
@@ -41,7 +41,7 @@ class PortfolioItemInline(admin.TabularInline):
     fields = ('image', 'description')
 
 
-class CertificateInline(admin.TabularInline):
+class CertificateInline(TranslationTabularInline): # Изменяем на TranslationTabularInline
     model = Certificate
     extra = 1
     verbose_name = "Сертификат"
@@ -54,7 +54,7 @@ class CertificateInline(admin.TabularInline):
 # ============================================
 
 @admin.register(Company)
-class CompanyAdmin(admin.ModelAdmin):
+class CompanyAdmin(TranslationAdmin):
     # ... (все ваши настройки list_display, fieldsets, inlines и т.д. остаются без изменений)
     list_display = ('name', 'owner', 'email', 'phone_number', 'is_verified', 'is_popular', 'created_at')
     list_filter = ('is_verified', 'is_popular', 'categories', 'accepts_urgent_orders')

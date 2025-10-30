@@ -1,4 +1,5 @@
 {% extends 'directory/base.html' %}
+{% load i18n %}
 
 {% block title %}Стать партнером | Serviko{% endblock %}
 
@@ -315,6 +316,9 @@
             text-align: left;
         }
     }
+
+
+    
 </style>
 {% endblock %}
 
@@ -330,9 +334,9 @@
             </div>
 
             <!-- Title -->
-            <h1 class="info-title">Станьте нашим партнером</h1>
+            <h1 class="info-title">{% trans "Станьте нашим партнером" %}</h1>
             <p class="info-subtitle">
-                Присоединяйтесь к лидирующей платформе поиска услуг и получайте прямые заявки от клиентов
+                {% trans "Присоединяйтесь к лидирующей платформе поиска услуг и получайте прямые заявки от клиентов" %}
             </p>
 
             <!-- Benefits -->
@@ -342,8 +346,8 @@
                         <i class="fa-solid fa-users"></i>
                     </div>
                     <div class="benefit-content">
-                        <h3>Поток новых клиентов</h3>
-                        <p>Получайте целевые заявки от заинтересованных клиентов каждый день</p>
+                        <h3>{% trans "Поток новых клиентов" %}</h3>
+                        <p>{% trans "Получайте целевые заявки от заинтересованных клиентов каждый день" %}</p>
                     </div>
                 </div>
 
@@ -352,8 +356,8 @@
                         <i class="fa-solid fa-chart-line"></i>
                     </div>
                     <div class="benefit-content">
-                        <h3>Рост продаж на 40%</h3>
-                        <p>В среднем наши партнеры увеличивают выручку на 40% в первые 3 месяца</p>
+                        <h3>{% trans "Рост продаж на 40%" %}</h3>
+                        <p>{% trans "В среднем наши партнеры увеличивают выручку на 40% в первые 3 месяца" %}</p>
                     </div>
                 </div>
 
@@ -362,8 +366,8 @@
                         <i class="fa-solid fa-shield-halved"></i>
                     </div>
                     <div class="benefit-content">
-                        <h3>Проверенная репутация</h3>
-                        <p>Система отзывов и рейтингов помогает привлекать больше клиентов</p>
+                        <h3>{% trans "Проверенная репутация" %}</h3>
+                        <p>{% trans "Система отзывов и рейтингов помогает привлекать больше клиентов" %}</p>
                     </div>
                 </div>
 
@@ -372,8 +376,8 @@
                         <i class="fa-solid fa-rocket"></i>
                     </div>
                     <div class="benefit-content">
-                        <h3>Быстрый старт</h3>
-                        <p>Начните получать заявки уже через 24 часа после одобрения</p>
+                        <h3>{% trans "Быстрый старт" %}</h3>
+                        <p>{% trans "Начните получать заявки уже через 24 часа после одобрения" %}</p>
                     </div>
                 </div>
             </div>
@@ -382,15 +386,15 @@
             <div class="info-stats">
                 <div class="stat-box">
                     <div class="stat-number">1000+</div>
-                    <div class="stat-text">Активных партнеров</div>
+                    <div class="stat-text">{% trans "Активных партнеров" %}</div>
                 </div>
                 <div class="stat-box">
                     <div class="stat-number">5000+</div>
-                    <div class="stat-text">Заявок в месяц</div>
+                    <div class="stat-text">{% trans "Заявок в месяц" %}</div>
                 </div>
                 <div class="stat-box">
                     <div class="stat-number">4.8</div>
-                    <div class="stat-text">Средний рейтинг</div>
+                    <div class="stat-text">{% trans "Средний рейтинг" %}</div>
                 </div>
             </div>
         </div>
@@ -402,11 +406,11 @@
             <!-- Form Header -->
             <div class="form-header">
                 <span class="form-tag">
-                    <i class="fa-solid fa-clock"></i> Ответ в течение 24 часов
+                    <i class="fa-solid fa-clock"></i> {% trans "Ответ в течение 24 часов" %}
                 </span>
-                <h2 class="form-title">Заявка на партнерство</h2>
+                <h2 class="form-title">{% trans "Заявка на партнерство" %}</h2>
                 <p class="form-description">
-                    Заполните форму, и мы свяжемся с вами для обсуждения деталей сотрудничества
+                    {% trans "Заполните форму, и мы свяжемся с вами для обсуждения деталей сотрудничества" %}
                 </p>
             </div>
 
@@ -433,17 +437,25 @@
                 {% endfor %}
 
                 <button type="submit" class="btn-submit">
-                    <i class="fa-solid fa-paper-plane"></i> Отправить заявку
+                    <i class="fa-solid fa-paper-plane"></i> {% trans "Отправить заявку" %}
                 </button>
             </form>
-
-            <!-- Footer -->
             <div class="form-footer">
-                <p class="form-footer-text">
-Отправляя заявку, я подтверждаю согласие с <a href="{% url 'legal-info' %}#partner-terms" target="_blank">Условиями для Партнеров</a> и <a href="{% url 'legal-info' %}#partner-privacy" target="_blank">Политикой конфиденциальности для Партнеров</a>.
-                </p>
+            <p class="form-footer-text">
+                {% url 'legal-info' as legal_base %}
+                {% with terms_url=legal_base|add:'#partner-terms' privacy_url=legal_base|add:'#partner-privacy' %}
+                {% blocktrans trimmed with terms_url=terms_url privacy_url=privacy_url %}
+                Отправляя заявку, я подтверждаю согласие с 
+                <a href="{{ terms_url }}" target="_blank" rel="noopener noreferrer">Условиями для Партнеров</a>
+                и 
+                <a href="{{ privacy_url }}" target="_blank" rel="noopener noreferrer">Политикой конфиденциальности для Партнеров</a>.
+                {% endblocktrans %}
+                {% endwith %}
+            </p>
+            </div>
             </div>
         </div>
     </div>
 </div>
+
 {% endblock %}

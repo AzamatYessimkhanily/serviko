@@ -1,0 +1,3082 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#: directory/templates/directory/homepage.html:921
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-10-30 14:29+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+#: directory/forms.py:13
+msgid "Конкретная услуга (необязательно)"
+msgstr "Нақты қызмет (міндетті емес)"
+
+msgid "Желаемая дата выполнения"
+msgstr "Орындау күні (қалауыңыз бойынша)"
+
+msgid "Опишите вашу задачу..."
+msgstr "Тапсырмаңызды сипаттаңыз..."
+
+msgid "Сообщение"
+msgstr "Хабарлама"
+
+msgid "Прикрепить файл"
+msgstr "Файл тіркеу"
+
+msgid "Оставьте свой комментарий..."
+msgstr "Пікір қалдырыңыз..."
+
+msgid "Ваша оценка"
+msgstr "Бағаңыз"
+
+msgid "Комментарий"
+msgstr "Пікір"
+
+msgid "Обязательное поле. На этот email будут приходить уведомления."
+msgstr "Міндетті өріс. Хабарламалар осы email мекенжайға жіберіледі."
+
+msgid "Имя"
+msgstr "Аты"
+
+msgid "Фамилия"
+msgstr "Тегі"
+
+msgid "Логин"
+msgstr "Логин"
+
+msgid "Пароль"
+msgstr "Құпиясөз"
+
+msgid "Подтверждение пароля"
+msgstr "Құпиясөзді растау"
+
+msgid "Новый аватар"
+msgstr "Жаңа аватар"
+
+msgid "Название компании/ТОО"
+msgstr "Компания/ЖШС атауы"
+
+msgid "Контактное лицо (ФИО)"
+msgstr "Байланыс тұлғасы (АЖТ)"
+
+msgid "Ваш Email"
+msgstr "Сіздің Email"
+
+msgid "Номер телефона"
+msgstr "Телефон нөмірі"
+
+msgid "Сайт"
+msgstr "Сайт"
+
+msgid "Дополнительно о себе"
+msgstr "Өзіңіз туралы қосымша ақпарат"
+
+#: directory/templates/directory/_company_card.html:220
+msgid "Премиум"
+msgstr "Премиум"
+
+#: directory/templates/directory/_company_card.html:239
+#: directory/templates/directory/base.html:954
+#: directory/templates/directory/company_detail.html:995
+#, fuzzy
+#| msgid "В избранном"
+msgid "В избранное"
+msgstr "Таңдаулыларда"
+
+#: directory/templates/directory/_company_card.html:264
+msgid "Описание компании отсутствует"
+msgstr "Компания сипаттамасы жоқ"
+
+#: directory/templates/directory/_company_card.html:277
+msgid "Подробнее"
+msgstr "Толығырақ"
+
+#: directory/templates/directory/activation_sent.html:171
+msgid "Почти готово!"
+msgstr "Таяуда дайын!"
+
+#: directory/templates/directory/activation_sent.html:173
+msgid "Мы отправили письмо для активации на ваш email"
+msgstr "Біз сіздің email-ге белсендіру туралы хат жібердік"
+
+#: directory/templates/directory/activation_sent.html:177
+msgid "Что делать дальше:"
+msgstr "Әрі қарай не істеу керек:"
+
+#: directory/templates/directory/activation_sent.html:180
+msgid "Проверьте свою почту"
+msgstr "Поштаңызды тексеріңіз"
+
+#: directory/templates/directory/activation_sent.html:184
+msgid "Откройте письмо от Serviko"
+msgstr "Serviko-дан келген хатты ашыңыз"
+
+#: directory/templates/directory/activation_sent.html:188
+msgid "Нажмите на ссылку активации"
+msgstr "Белсендіру сілтемесін басыңыз"
+
+#: directory/templates/directory/activation_sent.html:193
+msgid "Не видите письмо? Проверьте папку \"Спам\""
+msgstr "Хатты көрмей тұрсыз ба? \"Спам\" бумасын тексеріңіз"
+
+#: directory/templates/directory/activation_sent.html:197
+msgid "На главную"
+msgstr ""
+
+#: directory/templates/directory/base.html:8
+#: directory/templates/directory/company_list.html:622
+msgid "Каталог компаний"
+msgstr "Компаниялар каталогы"
+
+#: directory/templates/directory/base.html:731
+#: directory/templates/directory/base.html:819
+msgid "Каталог"
+msgstr "Каталог"
+
+#: directory/templates/directory/base.html:732
+#: directory/templates/directory/base.html:818
+#: directory/templates/directory/homepage.html:836
+msgid "О нас"
+msgstr "Біз туралы"
+
+#: directory/templates/directory/base.html:733
+#: directory/templates/directory/base.html:820
+msgid "Партнерам"
+msgstr "Серіктестерге"
+
+#: directory/templates/directory/base.html:740
+#: directory/templates/directory/base.html:743
+msgid "Выбор языка"
+msgstr ""
+
+#: directory/templates/directory/base.html:759
+msgid "Меню"
+msgstr "Мәзір"
+
+#: directory/templates/directory/base.html:768
+#: directory/templates/directory/company_detail.html:1252
+#: directory/templates/directory/profile.html:492
+#: directory/templates/directory/profile.html:539
+msgid "Аватар"
+msgstr "Аватар"
+
+#: directory/templates/directory/base.html:777
+msgid "Личный кабинет"
+msgstr "Жеке кабинет"
+
+#: directory/templates/directory/base.html:778
+msgid "Мои избранные"
+msgstr "Таңдаулыларым"
+
+#: directory/templates/directory/base.html:779
+#: directory/templates/directory/profile.html:523
+msgid "Мои заявки"
+msgstr "Өтінімдерім"
+
+#: directory/templates/directory/base.html:780
+#: directory/templates/directory/profile.html:526
+#: directory/templates/directory/profile.html:627
+msgid "Мои отзывы"
+msgstr "Пікірлерім"
+
+#: directory/templates/directory/base.html:781
+msgid "История просмотров"
+msgstr "Қараулар тарихы"
+
+#: directory/templates/directory/base.html:785
+msgid "Выйти"
+msgstr "Шығу"
+
+#: directory/templates/directory/base.html:791
+#: directory/templates/directory/company_detail.html:1356
+#: directory/templates/directory/login.html:241
+#: directory/templates/directory/register.html:307
+msgid "Войти"
+msgstr "Кіру"
+
+#: directory/templates/directory/base.html:792
+#: directory/templates/directory/company_detail.html:1357
+msgid "Регистрация"
+msgstr "Тіркелу"
+
+#: directory/templates/directory/base.html:811
+msgid ""
+"Найдите лучших исполнителей для любых задач. Проверенные компании, реальные "
+"отзывы."
+msgstr ""
+"Кез келген тапсырмаға ең үздік орындаушыларды табыңыз. Тексерілген "
+"компаниялар, шынайы пікірлер."
+
+#: directory/templates/directory/base.html:816
+msgid "Компания"
+msgstr "Компания"
+
+#: directory/templates/directory/base.html:827
+msgid "Поддержка"
+msgstr "Қолдау"
+
+#: directory/templates/directory/base.html:829
+msgid "Условия Использования"
+msgstr "Қолдану шарттары"
+
+#: directory/templates/directory/base.html:830
+msgid "Конфиденциальность"
+msgstr "Құпиялылық"
+
+#: directory/templates/directory/base.html:835
+msgid "Контакты"
+msgstr "Байланыс"
+
+#: directory/templates/directory/base.html:853
+msgid "Все права защищены."
+msgstr "Барлық құқықтар қорғалған."
+
+#: directory/templates/directory/base.html:946
+#: directory/templates/directory/company_detail.html:993
+msgid "В избранном"
+msgstr "Таңдаулыларда"
+
+#: directory/templates/directory/company_detail.html:919
+msgid "Назад к списку"
+msgstr "Тізімге оралу"
+
+#: directory/templates/directory/company_detail.html:945
+msgid "Верифицирована"
+msgstr "Тексерілген"
+
+#: directory/templates/directory/company_detail.html:950
+msgid "Популярна"
+msgstr "Танымал"
+
+#: directory/templates/directory/company_detail.html:955
+msgid "Быстрый ответ"
+msgstr "Жылдам жауап"
+
+#: directory/templates/directory/company_detail.html:971
+#, python-format
+msgid "Год основания: %(year)s год"
+msgstr "Құрылған жылы: %(year)s жыл"
+
+#: directory/templates/directory/company_detail.html:986
+#: directory/templates/directory/company_detail.html:1305
+#: directory/templates/directory/partnership_request.html:440
+#, fuzzy
+#| msgid "Все права защищены."
+msgid "Отправить заявку"
+msgstr "Барлық құқықтар қорғалған."
+
+#: directory/templates/directory/company_detail.html:1006
+msgid "Обзор"
+msgstr "Шолу"
+
+#: directory/templates/directory/company_detail.html:1009
+msgid "Услуги"
+msgstr "Қызметтер"
+
+#: directory/templates/directory/company_detail.html:1013
+msgid "Портфолио"
+msgstr "Портфолио"
+
+#: directory/templates/directory/company_detail.html:1017
+#, python-format
+msgid "Отзывы (%(count)s)"
+msgstr "Пікірлер (%(count)s)"
+
+#: directory/templates/directory/company_detail.html:1020
+msgid "Связаться с нами"
+msgstr "Бізбен хабарласыңыз"
+
+#: directory/templates/directory/company_detail.html:1030
+msgid "О компании"
+msgstr "Компания туралы"
+
+#: directory/templates/directory/company_detail.html:1037
+msgid "Специализация"
+msgstr "Мамандану"
+
+#: directory/templates/directory/company_detail.html:1050
+msgid "Информация"
+msgstr "Ақпарат"
+
+#: directory/templates/directory/company_detail.html:1054
+#: directory/templates/directory/company_list.html:672
+msgid "Категории"
+msgstr "Санаттар"
+
+#: directory/templates/directory/company_detail.html:1065
+#: directory/templates/directory/company_detail.html:1334
+#: directory/templates/directory/company_detail.html:1346
+msgid "Телефон"
+msgstr "Телефон"
+
+#: directory/templates/directory/company_detail.html:1085
+msgid "Перейти"
+msgstr "Өту"
+
+#: directory/templates/directory/company_detail.html:1094
+msgid "Instagram"
+msgstr "Instagram"
+
+#: directory/templates/directory/company_detail.html:1099
+msgid "Facebook"
+msgstr "Facebook"
+
+#: directory/templates/directory/company_detail.html:1104
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+#: directory/templates/directory/company_detail.html:1109
+msgid "Telegram"
+msgstr "Telegram"
+
+#: directory/templates/directory/company_detail.html:1122
+#, python-format
+msgid ""
+"Контактные данные скрыты. <a href=\"%(login_url)s\">Войдите</a> или <a "
+"href=\"%(register_url)s\">зарегистрируйтесь</a>, чтобы увидеть номер, email, "
+"сайт и соцсети."
+msgstr ""
+"Байланыс деректері жасырылған. Нөмірді, email-ді, сайтты және әлеуметтік "
+"желілерді көру үшін <a href=\"%(login_url)s\">кіріңіз</a> немесе <a "
+"href=\"%(register_url)s\">тіркеліңіз</a>."
+
+#: directory/templates/directory/company_detail.html:1138
+msgid "Наши услуги"
+msgstr "Біздің қызметтер"
+
+#: directory/templates/directory/company_detail.html:1158
+msgid "Список услуг пока не заполнен"
+msgstr "Қызметтер тізімі әлі толтырылмаған"
+
+#: directory/templates/directory/company_detail.html:1168
+msgid "Наши работы"
+msgstr "Біздің жұмыстарымыз"
+
+#: directory/templates/directory/company_detail.html:1186
+#: directory/templates/directory/homepage.html:903
+msgid "Отзывы клиентов"
+msgstr "Клиенттердің пікірлері"
+
+#: directory/templates/directory/company_detail.html:1201
+#, python-format
+msgid ""
+"\n"
+"                            На основе %(count)s отзыва\n"
+"                        "
+msgid_plural ""
+"\n"
+"                            На основе %(count)s отзывов\n"
+"                        "
+msgstr[0] ""
+"\n"
+"                            %(count)s пікір негізінде\n"
+"                        "
+msgstr[1] ""
+"\n"
+"                            %(count)s пікір негізінде\n"
+"                        "
+
+#: directory/templates/directory/company_detail.html:1212
+msgid "Оставить отзыв"
+msgstr "Пікір қалдыру"
+
+#: directory/templates/directory/company_detail.html:1218
+msgid "Отправить отзыв"
+msgstr "Пікір жіберу"
+
+#: directory/templates/directory/company_detail.html:1223
+msgid "Вы уже оставили отзыв для этой компании. Спасибо!"
+msgstr "Сіз бұл компанияға пікір қалдырғансыз. Рахмет!"
+
+#: directory/templates/directory/company_detail.html:1226
+msgid ""
+"Чтобы оставить отзыв, сначала необходимо отправить заявку в эту компанию."
+msgstr "Пікір қалдыру үшін алдымен осы компанияға өтініш жіберу керек."
+
+#: directory/templates/directory/company_detail.html:1227
+msgid "Это помогает нам убедиться в актуальности и достоверности отзывов."
+msgstr ""
+"Бұл бізге пікірлердің өзектілігі мен сенімділігін тексеруге көмектеседі."
+
+#: directory/templates/directory/company_detail.html:1235
+#, python-format
+msgid ""
+"Для того чтобы оставить отзыв, пожалуйста, <a href=\"%(login_url)s\">войдите "
+"в свой аккаунт</a> или <a href=\"%(register_url)s\">зарегистрируйтесь</a>."
+msgstr ""
+"Пікір қалдыру үшін, <a href=\"%(login_url)s\">аккаунтыңызға кіріңіз</a> "
+"немесе <a href=\"%(register_url)s\">тіркеліңіз</a>."
+
+#: directory/templates/directory/company_detail.html:1277
+#: directory/templates/directory/profile.html:659
+msgid "Вы уверены, что хотите удалить этот отзыв?"
+msgstr "Сіз бұл пікірді жойғыңыз келетініне сенімдісіз бе?"
+
+#: directory/templates/directory/company_detail.html:1283
+#: directory/templates/directory/profile.html:665
+msgid "Удалить отзыв"
+msgstr "Пікірді жою"
+
+#: directory/templates/directory/company_detail.html:1293
+msgid "Для этой компании еще нет отзывов. Станьте первым!"
+msgstr "Бұл компания үшін әлі пікірлер жоқ. Бірінші болыңыз!"
+
+#: directory/templates/directory/company_detail.html:1311
+#: directory/templates/directory/password_reset_form.html:198
+msgid "Отправить"
+msgstr "Жіберу"
+
+#: directory/templates/directory/company_detail.html:1316
+#, python-format
+msgid ""
+"<a href=\"%(login_url)s\">Войдите</a> или <a "
+"href=\"%(register_url)s\">зарегистрируйтесь</a>, чтобы отправить заявку."
+msgstr ""
+"Өтініш жіберу үшін <a href=\"%(login_url)s\">кіріңіз</a> немесе <a "
+"href=\"%(register_url)s\">тіркеліңіз</a>."
+
+#: directory/templates/directory/company_detail.html:1330
+#: directory/templates/directory/company_detail.html:1342
+msgid "Контактная информация"
+msgstr "Байланыс ақпараты"
+
+#: directory/templates/directory/company_detail.html:1332
+#: directory/templates/directory/company_detail.html:1344
+msgid "Адрес"
+msgstr "Мекен-жай"
+
+#: directory/templates/directory/company_detail.html:1333
+#: directory/templates/directory/company_detail.html:1345
+msgid "График работы"
+msgstr "Жұмыс кестесі"
+
+#: directory/templates/directory/company_detail.html:1353
+msgid "Контакты доступны после входа"
+msgstr "Байланыс деректері кіргеннен кейін қолжетімді"
+
+#: directory/templates/directory/company_detail.html:1354
+msgid "Войдите, чтобы связаться с компанией напрямую."
+msgstr "Компаниямен тікелей байланысу үшін кіріңіз."
+
+#: directory/templates/directory/company_detail.html:1367
+msgid "Сертификаты"
+msgstr "Сертификаттар"
+
+#: directory/templates/directory/company_list.html:623
+msgid "Найдите лучших исполнителей для вашего проекта"
+msgstr "Жобаңыз үшін ең үздік орындаушыларды табыңыз"
+
+#: directory/templates/directory/company_list.html:632
+msgid "Поиск компаний, услуг, категорий..."
+msgstr "Компанияларды, қызметтерді, санаттарды іздеу..."
+
+#: directory/templates/directory/company_list.html:640
+msgid "Найти"
+msgstr "Табу"
+
+#: directory/templates/directory/company_list.html:650
+#: directory/templates/directory/company_list.html:662
+msgid "Фильтры"
+msgstr "Сүзгілер"
+
+#: directory/templates/directory/company_list.html:664
+msgid "Очистить"
+msgstr "Тазарту"
+
+#: directory/templates/directory/company_list.html:712
+#: directory/templates/directory/company_list.html:899
+msgid "Показать все категории"
+msgstr "Барлық санаттарды көрсету"
+
+#: directory/templates/directory/company_list.html:719
+msgid "Города"
+msgstr "Қалалар"
+
+#: directory/templates/directory/company_list.html:757
+#: directory/templates/directory/company_list.html:907
+msgid "Показать все города"
+msgstr "Барлық қалаларды көрсету"
+
+#: directory/templates/directory/company_list.html:765
+msgid "Минимальный рейтинг"
+msgstr "Ең төменгі рейтинг"
+
+#: directory/templates/directory/company_list.html:769
+#, python-format
+msgid "От %(val)s"
+msgstr "%(val)s бастап"
+
+#: directory/templates/directory/company_list.html:790
+msgid "Применить фильтры"
+msgstr "Сүзгілерді қолдану"
+
+#: directory/templates/directory/company_list.html:803
+#, python-format
+msgid ""
+"\n"
+"                                Найдено: <strong>%(total)s</strong> "
+"компания\n"
+"                            "
+msgid_plural ""
+"\n"
+"                                Найдено: <strong>%(total)s</strong> "
+"компаний\n"
+"                            "
+msgstr[0] ""
+"\n"
+"                                Табылды: <strong>%(total)s</strong> "
+"компания\n"
+"                            "
+msgstr[1] ""
+"\n"
+"                                Табылды: <strong>%(total)s</strong> "
+"компания\n"
+"                            "
+
+#: directory/templates/directory/company_list.html:809
+#, python-format
+msgid ""
+"\n"
+"                                Показано: <strong>%(total)s</strong> "
+"компания\n"
+"                            "
+msgid_plural ""
+"\n"
+"                                Показано: <strong>%(total)s</strong> "
+"компаний\n"
+"                            "
+msgstr[0] ""
+"\n"
+"                                Көрсетілді: <strong>%(total)s</strong> "
+"компания\n"
+"                            "
+msgstr[1] ""
+"\n"
+"                                Көрсетілді: <strong>%(total)s</strong> "
+"компания\n"
+"                            "
+
+#: directory/templates/directory/company_list.html:819
+msgid "Сортировка:"
+msgstr "Сұрыптау:"
+
+#: directory/templates/directory/company_list.html:821
+msgid "По релевантности"
+msgstr "Сәйкестік бойынша"
+
+#: directory/templates/directory/company_list.html:822
+msgid "Сначала новые"
+msgstr "Алдымен жаңалары"
+
+#: directory/templates/directory/company_list.html:823
+msgid "Сначала старые"
+msgstr "Алдымен ескілері"
+
+#: directory/templates/directory/company_list.html:824
+msgid "По алфавиту"
+msgstr "Әліпби бойынша"
+
+#: directory/templates/directory/company_list.html:825
+msgid "По рейтингу"
+msgstr "Рейтинг бойынша"
+
+#: directory/templates/directory/company_list.html:874
+msgid "Ничего не найдено"
+msgstr "Ештеңе табылмады"
+
+#: directory/templates/directory/company_list.html:875
+msgid "Попробуйте изменить параметры поиска или фильтры"
+msgstr "Іздеу параметрлерін немесе сүзгілерді өзгертуге тырысыңыз"
+
+#: directory/templates/directory/company_list.html:900
+msgid "Скрыть категории"
+msgstr "Санаттарды жасыру"
+
+#: directory/templates/directory/company_list.html:908
+msgid "Скрыть города"
+msgstr "Қалаларды жасыру"
+
+#: directory/templates/directory/company_list.html:951
+msgid "Ошибка"
+msgstr "Қате"
+
+#: directory/templates/directory/company_list.html:967
+msgid "От"
+msgstr "Басқа"
+
+#: directory/templates/directory/homepage.html:787
+msgid "Найдите лучших исполнителей для любой задачи"
+msgstr "Кез келген тапсырма үшін ең үздік орындаушыларды табыңыз"
+
+#: directory/templates/directory/homepage.html:789
+msgid ""
+"Serviko — это современная платформа, которая помогает людям находить "
+"проверенных специалистов и надежные компании для решения любых задач. От "
+"ремонта квартиры до организации праздника — у нас есть исполнители на все "
+"случаи жизни."
+msgstr ""
+"Serviko — бұл адамдарға кез келген мәселелерді шешу үшін тексерілген "
+"мамандар мен сенімді компанияларды табуға көмектесетін заманауи платформа. "
+"Пәтерді жөндеуден тойды ұйымдастыруға дейін — бізде өмірдің барлық "
+"жағдайлары үшін орындаушылар бар."
+
+#: directory/templates/directory/homepage.html:798
+msgid "Проверенные компании"
+msgstr "Тексерілген компаниялар"
+
+#: directory/templates/directory/homepage.html:799
+msgid "Все исполнители проходят верификацию"
+msgstr "Барлық орындаушылар тексеруден өтеді"
+
+#: directory/templates/directory/homepage.html:808
+msgid "Реальные отзывы"
+msgstr "Нақты пікірлер"
+
+#: directory/templates/directory/homepage.html:809
+msgid "Прозрачная система рейтингов и оценок"
+msgstr "Ашық рейтингтер мен бағалау жүйесі"
+
+#: directory/templates/directory/homepage.html:818
+msgid "Быстрый отклик"
+msgstr "Жылдам жауап"
+
+#: directory/templates/directory/homepage.html:819
+msgid "Получайте предложения в течение часа"
+msgstr "Бір сағат ішінде ұсыныстар алыңыз"
+
+#: directory/templates/directory/homepage.html:826
+msgid "Стать партнером"
+msgstr "Серіктес болу"
+
+#: directory/templates/directory/homepage.html:829
+msgid "Найти компанию"
+msgstr "Компания табу"
+
+#: directory/templates/directory/homepage.html:848
+msgid "Как это работает"
+msgstr "Бұл қалай жұмыс істейді"
+
+#: directory/templates/directory/homepage.html:849
+msgid "Три простых шага до идеального результата"
+msgstr "Тамара нәтижеге дейін үш қарапайым қадам"
+
+#: directory/templates/directory/homepage.html:857
+msgid "Найдите"
+msgstr "Табыңыз"
+
+#: directory/templates/directory/homepage.html:858
+msgid ""
+"Используйте умный поиск или выберите категорию. Мы подберем лучших "
+"исполнителей для вашей задачи."
+msgstr ""
+"Ақылды іздеуді пайдаланыңыз немесе санатты таңдаңыз. Біз сіздің "
+"тапсырмаңызға ең үздік орындаушыларды табамыз."
+
+#: directory/templates/directory/homepage.html:865
+msgid "Свяжитесь"
+msgstr "Байланысыңыз"
+
+#: directory/templates/directory/homepage.html:866
+msgid ""
+"Отправьте заявку компании — укажите детали запроса и получите обратную связь "
+"напрямую от исполнителя."
+msgstr ""
+"Компанияға өтініш жіберіңіз — сұраныс толықтаймаларын көрсетіп, орындаушыдан "
+"тікелей кері байланыс алыңыз."
+
+#: directory/templates/directory/homepage.html:873
+msgid "Начните работу"
+msgstr "Жұмысты бастаңыз"
+
+#: directory/templates/directory/homepage.html:874
+msgid "Обсудите детали и получите качественный результат в срок."
+msgstr "Толықтаймаларды талқылап, мерзімінді сапалы нәтиже алыңыз."
+
+#: directory/templates/directory/homepage.html:884
+msgid "Популярные категории"
+msgstr "Танымал санаттар"
+
+#: directory/templates/directory/homepage.html:885
+msgid "Выберите нужную категорию и найдите лучших специалистов"
+msgstr "Қажетті санатты таңдап, ең үздік мамандарды табыңыз"
+
+#: directory/templates/directory/homepage.html:904
+msgid "Реальные истории наших пользователей"
+msgstr "Біздің пайдаланушыларымыздың нақты оқиғалары"
+
+#: directory/templates/directory/homepage.html:922
+#, fuzzy, python-format
+#| msgid "Аватар"
+msgid "Аватар %(uname)s"
+msgstr "Аватар"
+
+#: directory/templates/directory/homepage.html:925
+msgid "Клиент"
+msgstr "Клиент"
+
+#: directory/templates/directory/homepage.html:938
+msgid "Готовы начать?"
+msgstr "Бастауға дайынсыз ба?"
+
+#: directory/templates/directory/homepage.html:939
+msgid "Найдите идеального партнера для вашего проекта прямо сейчас"
+msgstr "Жобаңыз үшін тамара серіктесті дәл қазір табыңыз"
+
+#: directory/templates/directory/homepage.html:940
+msgid "Смотреть все компании"
+msgstr "Барлық компанияларды қарау"
+
+#: directory/templates/directory/legal_info.html:301
+msgid "Юридическая информация"
+msgstr "Заңдық ақпарат"
+
+#: directory/templates/directory/legal_info.html:303
+msgid "Условия и Политика конфиденциальности"
+msgstr "Шарттар мен Құпиялылық саясаты"
+
+#: directory/templates/directory/legal_info.html:305
+msgid "Прозрачные правила использования сервиса для пользователей и партнеров"
+msgstr ""
+"Пайдаланушылар мен серіктестер үшін сервисті пайдаланудың ашық ережелері"
+
+#: directory/templates/directory/legal_info.html:312
+msgid "Условия (Пользователи)"
+msgstr "Шарттар (Пайдаланушылар)"
+
+#: directory/templates/directory/legal_info.html:315
+msgid "Конфиденциальность (Пользователи)"
+msgstr "Құпиялылық (Пайдаланушылар)"
+
+#: directory/templates/directory/legal_info.html:318
+msgid "Условия (Партнеры)"
+msgstr "Шарттар (Серіктестер)"
+
+#: directory/templates/directory/legal_info.html:321
+msgid "Конфиденциальность (Партнеры)"
+msgstr "Құпиялылық (Серіктестер)"
+
+#: directory/templates/directory/legal_info.html:328
+msgid "1. Условия использования для Пользователей"
+msgstr "1. Пайдаланушылар үшін пайдалану шарттары"
+
+#: directory/templates/directory/legal_info.html:329
+#: directory/templates/directory/legal_info.html:361
+#: directory/templates/directory/legal_info.html:415
+#: directory/templates/directory/legal_info.html:450
+msgid "Дата вступления в силу:"
+msgstr "Күшіне ену күні:"
+
+#: directory/templates/directory/legal_info.html:329
+#: directory/templates/directory/legal_info.html:361
+#: directory/templates/directory/legal_info.html:415
+#: directory/templates/directory/legal_info.html:450
+msgid "1 октября 2025 года"
+msgstr "2025 жылдың 1 қазаны"
+
+#: directory/templates/directory/legal_info.html:331
+msgid "1.1. Общие положения"
+msgstr "1.1. Жалпы ережелер"
+
+#: directory/templates/directory/legal_info.html:332
+msgid ""
+"Настоящие Условия использования (далее – «Условия») регулируют отношения "
+"между вами, Пользователем (далее – «Пользователь»), и сервисом Serviko "
+"(далее – «Сервис»), расположенным по адресу [Ваш домен]. Использование "
+"Сервиса означает полное и безоговорочное согласие Пользователя с настоящими "
+"Условиями и Политикой конфиденциальности. Если вы не согласны с какими-либо "
+"из положений, просим воздержаться от использования Сервиса."
+msgstr ""
+"Бұл Пайдалану шарттары (бұдан әрі – «Шарттар») сіз, Пайдаланушы (бұдан әрі – "
+"«Пайдаланушы») мен Serviko сервисі (бұдан әрі – «Сервис»), [Сіздің домен] "
+"мекенжайында орналасқан, арасындағы қатынастарды реттейді. Сервисті "
+"пайдалану Пайдаланушының осы Шарттармен және Құпиялылық саясатымен толық "
+"және бекер келісуін білдіреді. Егер сіз кез келген ережелермен келіспесеңіз, "
+"сервисті пайдаланбауыңызды сұраймыз."
+
+#: directory/templates/directory/legal_info.html:334
+msgid "1.2. Предмет соглашения"
+msgstr "1.2. Келісімнің пәні"
+
+#: directory/templates/directory/legal_info.html:335
+msgid ""
+"Сервис предоставляет Пользователям доступ к каталогу компаний, оказывающих "
+"различные услуги, возможность отправлять заявки на услуги выбранным "
+"компаниям, оставлять отзывы, а также пользоваться другими функциями Сервиса. "
+"Сервис является платформой для взаимодействия и не является стороной сделок "
+"между Пользователем и Компаниями."
+msgstr ""
+"Сервис Пайдаланушыларға әртүрлі қызметтер көрсететін компаниялар каталогына "
+"қол жеткізу, таңдалған компанияларға қызметтер бойынша өтініш жіберу, пікір "
+"қалдыру, сондай-ақ Сервистің басқа функцияларын пайдалану мүмкіндігін "
+"береді. Сервис өзара әрекеттесу платформасы болып табылады және Пайдаланушы "
+"мен Компаниялар арасындағы мәмілелердің тарапы емес."
+
+#: directory/templates/directory/legal_info.html:337
+msgid "1.3. Регистрация и учетная запись"
+msgstr "1.3. Тіркеу және тіркелгі жазбасы"
+
+#: directory/templates/directory/legal_info.html:338
+msgid ""
+"Для использования полного функционала Сервиса Пользователю необходимо пройти "
+"процедуру регистрации, предоставив достоверную и актуальную информацию. "
+"Пользователь несет полную ответственность за безопасность своей учетной "
+"записи, включая логин и пароль. В случае несанкционированного доступа "
+"Пользователь обязан немедленно сообщить об этом администрации Сервиса."
+msgstr ""
+"Сервистің толық функционалын пайдалану үшін Пайдаланушы сенімді және өзекті "
+"ақпаратты беру арқылы тіркеу процедурасынан өтуі керек. Пайдаланушы өзінің "
+"тіркелгі жазбасының, логин мен парольді қоса алғанда, қауіпсіздігі үшін "
+"толық жауапкершілік береді. Рұқсатсыз кіру жағдайында Пайдаланушы бұл туралы "
+"Сервис әкімшілігіне дереу хабарлауға міндетті."
+
+#: directory/templates/directory/legal_info.html:340
+msgid "1.4. Права и обязанности Пользователя"
+msgstr "1.4. Пайдаланушының құқықтары мен міндеттері"
+
+#: directory/templates/directory/legal_info.html:342
+#: directory/templates/directory/legal_info.html:428
+msgid "Права:"
+msgstr "Құқықтар:"
+
+#: directory/templates/directory/legal_info.html:342
+msgid ""
+"Получать доступ к информации о компаниях, отправлять заявки, оставлять "
+"отзывы (при соблюдении условий), использовать личный кабинет."
+msgstr ""
+"Компаниялар туралы ақпаратқа қол жеткізу, өтініш жіберу, пікір қалдыру "
+"(шарттарды сақтаған жағдайда), жеке кабинетті пайдалану."
+
+#: directory/templates/directory/legal_info.html:343
+#: directory/templates/directory/legal_info.html:429
+msgid "Обязанности:"
+msgstr "Міндеттер:"
+
+#: directory/templates/directory/legal_info.html:343
+msgid ""
+"Предоставлять достоверную информацию, не нарушать законодательство, не "
+"размещать противоправный или оскорбительный контент, не распространять спам, "
+"не использовать Сервис для мошеннических действий."
+msgstr ""
+"Сенімді ақпарат беру, заңнаманы бұзбау, заңға қайшы келетін немесе қорлайтын "
+"контентті орналастырмау, спам таратпау, Сервисті алаяқтық әрекеттер үшін "
+"пайдаланбау."
+
+#: directory/templates/directory/legal_info.html:346
+msgid "1.5. Отправка заявок и отзывы"
+msgstr "1.5. Өтініш жіберу және пікірлер"
+
+#: directory/templates/directory/legal_info.html:347
+msgid ""
+"Отправка заявок компаниям через Сервис означает ваше согласие на передачу "
+"указанных вами данных выбранной компании для обработки и связи. Отзывы "
+"Пользователей должны быть объективными, основанными на личном опыте и не "
+"содержать нецензурной лексики, угроз или личных оскорблений. Сервис "
+"оставляет за собой право модерировать и удалять отзывы, не соответствующие "
+"этим требованиям. Отзывы могут быть оставлены только после отправки заявки в "
+"соответствующую компанию."
+msgstr ""
+"Сервис арқылы компанияларға өтініш жіберу сіздің көрсетілген деректеріңізді "
+"өңдеу және байланыс үшін таңдалған компанияға беруге келісіміңізді "
+"білдіреді. Пайдаланушы пікірлері объективті, жеке тәжірибеге негізделген "
+"болуы керек және қорлау сөздерді, қауіп-қатерлерді немесе жеке қорлауларды "
+"қамтымауы керек. Сервис осы талаптарға сәйкес келмейтін пікірлерді "
+"модериялауға және жоюға құқылы. Пікірлер тек сәйкес компанияға өтініш "
+"жібергеннен кейін ғана қалдырылуы мүмкін."
+
+#: directory/templates/directory/legal_info.html:349
+msgid "1.6. Ограничение ответственности"
+msgstr "1.6. Жауапкершілікті шектеу"
+
+#: directory/templates/directory/legal_info.html:350
+msgid ""
+"Сервис не несет ответственности за качество услуг, оказываемых компаниями, "
+"представленными в каталоге, а также за достоверность информации, "
+"предоставленной компаниями. Все взаимоотношения между Пользователем и "
+"компанией регулируются их собственными договоренностями. Сервис не "
+"гарантирует бесперебойную работу платформы и не несет ответственности за "
+"возможные перебои или потери данных."
+msgstr ""
+"Сервис каталогта ұсынылған компаниялардың көрсететін қызметтерінің сапасына, "
+"сондай-ақ компаниялардың берген ақпаратының сенімділігіне жауапты емес. "
+"Пайдаланушы мен компания арасындағы барлық қатынастар олардың өз "
+"келісімдерімен реттеледі. Сервис платформаның үздіксіз жұмыс істеуін "
+"кепілдемейді және мүмкін бұзылуларға немесе деректер жоғалтуға жауапты емес."
+
+#: directory/templates/directory/legal_info.html:352
+msgid "1.7. Изменение Условий"
+msgstr "1.7. Шарттарды өзгерту"
+
+#: directory/templates/directory/legal_info.html:353
+msgid ""
+"Администрация Сервиса оставляет за собой право вносить изменения в настоящие "
+"Условия в любое время. Новые Условия вступают в силу с момента их публикации "
+"на Сайте. Продолжение использования Сервиса после публикации изменений "
+"означает ваше согласие с новыми Условиями."
+msgstr ""
+"Сервис әкімшілігі осы Шарттарға кез келген уақытта өзгерістер енгізу құқығын "
+"өзinde ұстайды. Жаңа Шарттар олар Сайтта жарияланған сәттен бастап күшіне "
+"енеді. Өзгерістер жарияланғаннан кейін Сервисті пайдалануды жалғастыру "
+"сіздің жаңа Шарттармен келісіміңізді білдіреді."
+
+#: directory/templates/directory/legal_info.html:355
+msgid "1.8. Заключительные положения"
+msgstr "1.8. Қорытынды ережелер"
+
+#: directory/templates/directory/legal_info.html:356
+msgid ""
+"Все споры, возникающие между Пользователем и Сервисом, разрешаются путем "
+"переговоров. При недостижении согласия споры подлежат рассмотрению в "
+"соответствии с действующим законодательством."
+msgstr ""
+"Пайдаланушы мен Сервис арасында туындайтын барлық даулар келіссөздер арқылы "
+"шешіледі. Келісімге келмеген жағдайда даулар қолданыстағы заңнамаға сәйкес "
+"қаралуға жатады."
+
+#: directory/templates/directory/legal_info.html:360
+msgid "2. Политика конфиденциальности для Пользователей"
+msgstr "2. Пайдаланушылар үшін Құпиялылық саясаты"
+
+#: directory/templates/directory/legal_info.html:363
+msgid "2.1. Общие положения"
+msgstr "2.1. Жалпы ережелер"
+
+#: directory/templates/directory/legal_info.html:364
+msgid ""
+"Настоящая Политика конфиденциальности (далее – «Политика») определяет "
+"порядок обработки и защиты информации о Пользователях, которую Сервис может "
+"получить во время использования вами нашего сайта. Целью данной Политики "
+"является обеспечение надлежащей защиты персональных данных Пользователя от "
+"несанкционированного доступа и разглашения."
+msgstr ""
+"Бұл Құпиялылық саясаты (бұдан әрі – «Саясат») Сервис сіздің біздің "
+"сайтымызды пайдаланған кезinde ала алатын Пайдаланушылар туралы ақпаратты "
+"өңдеу және қорғау тәртібін анықтайды. Бұл Саясаттың мақсаты Пайдаланушының "
+"жеке деректерін рұқсатсыз кіру мен жариялаудан тиісті қорғауды қамтамасыз "
+"ету."
+
+#: directory/templates/directory/legal_info.html:366
+msgid "2.2. Собираемая информация"
+msgstr "2.2. Жинақталатын ақпарат"
+
+#: directory/templates/directory/legal_info.html:367
+msgid "Сервис собирает следующую информацию о Пользователях:"
+msgstr "Сервис Пайдаланушылар туралы келесі ақпаратты жинақтайды:"
+
+#: directory/templates/directory/legal_info.html:369
+msgid "Персональные данные:"
+msgstr "Жеке деректер:"
+
+#: directory/templates/directory/legal_info.html:369
+msgid ""
+"Имя, адрес электронной почты, номер телефона (при регистрации или отправке "
+"заявок)."
+msgstr ""
+"Аты, электрондық пошта мекенжайы, телефон нөмірі (тіркелу кезinde немесе "
+"өтініш жібергенде)."
+
+#: directory/templates/directory/legal_info.html:370
+#: directory/templates/directory/legal_info.html:460
+msgid "Данные об использовании Сервиса:"
+msgstr "Сервисті пайдалану туралы деректер:"
+
+#: directory/templates/directory/legal_info.html:370
+msgid ""
+"IP-адрес, тип браузера, время доступа, просмотренные страницы, история "
+"заявок и отзывов."
+msgstr ""
+"IP-мекенжай, браузер түрі, қол жеткізу уақыты, қаралған беттер, өтініштер "
+"мен пікірлер тарихы."
+
+#: directory/templates/directory/legal_info.html:371
+msgid "Файлы Cookie:"
+msgstr "Cookie файлдары:"
+
+#: directory/templates/directory/legal_info.html:371
+msgid "Для улучшения работы сайта и аналитики."
+msgstr "Сайттың жұмысын және аналитиканы жақсарту үшін."
+
+#: directory/templates/directory/legal_info.html:374
+msgid "2.3. Цели сбора и обработки персональных данных"
+msgstr "2.3. Жеке деректерді жинау мен өңдеудің мақсаттары"
+
+#: directory/templates/directory/legal_info.html:375
+msgid "Мы используем вашу информацию для:"
+msgstr "Біз сіздің ақпаратыңызды мыналар үшін пайдаланамыз:"
+
+#: directory/templates/directory/legal_info.html:377
+msgid "Идентификации Пользователя."
+msgstr "Пайдаланушыны сәйкестендіру."
+
+#: directory/templates/directory/legal_info.html:378
+msgid "Предоставления доступа к персонализированным сервисам."
+msgstr "Жекелендірілген сервистерге қол жеткізу."
+
+#: directory/templates/directory/legal_info.html:379
+msgid ""
+"Связи с Пользователем, включая отправку уведомлений и ответов на запросы."
+msgstr ""
+"Пайдаланушымен байланыс, соның ішinde хабарландырулар жіберу және сұрауларға "
+"жауап беру."
+
+#: directory/templates/directory/legal_info.html:380
+msgid "Обработки и передачи заявок выбранным компаниям."
+msgstr "Өтініштерді өңдеу және таңдалған компанияларға беру."
+
+#: directory/templates/directory/legal_info.html:381
+msgid "Предотвращения мошенничества и злоупотреблений."
+msgstr "Алаяқтық пен теріс пайдаланудың алдын алу."
+
+#: directory/templates/directory/legal_info.html:382
+msgid "Улучшения качества Сервиса, его удобства использования."
+msgstr "Сервис сапасын, оның пайдалану ыңғайлылығын жақсарту."
+
+#: directory/templates/directory/legal_info.html:385
+msgid "2.4. Передача персональных данных третьим лицам"
+msgstr "2.4. Жеке деректерді үшінші тұлғаларға беру"
+
+#: directory/templates/directory/legal_info.html:386
+msgid "Персональные данные Пользователя могут быть переданы:"
+msgstr "Пайдаланушының жеке деректері келесілерге берілуі мүмкін:"
+
+#: directory/templates/directory/legal_info.html:388
+msgid "Компаниям-партнерам:"
+msgstr "Серіктес компанияларға:"
+
+#: directory/templates/directory/legal_info.html:388
+msgid ""
+"При отправке Пользователем заявки на услуги, указанные в заявке данные "
+"передаются выбранной компании."
+msgstr ""
+"Пайдаланушы қызметтер бойынша өтініш жіберген кезinde, өтініште көрсетілген "
+"деректер таңдалған компанияға беріледі."
+
+#: directory/templates/directory/legal_info.html:389
+#: directory/templates/directory/legal_info.html:478
+msgid "Государственным органам:"
+msgstr "Мемлекеттік органдарға:"
+
+#: directory/templates/directory/legal_info.html:389
+#: directory/templates/directory/legal_info.html:478
+msgid "По требованию законодательства."
+msgstr "Заңнама талабы бойынша."
+
+#: directory/templates/directory/legal_info.html:390
+#: directory/templates/directory/legal_info.html:479
+msgid "Провайдерам услуг:"
+msgstr "Қызмет көрсету провайдерлеріне:"
+
+#: directory/templates/directory/legal_info.html:390
+#: directory/templates/directory/legal_info.html:479
+msgid ""
+"Для обеспечения функционирования Сервиса (хостинг, аналитика и т.д.) на "
+"условиях конфиденциальности."
+msgstr ""
+"Сервистің жұмысын қамтамасыз ету үшін (хостинг, аналитика және т.б.) "
+"құпиялылық шарттарында."
+
+#: directory/templates/directory/legal_info.html:394
+#: directory/templates/directory/legal_info.html:483
+msgid "Важно:"
+msgstr "Маңызды:"
+
+#: directory/templates/directory/legal_info.html:394
+msgid "Мы не продаем и не обмениваем персональные данные Пользователей."
+msgstr "Біз Пайдаланушылардың жеке деректерін сатпаймыз және алмаспаймыз."
+
+#: directory/templates/directory/legal_info.html:397
+msgid "2.5. Защита персональных данных"
+msgstr "2.5. Жеке деректерді қорғау"
+
+#: directory/templates/directory/legal_info.html:398
+msgid ""
+"Сервис принимает необходимые и достаточные организационные и технические "
+"меры для защиты персональных данных Пользователя от неправомерного или "
+"случайного доступа, уничтожения, изменения, блокирования, копирования, "
+"распространения, а также от иных неправомерных действий третьих лиц."
+msgstr ""
+"Сервис Пайдаланушының жеке деректерін заңсыз немесе кездейсоқ қол "
+"жеткізуден, жоюдан, өзгертуден, бұғаттаудан, көшіруден, таратудан, сондай-ақ "
+"үшінші тұлғалардың басқа да заңсыз әрекеттерінен қорғау үшін қажетті және "
+"жеткілікті ұйымдастырушылық және техникалық шараларды қабылдайды."
+
+#: directory/templates/directory/legal_info.html:400
+msgid "2.6. Права Пользователя"
+msgstr "2.6. Пайдаланушының құқықтары"
+
+#: directory/templates/directory/legal_info.html:401
+msgid "Пользователь имеет право:"
+msgstr "Пайдаланушының мыналарға құқығы бар:"
+
+#: directory/templates/directory/legal_info.html:403
+msgid "Доступа к своим персональным данным."
+msgstr "Өз жеке деректеріне қол жеткізу."
+
+#: directory/templates/directory/legal_info.html:404
+msgid "На их изменение или удаление."
+msgstr "Оларды өзгерту немесе жою."
+
+#: directory/templates/directory/legal_info.html:405
+msgid "Отозвать согласие на обработку персональных данных."
+msgstr "Жеке деректерді өңдеуге келісімін қайтару."
+
+#: directory/templates/directory/legal_info.html:407
+#: directory/templates/directory/legal_info.html:496
+msgid ""
+"Для реализации этих прав необходимо обратиться в Службу поддержки Сервиса."
+msgstr ""
+"Бұл құқықтарды іске асыру үшін Сервис қолдау қызметіне хабарласу керек."
+
+#: directory/templates/directory/legal_info.html:409
+msgid "2.7. Изменение Политики конфиденциальности"
+msgstr "2.7. Құпиялылық саясатын өзгерту"
+
+#: directory/templates/directory/legal_info.html:410
+msgid ""
+"Сервис имеет право вносить изменения в настоящую Политику "
+"конфиденциальности. При внесении изменений в актуальной редакции указывается "
+"дата последнего обновления. Новая редакция Политики вступает в силу с "
+"момента ее размещения, если иное не предусмотрено новой редакцией Политики."
+msgstr ""
+"Сервис бұл Құпиялылық саясатына өзгерістер енгізу құқығына ие. Өзгерістер "
+"енгізілген кезinde өзекті нұсқада соңғы жаңарту күні көрсетіледі. Саясаттың "
+"жаңа нұсқасы ол орналастырылған сәттен бастап күшіне енеді, егер Саясаттың "
+"жаңа нұсқасында басқаша ерекшеленбесе."
+
+#: directory/templates/directory/legal_info.html:414
+msgid "3. Условия использования для Партнеров"
+msgstr "3. Серіктестер үшін пайдалану шарттары"
+
+#: directory/templates/directory/legal_info.html:417
+msgid "3.1. Общие положения"
+msgstr "3.1. Жалпы ережелер"
+
+#: directory/templates/directory/legal_info.html:418
+msgid ""
+"Настоящие Условия использования (далее – «Условия Партнера») регулируют "
+"отношения между вами, Компанией-Партнером (далее – «Партнер»), и сервисом "
+"Serviko (далее – «Сервис»), расположенным по адресу [Ваш домен]. Отправка "
+"заявки на сотрудничество и размещение информации о компании в каталоге "
+"Сервиса означает полное и безоговорочное согласие Партнера с настоящими "
+"Условиями Партнера и Политикой конфиденциальности для Партнеров."
+msgstr ""
+"Бұл Пайдалану шарттары (бұдан әрі – «Серіктес Шарттары») сіз, Компания-"
+"Серіктес (бұдан әрі – «Серіктес») мен Serviko сервисі (бұдан әрі – "
+"«Сервис»), [Сіздің домен] мекенжайында орналасқан, арасындағы қатынастарды "
+"реттейді. Серіктес болу туралы өтініш жіберу және компания туралы ақпаратты "
+"Сервис каталогында орналастыру Серіктестің осы Серіктес Шарттарымен және "
+"Серіктестер үшін Құпиялылық саясатымен толық және бекер келісуін білдіреді."
+
+#: directory/templates/directory/legal_info.html:420
+msgid "3.2. Предмет соглашения"
+msgstr "3.2. Келісімнің пәні"
+
+#: directory/templates/directory/legal_info.html:421
+msgid ""
+"Сервис предоставляет Партнерам платформу для продвижения своих услуг, "
+"получения заявок от Пользователей и размещения информации о своей компании в "
+"каталоге. Сервис выступает в качестве связующего звена и не является "
+"стороной сделок или договоров между Партнером и Пользователем."
+msgstr ""
+"Сервис Серіктестерге өз қызметтерін насихаттау, Пайдаланушылардан өтініш алу "
+"және өз компаниясы туралы ақпаратты каталогта орналастыру үшін платформа "
+"береді. Сервис байланыс буыны ретinde әрекет етеді және Серіктес пен "
+"Пайдаланушы арасындағы мәмілелердің немесе келісімдердің тарапы емес."
+
+#: directory/templates/directory/legal_info.html:423
+msgid "3.3. Регистрация и размещение информации"
+msgstr "3.3. Тіркеу және ақпаратты орналастыру"
+
+#: directory/templates/directory/legal_info.html:424
+msgid ""
+"Для становления Партнером необходимо отправить заявку на сотрудничество, "
+"предоставив достоверную информацию о компании, ее услугах, контактных "
+"данных. Сервис оставляет за собой право проверять предоставленные данные и "
+"отказать в размещении без объяснения причин. Партнер обязуется поддерживать "
+"актуальность информации о своей компании и услугах."
+msgstr ""
+"Серіктес болу үшін компания, оның қызметтері, байланыс деректері туралы "
+"сенімді ақпаратты беру арқылы серіктес болу туралы өтініш жіберу керек. "
+"Сервис берілген деректерді тексеру және түсініксіз себептерсіз "
+"орналастырудан бас тарту құқығын өзinde ұстайды. Серіктес өз компаниясы мен "
+"қызметтері туралы ақпараттың өзектілігін сақтауға міндеттенеді."
+
+#: directory/templates/directory/legal_info.html:426
+msgid "3.4. Права и обязанности Партнера"
+msgstr "3.4. Серіктестің құқықтары мен міндеттері"
+
+#: directory/templates/directory/legal_info.html:428
+msgid ""
+"Размещать информацию о компании и услугах, получать заявки от Пользователей, "
+"получать доступ к статистике (если предусмотрено функционалом)."
+msgstr ""
+"Компания мен қызметтер туралы ақпаратты орналастыру, Пайдаланушылардан "
+"өтініш алу, статистикаға қол жеткізу (егер функционалда көзделген болса)."
+
+#: directory/templates/directory/legal_info.html:429
+msgid ""
+"Предоставлять достоверную и полную информацию, качественно оказывать услуги "
+"Пользователям, соблюдать законодательство, оперативно обрабатывать заявки, "
+"не размещать противоправный или вводящий в заблуждение контент."
+msgstr ""
+"Сенімді және толық ақпарат беру, Пайдаланушыларға сапалы қызмет көрсету, "
+"заңнаманы сақтау, өтініштерді жедел өңдеу, заңға қайшы келетін немесе "
+"адастыратын контентті орналастырмау."
+
+#: directory/templates/directory/legal_info.html:432
+msgid "3.5. Отзывы Пользователей"
+msgstr "3.5. Пайдаланушы пікірлері"
+
+#: directory/templates/directory/legal_info.html:433
+msgid ""
+"Партнер соглашается с тем, что Пользователи Сервиса могут оставлять отзывы о "
+"его услугах и качестве работы. Партнер обязуется конструктивно реагировать "
+"на отзывы и стремиться к разрешению возможных конфликтов с Пользователями. "
+"Сервис не несет ответственности за содержание отзывов, размещенных "
+"Пользователями, но оставляет за собой право модерации и удаления отзывов, "
+"нарушающих правила Сервиса."
+msgstr ""
+"Серіктес Сервис Пайдаланушыларының оның қызметтері мен жұмыс сапасы туралы "
+"пікір қалдыра алатынымен келіседі. Серіктес пікірлерге конструктивті түрде "
+"жауап беруге және Пайдаланушылармен мүмкін қактығыстарды шешуге ұмтылуға "
+"міндеттенеді. Сервис Пайдаланушылардың орналастырған пікірлерінің мазмұнына "
+"жауапты емес, бірақ Сервис ережелерін бұзатын пікірлерді модериялау және жою "
+"құқығын өзinde ұстайды."
+
+#: directory/templates/directory/legal_info.html:435
+msgid "3.6. Условия размещения и тарификация"
+msgstr "3.6. Орналастыру шарттары және тарифтеу"
+
+#: directory/templates/directory/legal_info.html:436
+msgid ""
+"Условия размещения информации в каталоге Сервиса, включая возможное платное "
+"размещение или предоставление дополнительных услуг (например, выделение в "
+"каталоге), определяются отдельными договоренностями или тарифными планами, "
+"публикуемыми на Сервисе. Сервис оставляет за собой право изменять эти "
+"условия и тарифы, уведомив Партнеров заранее."
+msgstr ""
+"Сервис каталогында ақпаратты орналастыру шарттары, оның ішinde мүмкін ақылы "
+"орналастыру немесе қосымша қызметтер көрсету (мысалы, каталогта бөлектеу), "
+"Сервисте жарияланған жеке келісімдермен немесе тарифтік жоспарлармен "
+"анықталады. Сервис бұл шарттар мен тарифтерді Серіктестерді алдын ала "
+"хабарлай отырып, өзгерту құқығын өзinde ұстайды."
+
+#: directory/templates/directory/legal_info.html:438
+msgid "3.7. Ограничение ответственности"
+msgstr "3.7. Жауапкершілікті шектеу"
+
+#: directory/templates/directory/legal_info.html:439
+msgid ""
+"Сервис не несет ответственности за результаты взаимодействия Партнера с "
+"Пользователями, а также за любые убытки, возникшие в результате "
+"использования Сервиса или невозможности его использования. Сервис не "
+"гарантирует определенное количество заявок или уровень продаж для Партнера."
+msgstr ""
+"Сервис Серіктестің Пайдаланушылармен өзара әрекеттесу нәтижелеріне, сондай-"
+"ақ Сервисті пайдалану немесе оны пайдалана алмау нәтижесінде туындаған кез "
+"келген шығындарға жауапты емес. Сервис Серіктес үшін белгілі бір өтініштер "
+"санын немесе сатылым деңгейін кепілдемейді."
+
+#: directory/templates/directory/legal_info.html:441
+msgid "3.8. Изменение Условий Партнера"
+msgstr "3.8. Серіктес Шарттарын өзгерту"
+
+#: directory/templates/directory/legal_info.html:442
+msgid ""
+"Администрация Сервиса оставляет за собой право вносить изменения в настоящие "
+"Условия Партнера в любое время. Новые Условия вступают в силу с момента их "
+"публикации на Сайте. Продолжение использования Сервиса после публикации "
+"изменений означает согласие Партнера с новыми Условиями."
+msgstr ""
+"Сервис әкімшілігі осы Серіктес Шарттарына кез келген уақытта өзгерістер "
+"енгізу құқығын өзinde ұстайды. Жаңа Шарттар олар Сайтта жарияланған сәттен "
+"бастап күшіне енеді. Өзгерістер жарияланғаннан кейін Сервисті пайдалануды "
+"жалғастыру Серіктестің жаңа Шарттармен келісімін білдіреді."
+
+#: directory/templates/directory/legal_info.html:444
+msgid "3.9. Заключительные положения"
+msgstr "3.9. Қорытынды ережелер"
+
+#: directory/templates/directory/legal_info.html:445
+msgid ""
+"Все споры, возникающие между Партнером и Сервисом, разрешаются путем "
+"переговоров. При недостижении согласия споры подлежат рассмотрению в "
+"соответствии с действующим законодательством."
+msgstr ""
+"Серіктес пен Сервис арасында туындайтын барлық даулар келіссөздер арқылы "
+"шешіледі. Келісімге келмеген жағдайда даулар қолданыстағы заңнамаға сәйкес "
+"қаралуға жатады."
+
+#: directory/templates/directory/legal_info.html:449
+msgid "4. Политика конфиденциальности для Партнеров"
+msgstr "4. Серіктестер үшін Құпиялылық саясаты"
+
+#: directory/templates/directory/legal_info.html:452
+msgid "4.1. Общие положения"
+msgstr "4.1. Жалпы ережелер"
+
+#: directory/templates/directory/legal_info.html:453
+msgid ""
+"Настоящая Политика конфиденциальности для Партнеров (далее – «Политика "
+"Партнера») определяет порядок обработки и защиты информации о Партнерах, "
+"которую Сервис может получить в процессе сотрудничества. Целью данной "
+"Политики является обеспечение надлежащей защиты персональных и корпоративных "
+"данных Партнера от несанкционированного доступа и разглашения."
+msgstr ""
+"Бұл Серіктестер үшін Құпиялылық саясаты (бұдан әрі – «Серіктес Саясаты») "
+"Сервис серіктес болу процесінinde ала алатын Серіктестер туралы ақпаратты "
+"өңдеу және қорғау тәртібін анықтайды. Бұл Саясаттың мақсаты Серіктестің жеке "
+"және корпоративтік деректерін рұқсатсыз кіру мен жариялаудан тиісті қорғауды "
+"қамтамасыз ету."
+
+#: directory/templates/directory/legal_info.html:455
+msgid "4.2. Собираемая информация"
+msgstr "4.2. Жинақталатын ақпарат"
+
+#: directory/templates/directory/legal_info.html:456
+msgid "Сервис собирает следующую информацию о Партнерах:"
+msgstr "Сервис Серіктестер туралы келесі ақпаратты жинақтайды:"
+
+#: directory/templates/directory/legal_info.html:458
+msgid "Корпоративные данные:"
+msgstr "Корпоративтік деректер:"
+
+#: directory/templates/directory/legal_info.html:458
+msgid ""
+"Название компании, юридический адрес, ИНН, ОГРН, описание услуг, контактные "
+"данные (телефон, email, сайт)."
+msgstr ""
+"Компания атауы, заңды мекен-жай, ЖСН, МСКО, қызметтер сипаттамасы, байланыс "
+"деректері (телефон, email, сайт)."
+
+#: directory/templates/directory/legal_info.html:459
+msgid "Персональные данные представителей:"
+msgstr "Өкілдердің жеке деректері:"
+
+#: directory/templates/directory/legal_info.html:459
+msgid "Имя, должность, контактная информация лиц, представляющих компанию."
+msgstr "Компанияны ұсынатын тұлғалардың аты, лауазымы, байланыс ақпараты."
+
+#: directory/templates/directory/legal_info.html:460
+msgid ""
+"История заявок, статистика просмотров, данные о размещенных услугах и "
+"отзывах."
+msgstr ""
+"Өтініштер тарихы, қаралымдар статистикасы, орналастырылған қызметтер мен "
+"пікірлер туралы деректер."
+
+#: directory/templates/directory/legal_info.html:463
+msgid "4.3. Цели сбора и обработки данных"
+msgstr "4.3. Деректерді жинау мен өңдеудің мақсаттары"
+
+#: directory/templates/directory/legal_info.html:464
+msgid "Мы используем информацию Партнеров для:"
+msgstr "Біз Серіктестер ақпаратын мыналар үшін пайдаланамыз:"
+
+#: directory/templates/directory/legal_info.html:466
+msgid "Идентификации и верификации Партнера."
+msgstr "Серіктесті сәйкестендіру және тексеру."
+
+#: directory/templates/directory/legal_info.html:467
+msgid "Размещения информации о компании в каталоге Сервиса."
+msgstr "Компания туралы ақпаратты Сервис каталогында орналастыру."
+
+#: directory/templates/directory/legal_info.html:468
+msgid "Передачи заявок Пользователей Партнеру."
+msgstr "Пайдаланушы өтініштерін Серіктеске беру."
+
+#: directory/templates/directory/legal_info.html:469
+msgid "Обеспечения связи и поддержки."
+msgstr "Байланыс пен қолдауды қамтамасыз ету."
+
+#: directory/templates/directory/legal_info.html:470
+msgid "Предоставления статистических данных и аналитики (если применимо)."
+msgstr "Статистикалық деректер мен аналитика беру (егер қолданылатын болса)."
+
+#: directory/templates/directory/legal_info.html:471
+msgid "Улучшения качества Сервиса."
+msgstr "Сервис сапасын жақсарту."
+
+#: directory/templates/directory/legal_info.html:474
+msgid "4.4. Передача данных третьим лицам"
+msgstr "4.4. Деректерді үшінші тұлғаларға беру"
+
+#: directory/templates/directory/legal_info.html:475
+msgid "Данные Партнера могут быть переданы:"
+msgstr "Серіктес деректері келесілерге берілуі мүмкін:"
+
+#: directory/templates/directory/legal_info.html:477
+msgid "Пользователям:"
+msgstr "Пайдаланушыларға:"
+
+#: directory/templates/directory/legal_info.html:477
+msgid ""
+"Контактная информация и описание услуг отображаются в каталоге и передаются "
+"Пользователям при отправке заявок."
+msgstr ""
+"Байланыс ақпараты мен қызметтер сипаттамасы каталогта көрсетіледі және "
+"өтініш жіберген кезinde Пайдаланушыларға беріледі."
+
+#: directory/templates/directory/legal_info.html:483
+msgid ""
+"Мы не продаем и не обмениваем корпоративные данные Партнеров третьим лицам в "
+"коммерческих целях."
+msgstr ""
+"Біз Серіктестердің корпоративтік деректерін коммерциялық мақсатта үшінші "
+"тұлғаларға сатпаймыз және алмаспаймыз."
+
+#: directory/templates/directory/legal_info.html:486
+msgid "4.5. Защита данных"
+msgstr "4.5. Деректерді қорғау"
+
+#: directory/templates/directory/legal_info.html:487
+msgid ""
+"Сервис принимает необходимые и достаточные организационные и технические "
+"меры для защиты данных Партнера от неправомерного или случайного доступа, "
+"уничтожения, изменения, блокирования, копирования, распространения, а также "
+"от иных неправомерных действий третьих лиц."
+msgstr ""
+"Сервис Серіктес деректерін заңсыз немесе кездейсоқ қол жеткізуден, жоюдан, "
+"өзгертуден, бұғаттаудан, көшіруден, таратудан, сондай-ақ үшінші тұлғалардың "
+"басқа да заңсыз әрекеттерінен қорғау үшін қажетті және жеткілікті "
+"ұйымдастырушылық және техникалық шараларды қабылдайды."
+
+#: directory/templates/directory/legal_info.html:489
+msgid "4.6. Права Партнера"
+msgstr "4.6. Серіктестің құқықтары"
+
+#: directory/templates/directory/legal_info.html:490
+msgid "Партнер имеет право:"
+msgstr "Серіктестің мыналарға құқығы бар:"
+
+#: directory/templates/directory/legal_info.html:492
+msgid "Доступа к своим данным."
+msgstr "Өз деректеріне қол жеткізу."
+
+#: directory/templates/directory/legal_info.html:493
+msgid ""
+"На их изменение или удаление (с учетом возможных договорных обязательств)."
+msgstr ""
+"Оларды өзгерту немесе жою (мүмкін келісімшарттық міндеттемелерді ескере "
+"отырып)."
+
+#: directory/templates/directory/legal_info.html:494
+msgid ""
+"Отозвать согласие на обработку персональных данных представителей компании."
+msgstr "Компания өкілдерінің жеке деректерін өңдеуге келісімін қайтару."
+
+#: directory/templates/directory/legal_info.html:498
+msgid "4.7. Изменение Политики Партнера"
+msgstr "4.7. Серіктес Саясатын өзгерту"
+
+#: directory/templates/directory/legal_info.html:499
+msgid ""
+"Сервис имеет право вносить изменения в настоящую Политику конфиденциальности "
+"для Партнеров. При внесении изменений в актуальной редакции указывается дата "
+"последнего обновления. Новая редакция Политики вступает в силу с момента ее "
+"размещения, если иное не предусмотрено новой редакцией Политики."
+msgstr ""
+"Сервис Серіктестер үшін бұл Құпиялылық саясатына өзгерістер енгізу құқығына "
+"ие. Өзгерістер енгізілген кезinde өзекті нұсқада соңғы жаңарту күні "
+"көрсетіледі. Саясаттың жаңа нұсқасы ол орналастырылған сәттен бастап күшіне "
+"енеді, егер Саясаттың жаңа нұсқасында басқаша ерекшеленбесе."
+
+#: directory/templates/directory/legal_info.html:504
+msgid "Наверх"
+msgstr "Жоғары"
+
+#: directory/templates/directory/login.html:224
+msgid "Добро пожаловать!"
+msgstr "Қош келдіңіз!"
+
+#: directory/templates/directory/login.html:225
+msgid "Войдите в свой аккаунт"
+msgstr "Аккаунтыңызға кіріңіз"
+
+#: directory/templates/directory/login.html:246
+#: directory/templates/directory/register.html:299
+msgid "или"
+msgstr "немесе"
+
+#: directory/templates/directory/login.html:250
+msgid "Создать аккаунт"
+msgstr "Аккаунт жасау"
+
+#: directory/templates/directory/login.html:251
+msgid "Забыли пароль?"
+msgstr "Парольді ұмыттыңыз ба?"
+
+#: directory/templates/directory/partnership_request.html:337
+msgid "Станьте нашим партнером"
+msgstr "Біздің серіктесіміз болыңыз"
+
+#: directory/templates/directory/partnership_request.html:339
+msgid ""
+"Присоединяйтесь к лидирующей платформе поиска услуг и получайте прямые "
+"заявки от клиентов"
+msgstr ""
+"Қызметтерді іздеудің жетекші платформасына қосылып, тікелей клиенттерден "
+"өтініштер алыңыз"
+
+#: directory/templates/directory/partnership_request.html:349
+msgid "Поток новых клиентов"
+msgstr "Жаңа клиенттер ағыны"
+
+#: directory/templates/directory/partnership_request.html:350
+msgid "Получайте целевые заявки от заинтересованных клиентов каждый день"
+msgstr "Әр күні қызығушылық танытқан клиенттерден нысандалған өтініштер алыңыз"
+
+#: directory/templates/directory/partnership_request.html:359
+#, python-format
+msgid "Рост продаж на 40%%"
+msgstr "Сатылымдардың 40%% өсуі"
+
+#: directory/templates/directory/partnership_request.html:360
+#, python-format
+msgid "В среднем наши партнеры увеличивают выручку на 40%% в первые 3 месяца"
+msgstr "Орта есеппен біздің серіктестер түсімді алғашқы 3 айда 40%% арттырады"
+
+#: directory/templates/directory/partnership_request.html:369
+msgid "Проверенная репутация"
+msgstr "Тексерілген бедел"
+
+#: directory/templates/directory/partnership_request.html:370
+msgid "Система отзывов и рейтингов помогает привлекать больше клиентов"
+msgstr "Пікірлер мен рейтингтер жүйесі көбірек клиенттерді тартуға көмектеседі"
+
+#: directory/templates/directory/partnership_request.html:379
+msgid "Быстрый старт"
+msgstr "Жылдам старт"
+
+#: directory/templates/directory/partnership_request.html:380
+msgid "Начните получать заявки уже через 24 часа после одобрения"
+msgstr "Мақұлданғаннан кейін 24 сағат ішinde өтініштер алуды бастаңыз"
+
+#: directory/templates/directory/partnership_request.html:389
+msgid "Активных партнеров"
+msgstr "Белсенді серіктестер"
+
+#: directory/templates/directory/partnership_request.html:393
+msgid "Заявок в месяц"
+msgstr "Айына өтініштер"
+
+#: directory/templates/directory/partnership_request.html:397
+msgid "Средний рейтинг"
+msgstr "Орташа рейтинг"
+
+#: directory/templates/directory/partnership_request.html:409
+msgid "Ответ в течение 24 часов"
+msgstr "24 сағат ішinde жауап"
+
+#: directory/templates/directory/partnership_request.html:411
+msgid "Заявка на партнерство"
+msgstr "Серіктес болу туралы өтініш"
+
+#: directory/templates/directory/partnership_request.html:413
+msgid ""
+"Заполните форму, и мы свяжемся с вами для обсуждения деталей сотрудничества"
+msgstr ""
+"Пішінді толтырыңыз, сонда біз серіктес болу толықтаймаларын талқылау үшін "
+"сізбен хабарласамыз"
+
+#: directory/templates/directory/partnership_request.html:447
+#, fuzzy, python-format
+#| msgid ""
+#| "Отправляя заявку, я подтверждаю согласие с <a href=\"%(terms_url)s\" "
+#| "target=\"_blank\">Условиями для Партнеров</a> и <a "
+#| "href=\"%(privacy_url)s\" target=\"_blank\">Политикой конфиденциальности "
+#| "для Партнеров</a>."
+msgid ""
+"Отправляя заявку, я подтверждаю согласие с <a href=\"%(terms_url)s\" "
+"target=\"_blank\" rel=\"noopener noreferrer\">Условиями для Партнеров</a> и "
+"<a href=\"%(privacy_url)s\" target=\"_blank\" rel=\"noopener "
+"noreferrer\">Политикой конфиденциальности для Партнеров</a>."
+msgstr ""
+"Өтініш жіберу арқылы мен <a href=\"%(terms_url)s\" "
+"target=\"_blank\">Серіктестер үшін Шарттармен</a> және <a "
+"href=\"%(privacy_url)s\" target=\"_blank\">Серіктестер үшін Құпиялылық "
+"саясатымен</a> келісетінімді растаймын."
+
+#: directory/templates/directory/password_reset_complete.html:125
+msgid "Пароль успешно изменен!"
+msgstr "Пароль сәтті өзгертілді!"
+
+#: directory/templates/directory/password_reset_complete.html:127
+msgid "Теперь вы можете войти в свой аккаунт с новым паролем"
+msgstr "Енді сіз жаңа парольіңізбен аккаунтыңызға кіре аласыз"
+
+#: directory/templates/directory/password_reset_complete.html:130
+msgid "Войти в аккаунт"
+msgstr "Аккаунтқа кіру"
+
+#: directory/templates/directory/password_reset_confirm.html:177
+msgid "Введите новый пароль"
+msgstr "Жаңа парольді енгізіңіз"
+
+#: directory/templates/directory/password_reset_confirm.html:193
+msgid "Сохранить пароль"
+msgstr "Парольді сақтау"
+
+#: directory/templates/directory/password_reset_confirm.html:198
+msgid "Ссылка недействительна"
+msgstr "Сілтеме жарамсыз"
+
+#: directory/templates/directory/password_reset_confirm.html:200
+msgid ""
+"Ссылка для сброса пароля недействительна или уже была использована. "
+"Пожалуйста, запросите сброс пароля заново."
+msgstr ""
+"Парольді қалпына келтіру сілтемесі жарамсыз немесе қолданылған. Парольді "
+"қалпына кетіруді қайта сұраңыз."
+
+#: directory/templates/directory/password_reset_confirm.html:204
+msgid "Запросить новую ссылку"
+msgstr "Жаңа сілтеме сұрау"
+
+#: directory/templates/directory/password_reset_done.html:125
+msgid "Инструкция отправлена!"
+msgstr "Нұсқаулық жіберілді!"
+
+#: directory/templates/directory/password_reset_done.html:127
+msgid ""
+"Мы отправили вам письмо с инструкцией для сброса пароля. Если письмо не "
+"пришло в течение нескольких минут, проверьте папку \"Спам\"."
+msgstr ""
+"Құпиясөзді қалпына келтіру нұсқаулығы бар хат жіберілді. Хат бірнеше минут "
+"ішінде келмесе, “Спам” бумасын тексеріңіз."
+
+#: directory/templates/directory/password_reset_done.html:132
+#: directory/templates/directory/password_reset_form.html:204
+msgid "Вернуться ко входу"
+msgstr "Кіруге оралу"
+
+#: directory/templates/directory/password_reset_form.html:182
+msgid "Сброс пароля"
+msgstr "Парольді қалпына келтіру"
+
+#: directory/templates/directory/password_reset_form.html:184
+msgid "Введите ваш email, и мы отправим инструкцию для установки нового пароля"
+msgstr ""
+"Email-іңізді енгізіңіз, сонда біз жаңа парольді орнату нұсқаулығын жібереміз"
+
+#: directory/templates/directory/profile.html:499
+msgid "Избранных"
+msgstr "Таңдаулылар"
+
+#: directory/templates/directory/profile.html:503
+msgid "Отзывов"
+msgstr "Пікірлер"
+
+#: directory/templates/directory/profile.html:507
+msgid "Заявок"
+msgstr "Өтініштер"
+
+#: directory/templates/directory/profile.html:517
+msgid "Профиль"
+msgstr "Профиль"
+
+#: directory/templates/directory/profile.html:520
+msgid "Избранное"
+msgstr "Таңдаулылар"
+
+#: directory/templates/directory/profile.html:529
+msgid "История"
+msgstr "Тарих"
+
+#: directory/templates/directory/profile.html:536
+msgid "Редактирование профиля"
+msgstr "Профильді өңдеу"
+
+#: directory/templates/directory/profile.html:541
+msgid "Фотография профиля"
+msgstr "Профиль суреті"
+
+#: directory/templates/directory/profile.html:542
+msgid "Рекомендуемый размер: 400x400px. Форматы: JPG, PNG"
+msgstr "Ұсынылатын өлшем: 400x400px. Пішімдер: JPG, PNG"
+
+#: directory/templates/directory/profile.html:544
+msgid "Загрузить фото"
+msgstr "Фото жүктеу"
+
+#: directory/templates/directory/profile.html:555
+msgid "Сохранить изменения"
+msgstr "Өзгерістерді сақтау"
+
+#: directory/templates/directory/profile.html:564
+msgid "Избранные компании"
+msgstr "Таңдаулы компаниялар"
+
+#: directory/templates/directory/profile.html:575
+msgid "Нет избранных компаний"
+msgstr "Таңдаулы компаниялар жоқ"
+
+#: directory/templates/directory/profile.html:576
+msgid "Добавьте компании в избранное, чтобы быстро находить их здесь"
+msgstr "Оларды тез табу үшін компанияларды таңдаулыларға қосыңыз"
+
+#: directory/templates/directory/profile.html:585
+msgid "История моих заявок"
+msgstr "Менің өтініштерімнің тарихы"
+
+#: directory/templates/directory/profile.html:593
+msgid "Заявка для:"
+msgstr "Өтініш:"
+
+#: directory/templates/directory/profile.html:608
+msgid "Посмотреть вложение"
+msgstr "Тіркемесін қарау"
+
+#: directory/templates/directory/profile.html:617
+msgid "Нет отправленных заявок"
+msgstr "Жіберілген өтініштер жоқ"
+
+#: directory/templates/directory/profile.html:618
+msgid "Вы еще не отправляли заявки компаниям"
+msgstr "Сіз әлі компанияларға өтініш жіберген жоқсыз"
+
+#: directory/templates/directory/profile.html:635
+msgid "Отзыв для:"
+msgstr "Пікір:"
+
+#: directory/templates/directory/profile.html:674
+msgid "Нет отзывов"
+msgstr "Пікірлер жоқ"
+
+#: directory/templates/directory/profile.html:675
+msgid "Вы еще не оставляли отзывы о компаниях"
+msgstr "Сіз әлі компаниялар туралы пікір қалдырған жоқсыз"
+
+#: directory/templates/directory/profile.html:684
+msgid "Недавно просмотренные компании"
+msgstr "Жуырда қаралған компаниялар"
+
+#: directory/templates/directory/profile.html:695
+msgid "История пуста"
+msgstr "Тарих бос"
+
+#: directory/templates/directory/profile.html:696
+msgid "Ваша история просмотров компаний пока пуста"
+msgstr "Компанияларды қарау тарихыңыз әлі бос"
+
+#: directory/templates/directory/register.html:220
+msgid "Создайте аккаунт"
+msgstr "Аккаунт жасаңыз"
+
+#: directory/templates/directory/register.html:221
+msgid "Начните находить лучших исполнителей"
+msgstr "Ең үздік орындаушыларды табуды бастаңыз"
+
+#: directory/templates/directory/register.html:280
+msgid "Зарегистрироваться"
+msgstr "Тіркелу"
+
+#: directory/templates/directory/register.html:287
+msgid "Нажимая на кнопку, вы соглашаетесь с"
+msgstr "Түймені басу арқылы сіз келісесіз"
+
+#: directory/templates/directory/register.html:290
+msgid "условиями использования"
+msgstr "пайдалану шарттары"
+
+#: directory/templates/directory/register.html:292
+msgid "и"
+msgstr "және"
+
+#: directory/templates/directory/register.html:294
+msgid "политикой конфиденциальности"
+msgstr "құпиялылық саясаты"
+
+#: directory/templates/directory/register.html:304
+msgid "Уже есть аккаунт?"
+msgstr "Аккаунтыңыз бар ма?"
+
+#: venv/lib/python3.11/site-packages/django/contrib/messages/apps.py:16
+msgid "Messages"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/contrib/sitemaps/apps.py:8
+msgid "Site Maps"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/contrib/staticfiles/apps.py:9
+msgid "Static Files"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/contrib/syndication/apps.py:7
+msgid "Syndication"
+msgstr ""
+
+#. Translators: String used to replace omitted page numbers in elided page
+#. range generated by paginators, e.g. [1, 2, '…', 5, 6, 7, '…', 9, 10].
+#: venv/lib/python3.11/site-packages/django/core/paginator.py:30
+msgid "…"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/core/paginator.py:32
+msgid "That page number is not an integer"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/core/paginator.py:33
+msgid "That page number is less than 1"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/core/paginator.py:34
+msgid "That page contains no results"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/core/validators.py:22
+msgid "Enter a valid value."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/core/validators.py:70
+msgid "Enter a valid domain name."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/core/validators.py:153
+#: venv/lib/python3.11/site-packages/django/forms/fields.py:775
+msgid "Enter a valid URL."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/core/validators.py:200
+msgid "Enter a valid integer."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/core/validators.py:211
+msgid "Enter a valid email address."
+msgstr ""
+
+#. Translators: "letters" means latin letters: a-z and A-Z.
+#: venv/lib/python3.11/site-packages/django/core/validators.py:289
+msgid ""
+"Enter a valid “slug” consisting of letters, numbers, underscores or hyphens."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/core/validators.py:297
+msgid ""
+"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
+"hyphens."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/core/validators.py:309
+#: venv/lib/python3.11/site-packages/django/core/validators.py:318
+#: venv/lib/python3.11/site-packages/django/core/validators.py:332
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2220
+#, python-format
+msgid "Enter a valid %(protocol)s address."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/core/validators.py:311
+msgid "IPv4"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/core/validators.py:320
+#: venv/lib/python3.11/site-packages/django/utils/ipv6.py:43
+msgid "IPv6"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/core/validators.py:334
+msgid "IPv4 or IPv6"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/core/validators.py:375
+msgid "Enter only digits separated by commas."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/core/validators.py:381
+#, python-format
+msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/core/validators.py:416
+#, python-format
+msgid "Ensure this value is less than or equal to %(limit_value)s."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/core/validators.py:425
+#, python-format
+msgid "Ensure this value is greater than or equal to %(limit_value)s."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/core/validators.py:434
+#, python-format
+msgid "Ensure this value is a multiple of step size %(limit_value)s."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/core/validators.py:441
+#, python-format
+msgid ""
+"Ensure this value is a multiple of step size %(limit_value)s, starting from "
+"%(offset)s, e.g. %(offset)s, %(valid_value1)s, %(valid_value2)s, and so on."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/core/validators.py:473
+#, python-format
+msgid ""
+"Ensure this value has at least %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at least %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.11/site-packages/django/core/validators.py:491
+#, python-format
+msgid ""
+"Ensure this value has at most %(limit_value)d character (it has "
+"%(show_value)d)."
+msgid_plural ""
+"Ensure this value has at most %(limit_value)d characters (it has "
+"%(show_value)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.11/site-packages/django/core/validators.py:514
+#: venv/lib/python3.11/site-packages/django/forms/fields.py:366
+#: venv/lib/python3.11/site-packages/django/forms/fields.py:405
+msgid "Enter a number."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/core/validators.py:516
+#, python-format
+msgid "Ensure that there are no more than %(max)s digit in total."
+msgid_plural "Ensure that there are no more than %(max)s digits in total."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.11/site-packages/django/core/validators.py:521
+#, python-format
+msgid "Ensure that there are no more than %(max)s decimal place."
+msgid_plural "Ensure that there are no more than %(max)s decimal places."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.11/site-packages/django/core/validators.py:526
+#, python-format
+msgid ""
+"Ensure that there are no more than %(max)s digit before the decimal point."
+msgid_plural ""
+"Ensure that there are no more than %(max)s digits before the decimal point."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.11/site-packages/django/core/validators.py:597
+#, python-format
+msgid ""
+"File extension “%(extension)s” is not allowed. Allowed extensions are: "
+"%(allowed_extensions)s."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/core/validators.py:659
+msgid "Null characters are not allowed."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/base.py:1600
+#: venv/lib/python3.11/site-packages/django/forms/models.py:908
+msgid "and"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/base.py:1602
+#, python-format
+msgid "%(model_name)s with this %(field_labels)s already exists."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/constraints.py:22
+#, python-format
+msgid "Constraint “%(name)s” is violated."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:134
+#, python-format
+msgid "Value %(value)r is not a valid choice."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:135
+msgid "This field cannot be null."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:136
+msgid "This field cannot be blank."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:137
+#, python-format
+msgid "%(model_name)s with this %(field_label)s already exists."
+msgstr ""
+
+#. Translators: The 'lookup_type' is one of 'date', 'year' or
+#. 'month'. Eg: "Title must be unique for pub_date year"
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:141
+#, python-format
+msgid ""
+"%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:180
+#, python-format
+msgid "Field of type: %(field_type)s"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1162
+#, python-format
+msgid "“%(value)s” value must be either True or False."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1163
+#, python-format
+msgid "“%(value)s” value must be either True, False, or None."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1165
+msgid "Boolean (Either True or False)"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1215
+#, python-format
+msgid "String (up to %(max_length)s)"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1217
+msgid "String (unlimited)"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1326
+msgid "Comma-separated integers"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1427
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid date format. It must be in YYYY-MM-DD "
+"format."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1431
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1566
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (YYYY-MM-DD) but it is an invalid "
+"date."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1435
+msgid "Date (without time)"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1562
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in YYYY-MM-DD "
+"HH:MM[:ss[.uuuuuu]][TZ] format."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1570
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
+"[TZ]) but it is an invalid date/time."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1575
+msgid "Date (with time)"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1702
+#, python-format
+msgid "“%(value)s” value must be a decimal number."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1704
+msgid "Decimal number"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1864
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in [DD] "
+"[[HH:]MM:]ss[.uuuuuu] format."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1868
+msgid "Duration"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1920
+msgid "Email address"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:1945
+msgid "File path"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2023
+#, python-format
+msgid "“%(value)s” value must be a float."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2025
+msgid "Floating point number"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2065
+#, python-format
+msgid "“%(value)s” value must be an integer."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2067
+msgid "Integer"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2163
+msgid "Big (8 byte) integer"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2180
+msgid "Small integer"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2188
+msgid "IPv4 address"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2219
+msgid "IP address"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2310
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2311
+#, python-format
+msgid "“%(value)s” value must be either None, True or False."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2313
+msgid "Boolean (Either True, False or None)"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2364
+msgid "Positive big integer"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2379
+msgid "Positive integer"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2394
+msgid "Positive small integer"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2410
+#, python-format
+msgid "Slug (up to %(max_length)s)"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2446
+msgid "Text"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2526
+#, python-format
+msgid ""
+"“%(value)s” value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
+"format."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2530
+#, python-format
+msgid ""
+"“%(value)s” value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
+"invalid time."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2534
+msgid "Time"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2642
+msgid "URL"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2666
+msgid "Raw binary data"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2731
+#, python-format
+msgid "“%(value)s” is not a valid UUID."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/__init__.py:2733
+msgid "Universally unique identifier"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/files.py:244
+msgid "File"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/files.py:420
+msgid "Image"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/json.py:24
+msgid "A JSON object"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/json.py:26
+msgid "Value must be valid JSON."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/related.py:979
+#, python-format
+msgid "%(model)s instance with %(field)s %(value)r is not a valid choice."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/related.py:982
+msgid "Foreign Key (type determined by related field)"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/related.py:1276
+msgid "One-to-one relationship"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/related.py:1333
+#, python-format
+msgid "%(from)s-%(to)s relationship"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/related.py:1335
+#, python-format
+msgid "%(from)s-%(to)s relationships"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/db/models/fields/related.py:1383
+msgid "Many-to-many relationship"
+msgstr ""
+
+#. Translators: If found as last label character, these punctuation
+#. characters will prevent the default label_suffix to be appended to the label
+#: venv/lib/python3.11/site-packages/django/forms/boundfield.py:185
+msgid ":?.!"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/fields.py:95
+msgid "This field is required."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/fields.py:315
+msgid "Enter a whole number."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/fields.py:486
+#: venv/lib/python3.11/site-packages/django/forms/fields.py:1267
+msgid "Enter a valid date."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/fields.py:509
+#: venv/lib/python3.11/site-packages/django/forms/fields.py:1268
+msgid "Enter a valid time."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/fields.py:536
+msgid "Enter a valid date/time."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/fields.py:570
+msgid "Enter a valid duration."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/fields.py:571
+#, python-brace-format
+msgid "The number of days must be between {min_days} and {max_days}."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/fields.py:640
+msgid "No file was submitted. Check the encoding type on the form."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/fields.py:641
+msgid "No file was submitted."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/fields.py:642
+msgid "The submitted file is empty."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/fields.py:644
+#, python-format
+msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid_plural ""
+"Ensure this filename has at most %(max)d characters (it has %(length)d)."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.11/site-packages/django/forms/fields.py:649
+msgid "Please either submit a file or check the clear checkbox, not both."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/fields.py:717
+msgid ""
+"Upload a valid image. The file you uploaded was either not an image or a "
+"corrupted image."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/fields.py:889
+#: venv/lib/python3.11/site-packages/django/forms/fields.py:975
+#: venv/lib/python3.11/site-packages/django/forms/models.py:1592
+#, python-format
+msgid "Select a valid choice. %(value)s is not one of the available choices."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/fields.py:977
+#: venv/lib/python3.11/site-packages/django/forms/fields.py:1096
+#: venv/lib/python3.11/site-packages/django/forms/models.py:1590
+msgid "Enter a list of values."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/fields.py:1097
+msgid "Enter a complete value."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/fields.py:1339
+msgid "Enter a valid UUID."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/fields.py:1369
+msgid "Enter a valid JSON."
+msgstr ""
+
+#. Translators: This is the default suffix added to form field labels
+#: venv/lib/python3.11/site-packages/django/forms/forms.py:97
+msgid ":"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/forms.py:239
+#, python-format
+msgid "(Hidden field %(name)s) %(error)s"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/formsets.py:61
+#, python-format
+msgid ""
+"ManagementForm data is missing or has been tampered with. Missing fields: "
+"%(field_names)s. You may need to file a bug report if the issue persists."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/formsets.py:65
+#, python-format
+msgid "Please submit at most %(num)d form."
+msgid_plural "Please submit at most %(num)d forms."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.11/site-packages/django/forms/formsets.py:70
+#, python-format
+msgid "Please submit at least %(num)d form."
+msgid_plural "Please submit at least %(num)d forms."
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.11/site-packages/django/forms/formsets.py:484
+#: venv/lib/python3.11/site-packages/django/forms/formsets.py:491
+msgid "Order"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/formsets.py:499
+msgid "Delete"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/models.py:901
+#, python-format
+msgid "Please correct the duplicate data for %(field)s."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/models.py:906
+#, python-format
+msgid "Please correct the duplicate data for %(field)s, which must be unique."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/models.py:913
+#, python-format
+msgid ""
+"Please correct the duplicate data for %(field_name)s which must be unique "
+"for the %(lookup)s in %(date_field)s."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/models.py:922
+msgid "Please correct the duplicate values below."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/models.py:1359
+msgid "The inline value did not match the parent instance."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/models.py:1450
+msgid "Select a valid choice. That choice is not one of the available choices."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/models.py:1594
+#, python-format
+msgid "“%(pk)s” is not a valid value."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/utils.py:229
+#, python-format
+msgid ""
+"%(datetime)s couldn’t be interpreted in time zone %(current_timezone)s; it "
+"may be ambiguous or it may not exist."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/widgets.py:527
+msgid "Clear"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/widgets.py:528
+msgid "Currently"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/widgets.py:529
+msgid "Change"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/widgets.py:866
+msgid "Unknown"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/widgets.py:867
+msgid "Yes"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/forms/widgets.py:868
+msgid "No"
+msgstr ""
+
+#. Translators: Please do not add spaces around commas.
+#: venv/lib/python3.11/site-packages/django/template/defaultfilters.py:873
+msgid "yes,no,maybe"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/template/defaultfilters.py:903
+#: venv/lib/python3.11/site-packages/django/template/defaultfilters.py:920
+#, python-format
+msgid "%(size)d byte"
+msgid_plural "%(size)d bytes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.11/site-packages/django/template/defaultfilters.py:922
+#, python-format
+msgid "%s KB"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/template/defaultfilters.py:924
+#, python-format
+msgid "%s MB"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/template/defaultfilters.py:926
+#, python-format
+msgid "%s GB"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/template/defaultfilters.py:928
+#, python-format
+msgid "%s TB"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/template/defaultfilters.py:930
+#, python-format
+msgid "%s PB"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dateformat.py:74
+msgid "p.m."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dateformat.py:75
+msgid "a.m."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dateformat.py:80
+msgid "PM"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dateformat.py:81
+msgid "AM"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dateformat.py:153
+msgid "midnight"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dateformat.py:155
+msgid "noon"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:7
+msgid "Monday"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:8
+msgid "Tuesday"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:9
+msgid "Wednesday"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:10
+msgid "Thursday"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:11
+msgid "Friday"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:12
+msgid "Saturday"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:13
+msgid "Sunday"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:16
+msgid "Mon"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:17
+msgid "Tue"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:18
+msgid "Wed"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:19
+msgid "Thu"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:20
+msgid "Fri"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:21
+msgid "Sat"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:22
+msgid "Sun"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:25
+msgid "January"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:26
+msgid "February"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:27
+msgid "March"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:28
+msgid "April"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:29
+msgid "May"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:30
+msgid "June"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:31
+msgid "July"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:32
+msgid "August"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:33
+msgid "September"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:34
+msgid "October"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:35
+msgid "November"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:36
+msgid "December"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:39
+msgid "jan"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:40
+msgid "feb"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:41
+msgid "mar"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:42
+msgid "apr"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:43
+msgid "may"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:44
+msgid "jun"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:45
+msgid "jul"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:46
+msgid "aug"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:47
+msgid "sep"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:48
+msgid "oct"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:49
+msgid "nov"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:50
+msgid "dec"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:53
+msgctxt "abbrev. month"
+msgid "Jan."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:54
+msgctxt "abbrev. month"
+msgid "Feb."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:55
+msgctxt "abbrev. month"
+msgid "March"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:56
+msgctxt "abbrev. month"
+msgid "April"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:57
+msgctxt "abbrev. month"
+msgid "May"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:58
+msgctxt "abbrev. month"
+msgid "June"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:59
+msgctxt "abbrev. month"
+msgid "July"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:60
+msgctxt "abbrev. month"
+msgid "Aug."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:61
+msgctxt "abbrev. month"
+msgid "Sept."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:62
+msgctxt "abbrev. month"
+msgid "Oct."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:63
+msgctxt "abbrev. month"
+msgid "Nov."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:64
+msgctxt "abbrev. month"
+msgid "Dec."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:67
+msgctxt "alt. month"
+msgid "January"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:68
+msgctxt "alt. month"
+msgid "February"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:69
+msgctxt "alt. month"
+msgid "March"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:70
+msgctxt "alt. month"
+msgid "April"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:71
+msgctxt "alt. month"
+msgid "May"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:72
+msgctxt "alt. month"
+msgid "June"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:73
+msgctxt "alt. month"
+msgid "July"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:74
+msgctxt "alt. month"
+msgid "August"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:75
+msgctxt "alt. month"
+msgid "September"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:76
+msgctxt "alt. month"
+msgid "October"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:77
+msgctxt "alt. month"
+msgid "November"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/dates.py:78
+msgctxt "alt. month"
+msgid "December"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/ipv6.py:20
+msgid "This is not a valid IPv6 address."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/text.py:76
+#, python-format
+msgctxt "String to return when truncating text"
+msgid "%(truncated_text)s…"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/text.py:287
+msgid "or"
+msgstr ""
+
+#. Translators: This string is used as a separator between list elements
+#: venv/lib/python3.11/site-packages/django/utils/text.py:306
+#: venv/lib/python3.11/site-packages/django/utils/timesince.py:135
+msgid ", "
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/utils/timesince.py:8
+#, python-format
+msgid "%(num)d year"
+msgid_plural "%(num)d years"
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.11/site-packages/django/utils/timesince.py:9
+#, python-format
+msgid "%(num)d month"
+msgid_plural "%(num)d months"
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.11/site-packages/django/utils/timesince.py:10
+#, python-format
+msgid "%(num)d week"
+msgid_plural "%(num)d weeks"
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.11/site-packages/django/utils/timesince.py:11
+#, python-format
+msgid "%(num)d day"
+msgid_plural "%(num)d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.11/site-packages/django/utils/timesince.py:12
+#, python-format
+msgid "%(num)d hour"
+msgid_plural "%(num)d hours"
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.11/site-packages/django/utils/timesince.py:13
+#, python-format
+msgid "%(num)d minute"
+msgid_plural "%(num)d minutes"
+msgstr[0] ""
+msgstr[1] ""
+
+#: venv/lib/python3.11/site-packages/django/views/csrf.py:29
+msgid "Forbidden"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/views/csrf.py:30
+msgid "CSRF verification failed. Request aborted."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/views/csrf.py:34
+msgid ""
+"You are seeing this message because this HTTPS site requires a “Referer "
+"header” to be sent by your web browser, but none was sent. This header is "
+"required for security reasons, to ensure that your browser is not being "
+"hijacked by third parties."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/views/csrf.py:40
+msgid ""
+"If you have configured your browser to disable “Referer” headers, please re-"
+"enable them, at least for this site, or for HTTPS connections, or for “same-"
+"origin” requests."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/views/csrf.py:45
+msgid ""
+"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
+"including the “Referrer-Policy: no-referrer” header, please remove them. The "
+"CSRF protection requires the “Referer” header to do strict referer checking. "
+"If you’re concerned about privacy, use alternatives like <a "
+"rel=\"noreferrer\" …> for links to third-party sites."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/views/csrf.py:54
+msgid ""
+"You are seeing this message because this site requires a CSRF cookie when "
+"submitting forms. This cookie is required for security reasons, to ensure "
+"that your browser is not being hijacked by third parties."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/views/csrf.py:60
+msgid ""
+"If you have configured your browser to disable cookies, please re-enable "
+"them, at least for this site, or for “same-origin” requests."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/views/csrf.py:66
+msgid "More information is available with DEBUG=True."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/views/generic/dates.py:44
+msgid "No year specified"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/views/generic/dates.py:64
+#: venv/lib/python3.11/site-packages/django/views/generic/dates.py:115
+#: venv/lib/python3.11/site-packages/django/views/generic/dates.py:214
+msgid "Date out of range"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/views/generic/dates.py:94
+msgid "No month specified"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/views/generic/dates.py:147
+msgid "No day specified"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/views/generic/dates.py:194
+msgid "No week specified"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/views/generic/dates.py:353
+#: venv/lib/python3.11/site-packages/django/views/generic/dates.py:384
+#, python-format
+msgid "No %(verbose_name_plural)s available"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/views/generic/dates.py:680
+#, python-format
+msgid ""
+"Future %(verbose_name_plural)s not available because "
+"%(class_name)s.allow_future is False."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/views/generic/dates.py:720
+#, python-format
+msgid "Invalid date string “%(datestr)s” given format “%(format)s”"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/views/generic/detail.py:56
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/views/generic/list.py:70
+msgid "Page is not “last”, nor can it be converted to an int."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/views/generic/list.py:77
+#, python-format
+msgid "Invalid page (%(page_number)s): %(message)s"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/views/generic/list.py:173
+#, python-format
+msgid "Empty list and “%(class_name)s.allow_empty” is False."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/views/static.py:49
+msgid "Directory indexes are not allowed here."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/views/static.py:51
+#, python-format
+msgid "“%(path)s” does not exist"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/views/static.py:68
+#: venv/lib/python3.11/site-packages/django/views/templates/directory_index.html:8
+#: venv/lib/python3.11/site-packages/django/views/templates/directory_index.html:11
+#, python-format
+msgid "Index of %(directory)s"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/views/templates/default_urlconf.html:7
+#: venv/lib/python3.11/site-packages/django/views/templates/default_urlconf.html:204
+msgid "The install worked successfully! Congratulations!"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/views/templates/default_urlconf.html:206
+#, python-format
+msgid ""
+"View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
+"target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/views/templates/default_urlconf.html:208
+#, python-format
+msgid ""
+"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
+"%(version)s/ref/settings/#debug\" target=\"_blank\" "
+"rel=\"noopener\">DEBUG=True</a> is in your settings file and you have not "
+"configured any URLs."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/views/templates/default_urlconf.html:217
+msgid "Django Documentation"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/views/templates/default_urlconf.html:218
+msgid "Topics, references, &amp; how-to’s"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/views/templates/default_urlconf.html:226
+msgid "Tutorial: A Polling App"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/views/templates/default_urlconf.html:227
+msgid "Get started with Django"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/views/templates/default_urlconf.html:235
+msgid "Django Community"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/django/views/templates/default_urlconf.html:236
+msgid "Connect, get help, or contribute"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/modeltranslation/tests/models.py:14
+#: venv/lib/python3.11/site-packages/modeltranslation/tests/models.py:54
+#: venv/lib/python3.11/site-packages/modeltranslation/tests/models.py:62
+#: venv/lib/python3.11/site-packages/modeltranslation/tests/models.py:72
+#: venv/lib/python3.11/site-packages/modeltranslation/tests/models.py:82
+#: venv/lib/python3.11/site-packages/modeltranslation/tests/models.py:86
+#: venv/lib/python3.11/site-packages/modeltranslation/tests/models.py:118
+#: venv/lib/python3.11/site-packages/modeltranslation/tests/models.py:137
+#: venv/lib/python3.11/site-packages/modeltranslation/tests/models.py:364
+#: venv/lib/python3.11/site-packages/modeltranslation/tests/models.py:369
+#: venv/lib/python3.11/site-packages/modeltranslation/tests/models.py:379
+#: venv/lib/python3.11/site-packages/modeltranslation/tests/models.py:399
+#: venv/lib/python3.11/site-packages/modeltranslation/tests/models.py:416
+#: venv/lib/python3.11/site-packages/modeltranslation/tests/models.py:435
+#: venv/lib/python3.11/site-packages/modeltranslation/tests/models.py:441
+#: venv/lib/python3.11/site-packages/modeltranslation/tests/models.py:458
+#: venv/lib/python3.11/site-packages/modeltranslation/tests/models.py:470
+#: venv/lib/python3.11/site-packages/modeltranslation/tests/models.py:478
+msgid "title"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/modeltranslation/tests/models.py:18
+msgid "password"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/modeltranslation/tests/models.py:245
+#: venv/lib/python3.11/site-packages/modeltranslation/tests/models.py:264
+msgid "title a"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/modeltranslation/tests/models.py:249
+#: venv/lib/python3.11/site-packages/modeltranslation/tests/models.py:275
+msgid "title b"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/modeltranslation/tests/models.py:253
+msgid "title c"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/modeltranslation/tests/models.py:257
+msgid "title d"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/modeltranslation/tests/models.py:380
+msgid "visits"
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/modeltranslation/tests/translation.py:62
+msgid "Sorry, translation is not available."
+msgstr ""
+
+#: venv/lib/python3.11/site-packages/modeltranslation/widgets.py:32
+msgid "None"
+msgstr ""

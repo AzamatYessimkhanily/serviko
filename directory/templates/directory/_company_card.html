@@ -213,11 +213,11 @@
     }
 }
 </style>
-
+{% load i18n %}
 <div class="company-card {% if company.is_verified or company.is_popular %}premium{% endif %}">
     {% if company.is_verified or company.is_popular %}
         <div class="premium-badge">
-            <i class="fa-solid fa-crown"></i> Премиум
+            <i class="fa-solid fa-crown"></i> {% trans "Премиум" %}
         </div>
     {% endif %}
 
@@ -236,7 +236,7 @@
             <button 
                 class="favorite-btn-card {% if user in company.favorited_by.all %}favorited{% endif %}"
                 data-url="{% url 'toggle-favorite' company.id %}"
-                title="В избранное">
+                title="{% trans 'В избранное' %}">
                 {% if user in company.favorited_by.all %}
                     <i class="fa-solid fa-star"></i>
                 {% else %}
@@ -261,7 +261,7 @@
         </div>
 
         <p class="company-description">
-            {{ company.short_description|truncatewords:18|default:"Описание компании отсутствует" }}
+            {{ company.short_description|truncatewords:18|default:_("Описание компании отсутствует") }}
         </p>
 
         {% if company.tag_list %}
@@ -274,6 +274,6 @@
     </div>
 
     <div class="company-card-footer">
-        <a href="{% url 'company-detail' company.id %}" class="btn-detail">Подробнее</a>
+        <a href="{% url 'company-detail' company.id %}" class="btn-detail">{% trans "Подробнее" %}</a>
     </div>
 </div>

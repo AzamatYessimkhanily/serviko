@@ -1,4 +1,5 @@
 {% extends 'directory/base.html' %}
+{% load i18n %}
 
 {% block title %}{{ company.name }} | Serviko{% endblock %}
 
@@ -325,8 +326,7 @@
         border: 1px solid var(--border);
         border-radius: var(--r-lg);
         padding: var(--s6);
-        position: sticky;
-        top: 80px;
+
     }
 
     .sidebar-card h3 {
@@ -910,9 +910,13 @@
 
 {% block content %}
 <div class="detail-container">
+
+{% url 'login' as login_base %}
+{% url 'register' as register_base %}
+{% with login_url=login_base|add:'?next='|add:request.get_full_path register_url=register_base %}
     <!-- Back Link -->
     <a href="{% url 'company-list' %}" class="back-link">
-        <i class="fa-solid fa-arrow-left"></i> Назад к списку
+        <i class="fa-solid fa-arrow-left"></i> {% trans "Назад к списку" %}
     </a>
 
     <!-- Hero Section -->
@@ -938,17 +942,17 @@
                 <div class="hero-badges">
                     {% if company.is_verified %}
                         <span class="badge badge-verified">
-                            <i class="fa-solid fa-circle-check"></i> Верифицирована
+                            <i class="fa-solid fa-circle-check"></i> {% trans "Верифицирована" %}
                         </span>
                     {% endif %}
                     {% if company.is_popular %}
                         <span class="badge badge-popular">
-                            <i class="fa-solid fa-star"></i> Популярна
+                            <i class="fa-solid fa-star"></i> {% trans "Популярна" %}
                         </span>
                     {% endif %}
                     {% if company.has_fast_response %}
                         <span class="badge badge-feature">
-                            <i class="fa-solid fa-bolt"></i> Быстрый ответ
+                            <i class="fa-solid fa-bolt"></i> {% trans "Быстрый ответ" %}
                         </span>
                     {% endif %}
                 </div>
@@ -964,7 +968,7 @@
                     {% if company.founding_year %}
                         <div class="meta-item">
                             <i class="fa-solid fa-calendar"></i>
-                            Год основания: {{ company.founding_year }} год
+                            {% blocktrans with year=company.founding_year %}Год основания: {{ year }} год{% endblocktrans %}
                         </div>
                     {% endif %}
                     {% if average_rating %}
@@ -979,16 +983,16 @@
             <!-- Actions -->
             <div class="hero-actions">
                 <a href="#request" class="btn-primary">
-                    <i class="fa-solid fa-paper-plane"></i> Отправить заявку
+                    <i class="fa-solid fa-paper-plane"></i> {% trans "Отправить заявку" %}
                 </a>
                 {% if user.is_authenticated %}
                     <button 
                         class="btn-secondary favorite-btn {% if user in company.favorited_by.all %}favorited{% endif %}"
                         data-url="{% url 'toggle-favorite' company.id %}">
                         {% if user in company.favorited_by.all %}
-                            <i class="fa-solid fa-star"></i> В избранном
+                            <i class="fa-solid fa-star"></i> {% trans "В избранном" %}
                         {% else %}
-                            <i class="fa-regular fa-star"></i> В избранное
+                            <i class="fa-regular fa-star"></i> {% trans "В избранное" %}
                         {% endif %}
                     </button>
                 {% endif %}
@@ -999,21 +1003,21 @@
     <!-- Tabs Navigation -->
     <div class="tabs-nav">
         <button class="tab-btn active" data-tab="overview">
-            <i class="fa-solid fa-circle-info"></i> Обзор
+            <i class="fa-solid fa-circle-info"></i> {% trans "Обзор" %}
         </button>
         <button class="tab-btn" data-tab="services">
-            <i class="fa-solid fa-list"></i> Услуги
+            <i class="fa-solid fa-list"></i> {% trans "Услуги" %}
         </button>
         {% if company.portfolio_items.all %}
             <button class="tab-btn" data-tab="portfolio">
-                <i class="fa-solid fa-images"></i> Портфолио
+                <i class="fa-solid fa-images"></i> {% trans "Портфолио" %}
             </button>
         {% endif %}
         <button class="tab-btn" data-tab="reviews">
-            <i class="fa-solid fa-comments"></i> Отзывы ({{ reviews|length }})
+            <i class="fa-solid fa-comments"></i> {% blocktrans with count=reviews|length %}Отзывы ({{ count }}){% endblocktrans %}
         </button>
         <button class="tab-btn" data-tab="contacts">
-            <i class="fa-solid fa-address-card"></i>Связаться с нами
+            <i class="fa-solid fa-address-card"></i> {% trans "Связаться с нами" %}
         </button>
     </div>
 
@@ -1023,14 +1027,14 @@
             <div>
                 <!-- Description -->
                 <div class="section">
-                    <h2 class="section-title">О компании</h2>
+                    <h2 class="section-title">{% trans "О компании" %}</h2>
                     <div class="section-content">{{ company.description|linebreaks }}</div>
                 </div>
 
                 <!-- Tags -->
                 {% if company.tags %}
                     <div class="section">
-                        <h2 class="section-title">Специализация</h2>
+                        <h2 class="section-title">{% trans "Специализация" %}</h2>
                         <div class="tags-grid">
                             {% for tag in company.tags.split %}
                                 <span class="tag">{{ tag|cut:"," }}</span>
@@ -1043,11 +1047,11 @@
 <!-- Sidebar -->
 <aside>
   <div class="sidebar-card">
-    <h3>Информация</h3>
+    <h3>{% trans "Информация" %}</h3>
     <ul class="info-list">
       {% if company.categories.all %}
         <li class="info-item">
-          <div class="info-label">Категории</div>
+          <div class="info-label">{% trans "Категории" %}</div>
           <div class="info-value">
             {% for category in company.categories.all %}
               {{ category.name }}{% if not forloop.last %}, {% endif %}
@@ -1058,7 +1062,7 @@
 
       {% if company.phone_number %}
         <li class="info-item">
-          <div class="info-label">Телефон</div>
+          <div class="info-label">{% trans "Телефон" %}</div>
           <div class="info-value {% if not user.is_authenticated %}blurred{% endif %}">
             <a href="tel:{{ company.phone_number }}">{{ company.phone_number }}</a>
           </div>
@@ -1067,7 +1071,7 @@
 
       {% if company.email %}
         <li class="info-item">
-          <div class="info-label">Email</div>
+          <div class="info-label">{% trans "Email" %}</div>
           <div class="info-value {% if not user.is_authenticated %}blurred{% endif %}">
             <a href="mailto:{{ company.email }}">{{ company.email }}</a>
           </div>
@@ -1076,9 +1080,9 @@
 
       {% if company.website %}
         <li class="info-item">
-          <div class="info-label">Сайт</div>
+          <div class="info-label">{% trans "Сайт" %}</div>
           <div class="info-value {% if not user.is_authenticated %}blurred{% endif %}">
-            <a href="{{ company.website }}" target="_blank" rel="noopener">Перейти</a>
+            <a href="{{ company.website }}" target="_blank" rel="noopener">{% trans "Перейти" %}</a>
           </div>
         </li>
       {% endif %}
@@ -1087,35 +1091,42 @@
     {% if company.instagram_url or company.facebook_url or company.whatsapp_contact or company.telegram_contact %}
       <div class="social-links {% if not user.is_authenticated %}blurred{% endif %}">
         {% if company.instagram_url %}
-          <a href="{{ company.instagram_url }}" target="_blank" class="social-link" title="Instagram" rel="noopener">
+          <a href="{{ company.instagram_url }}" target="_blank" class="social-link" title="{% trans 'Instagram' %}" rel="noopener">
             <i class="fa-brands fa-instagram"></i>
           </a>
         {% endif %}
         {% if company.facebook_url %}
-          <a href="{{ company.facebook_url }}" target="_blank" class="social-link" title="Facebook" rel="noopener">
+          <a href="{{ company.facebook_url }}" target="_blank" class="social-link" title="{% trans 'Facebook' %}" rel="noopener">
             <i class="fa-brands fa-facebook-f"></i>
           </a>
         {% endif %}
         {% if company.whatsapp_contact %}
-          <a href="https://wa.me/{{ company.whatsapp_contact }}" target="_blank" class="social-link" title="WhatsApp" rel="noopener">
+          <a href="https://wa.me/{{ company.whatsapp_contact }}" target="_blank" class="social-link" title="{% trans 'WhatsApp' %}" rel="noopener">
             <i class="fa-brands fa-whatsapp"></i>
           </a>
         {% endif %}
         {% if company.telegram_contact %}
-          <a href="https://t.me/{{ company.telegram_contact }}" target="_blank" class="social-link" title="Telegram" rel="noopener">
+          <a href="https://t.me/{{ company.telegram_contact }}" target="_blank" class="social-link" title="{% trans 'Telegram' %}" rel="noopener">
             <i class="fa-brands fa-telegram"></i>
           </a>
         {% endif %}
       </div>
     {% endif %}
 
-    {% if not user.is_authenticated %}
-      <div class="locked-note">
-        <i class="fa-solid fa-lock"></i>
-        Контактные данные скрыты. <a href="{% url 'login' %}?next={{ request.path }}">Войдите</a> или
-        <a href="{% url 'register' %}">зарегистрируйтесь</a>, чтобы увидеть номер, email, сайт и соцсети.
-      </div>
-    {% endif %}
+        {% if not user.is_authenticated %}
+        <div class="locked-note">
+            <i class="fa-solid fa-lock"></i>
+            {% url 'login' as login_base %}
+            {% with login_url=login_base|add:'?next='|add:request.path %}
+            {% url 'register' as register_url %}
+            {% blocktrans trimmed with login_url=login_url register_url=register_url %}
+            Контактные данные скрыты. <a href="{{ login_url }}">Войдите</a> или
+            <a href="{{ register_url }}">зарегистрируйтесь</a>, чтобы увидеть номер, email, сайт и соцсети.
+            {% endblocktrans %}
+            {% endwith %}
+
+        </div>
+        {% endif %}
   </div>
 </aside>
         </div>
@@ -1124,7 +1135,7 @@
     <!-- Tab: Services -->
     <div id="services" class="tab-content">
         <div class="section">
-            <h2 class="section-title">Наши услуги</h2>
+            <h2 class="section-title">{% trans "Наши услуги" %}</h2>
             {% if company.services.all %}
                 <div class="services-grid">
                     {% for service in company.services.all %}
@@ -1144,7 +1155,7 @@
             {% else %}
                 <div class="empty-state">
                     <div class="empty-icon"><i class="fa-solid fa-list"></i></div>
-                    <p class="empty-text">Список услуг пока не заполнен</p>
+                    <p class="empty-text">{% trans "Список услуг пока не заполнен" %}</p>
                 </div>
             {% endif %}
         </div>
@@ -1154,7 +1165,7 @@
     {% if company.portfolio_items.all %}
         <div id="portfolio" class="tab-content">
             <div class="section">
-                <h2 class="section-title">Наши работы</h2>
+                <h2 class="section-title">{% trans "Наши работы" %}</h2>
                 <div class="portfolio-grid">
                     {% for item in company.portfolio_items.all %}
                         <div class="portfolio-item">
@@ -1172,7 +1183,7 @@
     <!-- Tab: Reviews -->
     <div id="reviews" class="tab-content">
         <div class="section">
-            <h2 class="section-title">Отзывы клиентов</h2>
+            <h2 class="section-title">{% trans "Отзывы клиентов" %}</h2>
 
             {% if average_rating %}
                 <div class="rating-header">
@@ -1186,42 +1197,47 @@
                             {% endif %}
                         {% endfor %}
                     </div>
-                    <div class="rating-text">На основе {{ reviews|length }} отзывов</div>
+                    <div class="rating-text">
+                        {% blocktrans count count=reviews|length %}
+                            На основе {{ count }} отзыва
+                        {% plural %}
+                            На основе {{ count }} отзывов
+                        {% endblocktrans %}
+                    </div>
                 </div>
             {% endif %}
 
             <!-- Review Form -->
-            <div class="review-form"> {# Или ваш класс для контейнера формы #}
-                <h4>Оставить отзыв</h4>
+            <div class="review-form">
+                <h4>{% trans "Оставить отзыв" %}</h4>
                 {% if user.is_authenticated %}
                     {% if can_leave_review %}
-                        {# Если пользователь может оставить отзыв, показываем форму #}
                         <form method="POST">
                             {% csrf_token %}
                             {{ review_form.as_p }}
-                            <button type="submit" name="submit_review" class="btn-primary">Отправить отзыв</button> {# Используйте ваш класс для кнопки #}
+                            <button type="submit" name="submit_review" class="btn-primary">{% trans "Отправить отзыв" %}</button>
                         </form>
                     {% else %}
-                        {# Если оставить отзыв нельзя, показываем причину #}
-                        <div class="info-message"> {# Используйте ваш класс для информационных сообщений #}
+                        <div class="info-message">
                             {% if has_already_reviewed %}
-                                <p>Вы уже оставили отзыв для этой компании. Спасибо!</p>
+                                <p>{% trans "Вы уже оставили отзыв для этой компании. Спасибо!" %}</p>
                             {% else %}
-                                {# Сообщение, если не было заявки #}
                                 <p>
-                                    Чтобы оставить отзыв, сначала необходимо отправить заявку в эту компанию. <br>
-                                    Это помогает нам убедиться в актуальности и достоверности отзывов.
+                                    {% trans "Чтобы оставить отзыв, сначала необходимо отправить заявку в эту компанию." %} <br>
+                                    {% trans "Это помогает нам убедиться в актуальности и достоверности отзывов." %}
                                 </p>
-                                {# Можно добавить ссылку на форму заявки, если она не рядом #}
-                                {# <a href="#requestForm" class="btn-secondary">Отправить заявку</a> #}
                             {% endif %}
                         </div>
                     {% endif %}
                 {% else %}
-                    {# Если пользователь не вошел в систему #}
-                    <div class="info-message">
-                        <p>Для того чтобы оставить отзыв, пожалуйста, <a href="{% url 'login' %}?next={{ request.path }}">войдите в свой аккаунт</a> или <a href="{% url 'register' %}">зарегистрируйтесь</a>.</p>
-                    </div>
+                <div class="info-message">
+                <p>
+                    {% blocktrans trimmed with login_url=login_url register_url=register_url %}
+                    Для того чтобы оставить отзыв, пожалуйста, <a href="{{ login_url }}">войдите в свой аккаунт</a> или
+                    <a href="{{ register_url }}">зарегистрируйтесь</a>.
+                    {% endblocktrans %}
+                </p>
+                </div>
                 {% endif %}
             </div>
 
@@ -1233,7 +1249,7 @@
                             <div class="review-avatar">
                                 <img
                                     src="{{ review.user.userprofile.avatar.url }}"
-                                    alt="Аватар"
+                                    alt="{% trans 'Аватар' %}"
                                 >
                             </div>
                             <div>
@@ -1258,9 +1274,13 @@
                         <div class="review-content">{{ review.comment|linebreaks }}</div>
                         
                         {% if review.user == user %}
-                            <form action="{% url 'delete-review' review.id %}" method="POST" onsubmit="return confirm('Вы уверены, что хотите удалить этот отзыв?');" style="display: inline;">
+                            {% trans "Вы уверены, что хотите удалить этот отзыв?" as delete_confirm %}
+                            <form action="{% url 'delete-review' review.id %}"
+                                method="POST"
+                                onsubmit="return confirm('{{ delete_confirm|escapejs }}');"
+                                style="display: inline;">
                                 {% csrf_token %}
-                                <button type="submit" class="review-delete-inline" title="Удалить отзыв">
+                                <button type="submit" class="review-delete-inline" title="{% trans 'Удалить отзыв' %}">
                                     <i class="fa-solid fa-trash"></i>
                                 </button>
                             </form>
@@ -1270,7 +1290,7 @@
                 {% empty %}
                 <div class="empty-state">
                     <div class="empty-icon"><i class="fa-solid fa-comments"></i></div>
-                    <p class="empty-text">Для этой компании еще нет отзывов. Станьте первым!</p>
+                    <p class="empty-text">{% trans "Для этой компании еще нет отзывов. Станьте первым!" %}</p>
                 </div>
                 {% endfor %}
         </div>
@@ -1282,21 +1302,22 @@
             <div>
                 <!-- Contact Form -->
                 <div class="section">
-                    <h2 class="section-title">Отправить заявку</h2>
+                    <h2 class="section-title">{% trans "Отправить заявку" %}</h2>
                     <div id="request">
                     {% if user.is_authenticated %}
                         <form method="POST" enctype="multipart/form-data" class="review-form">
                             {% csrf_token %}
                             {{ request_form.as_p }}
-                            <button type="submit" name="submit_request" class="btn-primary">Отправить</button>
+                            <button type="submit" name="submit_request" class="btn-primary">{% trans "Отправить" %}</button>
                         </form>
                     {% else %}
-                        <div class="empty-state">
-                            <p class="empty-text">
-                                <a href="{% url 'login' %}?next={{ request.path }}">Войдите</a> или 
-                                <a href="{% url 'register' %}">зарегистрируйтесь</a>, чтобы отправить заявку.
-                            </p>
-                        </div>
+                    <div class="empty-state">
+                    <p class="empty-text">
+                        {% blocktrans trimmed with login_url=login_url register_url=register_url %}
+                        <a href="{{ login_url }}">Войдите</a> или <a href="{{ register_url }}">зарегистрируйтесь</a>, чтобы отправить заявку.
+                        {% endblocktrans %}
+                    </p>
+                    </div>
                     {% endif %}
                     </div>
                 </div>
@@ -1306,34 +1327,34 @@
             <aside>
             {% if user.is_authenticated %}
                 <div class="sidebar-card">
-                <h3>Контактная информация</h3>
+                <h3>{% trans "Контактная информация" %}</h3>
                 <ul class="info-list">
-                    <li class="info-item"><div class="info-label">Адрес</div><div class="info-value">{{ company.address }}</div></li>
-                    <li class="info-item"><div class="info-label">График работы</div><div class="info-value">{{ company.working_hours }}</div></li>
-                    <li class="info-item"><div class="info-label">Телефон</div><div class="info-value"><a href="tel:{{ company.phone_number }}">{{ company.phone_number }}</a></div></li>
-                    <li class="info-item"><div class="info-label">Email</div><div class="info-value"><a href="mailto:{{ company.email }}">{{ company.email }}</a></div></li>
+                    <li class="info-item"><div class="info-label">{% trans "Адрес" %}</div><div class="info-value">{{ company.address }}</div></li>
+                    <li class="info-item"><div class="info-label">{% trans "График работы" %}</div><div class="info-value">{{ company.working_hours }}</div></li>
+                    <li class="info-item"><div class="info-label">{% trans "Телефон" %}</div><div class="info-value"><a href="tel:{{ company.phone_number }}">{{ company.phone_number }}</a></div></li>
+                    <li class="info-item"><div class="info-label">{% trans "Email" %}</div><div class="info-value"><a href="mailto:{{ company.email }}">{{ company.email }}</a></div></li>
                 </ul>
                 </div>
             {% else %}
                 <div class="sidebar-card lock-aside">
                 <div class="locked">
                     <div class="locked-inner">
-                    <h3 style="padding: var(--s6) var(--s6) 0;">Контактная информация</h3>
+                    <h3 style="padding: var(--s6) var(--s6) 0;">{% trans "Контактная информация" %}</h3>
                     <ul class="info-list" style="padding: 0 var(--s6) var(--s6); margin:0;">
-                        <li class="info-item"><div class="info-label">Адрес</div><div class="info-value"><span class="masked">*********</span></div></li>
-                        <li class="info-item"><div class="info-label">График работы</div><div class="info-value"><span class="masked">**:**–**:**</span></div></li>
-                        <li class="info-item"><div class="info-label">Телефон</div><div class="info-value"><span class="masked">+7 (***) ***-**-**</span></div></li>
-                        <li class="info-item"><div class="info-label">Email</div><div class="info-value"><span class="masked">****@****.**</span></div></li>
+                        <li class="info-item"><div class="info-label">{% trans "Адрес" %}</div><div class="info-value"><span class="masked">*********</span></div></li>
+                        <li class="info-item"><div class="info-label">{% trans "График работы" %}</div><div class="info-value"><span class="masked">**:**–**:**</span></div></li>
+                        <li class="info-item"><div class="info-label">{% trans "Телефон" %}</div><div class="info-value"><span class="masked">+7 (***) ***-**-**</span></div></li>
+                        <li class="info-item"><div class="info-label">{% trans "Email" %}</div><div class="info-value"><span class="masked">****@****.**</span></div></li>
                     </ul>
                     </div>
 
                     <div class="locked-overlay">
                     <div class="locked-panel">
-                        <div class="locked-title"><i class="fa-solid fa-lock"></i> Контакты доступны после входа</div>
-                        <div class="locked-text">Войдите, чтобы связаться с компанией напрямую.</div>
+                        <div class="locked-title"><i class="fa-solid fa-lock"></i> {% trans "Контакты доступны после входа" %}</div>
+                        <div class="locked-text">{% trans "Войдите, чтобы связаться с компанией напрямую." %}</div>
                         <div class="locked-actions">
-                        <a class="locked-btn primary" href="{% url 'login' %}?next={{ request.path }}"><i class="fa-solid fa-right-to-bracket"></i> Войти</a>
-                        <a class="locked-btn" href="{% url 'register' %}"><i class="fa-solid fa-user-plus"></i> Регистрация</a>
+                        <a class="locked-btn primary" href="{% url 'login' %}?next={{ request.path }}"><i class="fa-solid fa-right-to-bracket"></i> {% trans "Войти" %}</a>
+                        <a class="locked-btn" href="{% url 'register' %}"><i class="fa-solid fa-user-plus"></i> {% trans "Регистрация" %}</a>
                         </div>
                     </div>
                     </div>
@@ -1341,10 +1362,9 @@
                 </div>
             {% endif %}
 
-            {# Сертификаты — оставляем как было #}
             {% if company.certificates.all %}
                 <div class="sidebar-card" style="margin-top: var(--s6);">
-                <h3>Сертификаты</h3>
+                <h3>{% trans "Сертификаты" %}</h3>
                 <div class="certificates-list">
                     {% for certificate in company.certificates.all %}
                     <div class="certificate-item">
@@ -1360,6 +1380,7 @@
             </aside>
         </div>
     </div>
+    {% endwith %}
 </div>
 
 <script>

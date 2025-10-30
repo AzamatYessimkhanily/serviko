@@ -1,4 +1,5 @@
 {% extends 'directory/base.html' %}
+{% load i18n %}
 
 {% block title %}Каталог компаний | Serviko{% endblock %}
 
@@ -618,8 +619,8 @@
 <!-- Catalog Header -->
 <div class="catalog-header">
     <div class="catalog-header-content">
-        <h1 class="page-title">Каталог компаний</h1>
-        <p class="page-subtitle">Найдите лучших исполнителей для вашего проекта</p>
+        <h1 class="page-title">{% trans "Каталог компаний" %}</h1>
+        <p class="page-subtitle">{% trans "Найдите лучших исполнителей для вашего проекта" %}</p>
 
         <!-- Search Bar -->
         <form method="GET" action="{% url 'company-list' %}" class="search-bar" id="searchForm">
@@ -628,7 +629,7 @@
                     type="text" 
                     name="q" 
                     value="{{ search_query }}" 
-                    placeholder="Поиск компаний, услуг, категорий..."
+                    placeholder="{% trans 'Поиск компаний, услуг, категорий...' %}"
                     id="searchInput"
                     class="search-input"
                     autocomplete="off"
@@ -636,7 +637,7 @@
                 <div class="autocomplete-results" id="autocompleteResults"></div>
             </div>
             <button type="submit" class="search-button">
-                <i class="fa-solid fa-magnifying-glass"></i> Найти
+                <i class="fa-solid fa-magnifying-glass"></i> {% trans "Найти" %}
             </button>
         </form>
     </div>
@@ -646,7 +647,7 @@
 <div class="catalog-container">
     <!-- Mobile Filter Toggle -->
     <button class="mobile-filter-toggle" id="mobileFilterToggle">
-        <i class="fa-solid fa-filter"></i> Фильтры
+        <i class="fa-solid fa-filter"></i> {% trans "Фильтры" %}
     </button>
 
     <div class="content-layout">
@@ -658,9 +659,9 @@
 
                 <!-- Filters Header -->
                 <div class="filters-header">
-                    <h3 class="filters-title">Фильтры</h3>
+                    <h3 class="filters-title">{% trans "Фильтры" %}</h3>
                     <button type="button" class="filters-reset" id="clearAllBtn">
-                        Очистить
+                        {% trans "Очистить" %}
                     </button>
                 </div>
 
@@ -668,7 +669,7 @@
                 <div class="filters-body">
                     <!-- Categories -->
                     <div class="filter-group" id="categoriesGroup">
-                    <h4 class="filter-group-title">Категории</h4>
+                    <h4 class="filter-group-title">{% trans "Категории" %}</h4>
 
                     {# первые 5 #}
                     {% for category in all_categories|slice:":5" %}
@@ -708,14 +709,14 @@
                                 id="toggleCategoriesBtn"
                                 data-expanded="false"
                                 style="margin-top: var(--s3);">
-                        Показать все категории
+                        {% trans "Показать все категории" %}
                         </button>
                     {% endif %}
                     </div>
 
                     {% if available_cities %}
                     <div class="filter-group" id="citiesGroup">
-                    <h4 class="filter-group-title">Города</h4>
+                    <h4 class="filter-group-title">{% trans "Города" %}</h4>
 
                     {# первые 5 #}
                     {% for city in available_cities|slice:":5" %}
@@ -753,7 +754,7 @@
                                 id="toggleCitiesBtn"
                                 data-expanded="false"
                                 style="margin-top: var(--s3);">
-                        Показать все города
+                        {% trans "Показать все города" %}
                         </button>
                     {% endif %}
                     </div>
@@ -761,10 +762,12 @@
 
                     <!-- Rating -->
                     <div class="filter-group">
-                        <h4 class="filter-group-title">Минимальный рейтинг</h4>
+                        <h4 class="filter-group-title">{% trans "Минимальный рейтинг" %}</h4>
                         <div class="rating-slider-wrapper">
                             <div class="rating-value">
-                                <span class="rating-value-text" id="ratingValueText">От {{ min_rating|default:"0.0" }}</span>
+                                <span class="rating-value-text" id="ratingValueText">
+                                    {% blocktrans with val=min_rating|default:"0.0" %}От {{ val }}{% endblocktrans %}
+                                </span>
                                 <span class="rating-stars" id="ratingStars"></span>
                             </div>
                             <input 
@@ -784,7 +787,7 @@
                 <!-- Filter Actions -->
                 <div class="filter-actions">
                     <button type="submit" class="btn-apply">
-                        Применить фильтры
+                        {% trans "Применить фильтры" %}
                     </button>
                 </div>
             </form>
@@ -797,21 +800,29 @@
                 <div class="results-info">
                     <div class="results-count">
                         {% if search_query %}
-                            Найдено: <strong>{{ total_results }}</strong> компаний
+                            {% blocktrans count total=total_results %}
+                                Найдено: <strong>{{ total }}</strong> компания
+                            {% plural %}
+                                Найдено: <strong>{{ total }}</strong> компаний
+                            {% endblocktrans %}
                         {% else %}
-                            Показано: <strong>{{ page_obj.paginator.count }}</strong> компаний
+                            {% blocktrans count total=page_obj.paginator.count %}
+                                Показано: <strong>{{ total }}</strong> компания
+                            {% plural %}
+                                Показано: <strong>{{ total }}</strong> компаний
+                            {% endblocktrans %}
                         {% endif %}
                     </div>
                 </div>
 
                 <div class="sort-control">
-                    <span class="sort-label">Сортировка:</span>
+                    <span class="sort-label">{% trans "Сортировка:" %}</span>
                     <select id="sortSelect" class="sort-select" onchange="changeSort(this.value)">
-                        <option value="relevance" {% if sort_by == 'relevance' %}selected{% endif %}>По релевантности</option>
-                        <option value="newest" {% if sort_by == 'newest' %}selected{% endif %}>Сначала новые</option>
-                        <option value="oldest" {% if sort_by == 'oldest' %}selected{% endif %}>Сначала старые</option>
-                        <option value="name" {% if sort_by == 'name' %}selected{% endif %}>По алфавиту</option>
-                        <option value="rating" {% if sort_by == 'rating' %}selected{% endif %}>По рейтингу</option>
+                        <option value="relevance" {% if sort_by == 'relevance' %}selected{% endif %}>{% trans "По релевантности" %}</option>
+                        <option value="newest" {% if sort_by == 'newest' %}selected{% endif %}>{% trans "Сначала новые" %}</option>
+                        <option value="oldest" {% if sort_by == 'oldest' %}selected{% endif %}>{% trans "Сначала старые" %}</option>
+                        <option value="name" {% if sort_by == 'name' %}selected{% endif %}>{% trans "По алфавиту" %}</option>
+                        <option value="rating" {% if sort_by == 'rating' %}selected{% endif %}>{% trans "По рейтингу" %}</option>
                     </select>
                 </div>
             </div>
@@ -860,8 +871,8 @@
                     <div class="empty-icon">
                         <i class="fa-solid fa-magnifying-glass"></i>
                     </div>
-                    <h3 class="empty-title">Ничего не найдено</h3>
-                    <p class="empty-text">Попробуйте изменить параметры поиска или фильтры</p>
+                    <h3 class="empty-title">{% trans "Ничего не найдено" %}</h3>
+                    <p class="empty-text">{% trans "Попробуйте изменить параметры поиска или фильтры" %}</p>
                 </div>
             {% endif %}
         </main>
@@ -869,8 +880,7 @@
 </div>
 
 <script>
-
-      function bindToggle(btnId, containerId, showText, hideText) {
+  function bindToggle(btnId, containerId, showText, hideText) {
     const btn = document.getElementById(btnId);
     const box = document.getElementById(containerId);
     if (!btn || !box) return;
@@ -882,156 +892,121 @@
     });
   }
 
-  // Категории: показать все / скрыть
-  bindToggle('toggleCategoriesBtn', 'moreCategories', 'Показать все категории', 'Скрыть категории');
+  // Категории: показать все / скрыть (локализовано)
+  bindToggle(
+    'toggleCategoriesBtn',
+    'moreCategories',
+    '{{ _("Показать все категории")|escapejs }}',
+    '{{ _("Скрыть категории")|escapejs }}'
+  );
 
-  // Города: показать все / скрыть
-  bindToggle('toggleCitiesBtn', 'moreCities', 'Показать все города', 'Скрыть города');
-    // Autocomplete
-    const searchInput = document.getElementById('searchInput');
-    const autocompleteResults = document.getElementById('autocompleteResults');
+  // Города: показать все / скрыть (локализовано)
+  bindToggle(
+    'toggleCitiesBtn',
+    'moreCities',
+    '{{ _("Показать все города")|escapejs }}',
+    '{{ _("Скрыть города")|escapejs }}'
+  );
 
-    function debounce(func, wait) {
-        let timeout;
-        return function(...args) {
-            clearTimeout(timeout);
-            timeout = setTimeout(() => func(...args), wait);
-        };
-    }
+  // Autocomplete
+  const searchInput = document.getElementById('searchInput');
+  const autocompleteResults = document.getElementById('autocompleteResults');
 
-    async function fetchSuggestions(query) {
-        if (query.length < 2) {
-            autocompleteResults.classList.remove('active');
-            return;
-        }
-
-        try {
-            const response = await fetch(`/api/search/autocomplete/?q=${encodeURIComponent(query)}`);
-            const data = await response.json();
-            
-            if (data.suggestions.length > 0) {
-                autocompleteResults.innerHTML = data.suggestions.map(item => `
-                    <div class="autocomplete-item" data-text="${item.text}">
-                        ${item.icon} ${item.text}
-                    </div>
-                `).join('');
-                
-                autocompleteResults.classList.add('active');
-                
-                document.querySelectorAll('.autocomplete-item').forEach(item => {
-                    item.addEventListener('click', () => {
-                        searchInput.value = item.dataset.text;
-                        autocompleteResults.classList.remove('active');
-                        document.getElementById('searchForm').submit();
-                    });
-                });
-            }
-        } catch (error) {
-            console.error('Ошибка:', error);
-        }
-    }
-
-    searchInput.addEventListener('input', debounce(e => fetchSuggestions(e.target.value), 300));
-    
-    document.addEventListener('click', e => {
-        if (!searchInput.contains(e.target) && !autocompleteResults.contains(e.target)) {
-            autocompleteResults.classList.remove('active');
-        }
-    });
-
-    // Rating Slider
-    const ratingSlider = document.getElementById('ratingSlider');
-    const ratingValueText = document.getElementById('ratingValueText');
-    const ratingStars = document.getElementById('ratingStars');
-
-    function updateRatingDisplay(value) {
-        const rating = parseFloat(value);
-        ratingValueText.textContent = `От ${rating.toFixed(1)}`;
-        
-        let stars = '';
-        for (let i = 1; i <= 5; i++) {
-            if (i <= Math.floor(rating)) {
-                stars += '<i class="fa-solid fa-star"></i>';
-            } else if (i === Math.ceil(rating) && rating % 1 !== 0) {
-                stars += '<i class="fa-solid fa-star-half-stroke"></i>';
-            } else {
-                stars += '<i class="fa-regular fa-star"></i>';
-            }
-        }
-        ratingStars.innerHTML = stars;
-    }
-
-    if (ratingSlider) {
-        updateRatingDisplay(ratingSlider.value);
-        ratingSlider.addEventListener('input', () => updateRatingDisplay(ratingSlider.value));
-    }
-
-    // Clear All Filters
-    document.getElementById('clearAllBtn')?.addEventListener('click', () => {
-        window.location.href = '{% url "company-list" %}' + (window.location.search.includes('q=') ? '?q={{ search_query|urlencode }}' : '');
-    });
-
-    // Mobile Filter Toggle
-    document.getElementById('mobileFilterToggle')?.addEventListener('click', function() {
-        document.querySelector('.filters-card').classList.toggle('active');
-        const icon = this.querySelector('i');
-        icon.classList.toggle('fa-filter');
-        icon.classList.toggle('fa-xmark');
-    });
-
-    // Sort
-    function changeSort(sortValue) {
-        const url = new URL(window.location.href);
-        url.searchParams.set('sort', sortValue);
-        url.searchParams.delete('page');
-        window.location.href = url.toString();
-    }
-
-    (function () {
-  const scroller = document.querySelector('.filters-body');
-  if (!scroller) return;
-
-  // Помогает корректно передавать скролл странице на границах контейнера
-  function onWheel(e) {
-    const delta = e.deltaY;
-    const atTop = scroller.scrollTop <= 0;
-    const atBottom = Math.ceil(scroller.scrollTop + scroller.clientHeight) >= scroller.scrollHeight;
-
-    // если внутри есть куда скроллить — выходим (пусть браузер крутит .filters-body)
-    if ((delta < 0 && !atTop) || (delta > 0 && !atBottom)) return;
-
-    // иначе — не крутим внутренность и передаём скролл странице
-    e.preventDefault();
-    window.scrollBy({ top: delta, left: 0, behavior: 'auto' });
+  function debounce(func, wait) {
+      let timeout;
+      return function(...args) {
+          clearTimeout(timeout);
+          timeout = setTimeout(() => func(...args), wait);
+      };
   }
 
-  // для мышиных колёсиков
-  scroller.addEventListener('wheel', onWheel, { passive: false });
+  async function fetchSuggestions(query) {
+      if (query.length < 2) {
+          autocompleteResults.classList.remove('active');
+          return;
+      }
 
-  // поддержка тач-скролла
-  let lastY = null;
-  function onTouchStart(e) {
-    if (e.touches.length === 1) lastY = e.touches[0].clientY;
+      try {
+          const response = await fetch(`/api/search/autocomplete/?q=${encodeURIComponent(query)}`);
+          const data = await response.json();
+          
+          if (data.suggestions.length > 0) {
+              autocompleteResults.innerHTML = data.suggestions.map(item => `
+                  <div class="autocomplete-item" data-text="${item.text}">
+                      ${item.icon} ${item.text}
+                  </div>
+              `).join('');
+              
+              autocompleteResults.classList.add('active');
+              
+              document.querySelectorAll('.autocomplete-item').forEach(item => {
+                  item.addEventListener('click', () => {
+                      searchInput.value = item.dataset.text;
+                      autocompleteResults.classList.remove('active');
+                      document.getElementById('searchForm').submit();
+                  });
+              });
+          }
+      } catch (error) {
+          console.error('{{ _("Ошибка")|escapejs }}:', error);
+      }
   }
-  function onTouchMove(e) {
-    if (lastY == null) return;
-    const currentY = e.touches[0].clientY;
-    const delta = lastY - currentY; // >0 — скроллим вниз
-    const atTop = scroller.scrollTop <= 0;
-    const atBottom = Math.ceil(scroller.scrollTop + scroller.clientHeight) >= scroller.scrollHeight;
 
-    if ((delta < 0 && atTop) || (delta > 0 && atBottom)) {
-      // внутренность упёрлась — скроллим страницу
-      e.preventDefault();
-      window.scrollBy({ top: delta, left: 0, behavior: 'auto' });
-    }
-    // иначе — пусть скролл уйдёт в .filters-body
+  searchInput.addEventListener('input', debounce(e => fetchSuggestions(e.target.value), 300));
+  
+  document.addEventListener('click', e => {
+      if (!searchInput.contains(e.target) && !autocompleteResults.contains(e.target)) {
+          autocompleteResults.classList.remove('active');
+      }
+  });
+
+  // Rating Slider
+  const ratingSlider = document.getElementById('ratingSlider');
+  const ratingValueText = document.getElementById('ratingValueText');
+  const ratingStars = document.getElementById('ratingStars');
+  const OT_PREFIX = '{{ _("От")|escapejs }}';
+
+  function updateRatingDisplay(value) {
+      const rating = parseFloat(value);
+      ratingValueText.textContent = `${OT_PREFIX} ${rating.toFixed(1)}`;
+      
+      let stars = '';
+      for (let i = 1; i <= 5; i++) {
+          if (i <= Math.floor(rating)) {
+              stars += '<i class="fa-solid fa-star"></i>';
+          } else if (i === Math.ceil(rating) && rating % 1 !== 0) {
+              stars += '<i class="fa-solid fa-star-half-stroke"></i>';
+          } else {
+              stars += '<i class="fa-regular fa-star"></i>';
+          }
+      }
+      ratingStars.innerHTML = stars;
   }
-  function onTouchEnd() { lastY = null; }
 
-  scroller.addEventListener('touchstart', onTouchStart, { passive: true });
-  scroller.addEventListener('touchmove', onTouchMove, { passive: false });
-  scroller.addEventListener('touchend', onTouchEnd, { passive: true });
-})();
+  if (ratingSlider) {
+      updateRatingDisplay(ratingSlider.value);
+      ratingSlider.addEventListener('input', () => updateRatingDisplay(ratingSlider.value));
+  }
+
+  // Clear All Filters
+  document.getElementById('clearAllBtn')?.addEventListener('click', () => {
+      window.location.href = '{% url "company-list" %}' + (window.location.search.includes('q=') ? '?q={{ search_query|urlencode }}' : '');
+  });
+
+  // Mobile Filter Toggle
+  document.getElementById('mobileFilterToggle')?.addEventListener('click', function() {
+      document.querySelector('.filters-card').classList.toggle('active');
+      const icon = this.querySelector('i');
+      icon.classList.toggle('fa-filter');
+      icon.classList.toggle('fa-xmark');
+  });
+
+  // Sort
+  function changeSort(sortValue) {
+      const url = new URL(window.location.href);
+      url.searchParams.set('sort', sortValue);
+      url.searchParams.delete('page');
+      window.location.href = url.toString();
+  }
 </script>
 {% endblock %}

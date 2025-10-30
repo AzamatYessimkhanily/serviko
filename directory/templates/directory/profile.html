@@ -1,4 +1,5 @@
 {% extends 'directory/base.html' %}
+{% load i18n %}
 
 {% block title %}Личный кабинет | Serviko{% endblock %}
 
@@ -488,22 +489,22 @@
     <!-- Profile Header -->
     <div class="profile-header">
         <div class="profile-header-content">
-            <img src="{{ user.userprofile.avatar.url }}" alt="Аватар" class="profile-avatar-large">
+            <img src="{{ user.userprofile.avatar.url }}" alt="{% trans 'Аватар' %}" class="profile-avatar-large">
             <div class="profile-header-info">
                 <h1 class="profile-name">{{ user.get_full_name|default:user.username }}</h1>
                 <p class="profile-email">{{ user.email }}</p>
                 <div class="profile-stats">
                     <div class="stat-item">
                         <span class="stat-value">{{ favorite_list|length }}</span>
-                        <span class="stat-label">Избранных</span>
+                        <span class="stat-label">{% trans "Избранных" %}</span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-value">{{ review_list|length }}</span>
-                        <span class="stat-label">Отзывов</span>
+                        <span class="stat-label">{% trans "Отзывов" %}</span>
                     </div>
                     <div class="stat-item">
                         <span class="stat-value">{{ application_list|length }}</span>
-                        <span class="stat-label">Заявок</span>
+                        <span class="stat-label">{% trans "Заявок" %}</span>
                     </div>
                 </div>
             </div>
@@ -513,34 +514,34 @@
     <!-- Tabs Navigation -->
     <div class="tabs-nav">
         <a href="{% url 'profile' %}?tab=edit" class="tab-btn {% if active_tab == 'edit' %}active{% endif %}">
-            <i class="fa-solid fa-user"></i> Профиль
+            <i class="fa-solid fa-user"></i> {% trans "Профиль" %}
         </a>
         <a href="{% url 'profile' %}?tab=favorites" class="tab-btn {% if active_tab == 'favorites' %}active{% endif %}">
-            <i class="fa-solid fa-star"></i> Избранное
+            <i class="fa-solid fa-star"></i> {% trans "Избранное" %}
         </a>
         <a href="{% url 'profile' %}?tab=applications" class="tab-btn {% if active_tab == 'applications' %}active{% endif %}">
-            <i class="fa-solid fa-paper-plane"></i> Мои заявки
+            <i class="fa-solid fa-paper-plane"></i> {% trans "Мои заявки" %}
         </a>
         <a href="{% url 'profile' %}?tab=reviews" class="tab-btn {% if active_tab == 'reviews' %}active{% endif %}">
-            <i class="fa-solid fa-comments"></i> Мои отзывы
+            <i class="fa-solid fa-comments"></i> {% trans "Мои отзывы" %}
         </a>
         <a href="{% url 'profile' %}?tab=history" class="tab-btn {% if active_tab == 'history' %}active{% endif %}">
-            <i class="fa-solid fa-clock"></i> История
+            <i class="fa-solid fa-clock"></i> {% trans "История" %}
         </a>
     </div>
 
     <!-- Tab: Edit Profile -->
     <div id="edit" class="tab-content {% if active_tab == 'edit' %}active{% endif %}">
         <div class="profile-form-card">
-            <h2 class="section-title">Редактирование профиля</h2>
+            <h2 class="section-title">{% trans "Редактирование профиля" %}</h2>
             
             <div class="avatar-upload-section">
-                <img src="{{ user.userprofile.avatar.url }}" alt="Аватар" class="avatar-preview">
+                <img src="{{ user.userprofile.avatar.url }}" alt="{% trans 'Аватар' %}" class="avatar-preview">
                 <div class="avatar-upload-info">
-                    <h4>Фотография профиля</h4>
-                    <p>Рекомендуемый размер: 400x400px. Форматы: JPG, PNG</p>
+                    <h4>{% trans "Фотография профиля" %}</h4>
+                    <p>{% trans "Рекомендуемый размер: 400x400px. Форматы: JPG, PNG" %}</p>
                     <label for="id_avatar" class="btn-upload">
-                        <i class="fa-solid fa-upload"></i> Загрузить фото
+                        <i class="fa-solid fa-upload"></i> {% trans "Загрузить фото" %}
                     </label>
                 </div>
             </div>
@@ -551,7 +552,7 @@
                 {{ profile_form.as_p }}
 
                 <button type="submit" class="btn-primary">
-                    <i class="fa-solid fa-floppy-disk"></i> Сохранить изменения
+                    <i class="fa-solid fa-floppy-disk"></i> {% trans "Сохранить изменения" %}
                 </button>
             </form>
         </div>
@@ -560,7 +561,7 @@
     <!-- Tab: Favorites -->
     <div id="favorites" class="tab-content {% if active_tab == 'favorites' %}active{% endif %}">
         <div class="section">
-            <h2 class="section-title">Избранные компании</h2>
+            <h2 class="section-title">{% trans "Избранные компании" %}</h2>
             
             {% if favorite_list %}
                 <div class="companies-grid">
@@ -571,8 +572,8 @@
             {% else %}
                 <div class="empty-state">
                     <div class="empty-icon"><i class="fa-solid fa-star"></i></div>
-                    <h3 class="empty-title">Нет избранных компаний</h3>
-                    <p class="empty-text">Добавьте компании в избранное, чтобы быстро находить их здесь</p>
+                    <h3 class="empty-title">{% trans "Нет избранных компаний" %}</h3>
+                    <p class="empty-text">{% trans "Добавьте компании в избранное, чтобы быстро находить их здесь" %}</p>
                 </div>
             {% endif %}
         </div>
@@ -581,7 +582,7 @@
     <!-- Tab: Applications -->
     <div id="applications" class="tab-content {% if active_tab == 'applications' %}active{% endif %}">
         <div class="section">
-            <h2 class="section-title">История моих заявок</h2>
+            <h2 class="section-title">{% trans "История моих заявок" %}</h2>
             
             {% if application_list %}
                 {% for app in application_list %}
@@ -589,7 +590,7 @@
                         <div class="card-header">
                             <div>
                                 <h3 class="card-title">
-                                    Заявка для: <a href="{% url 'company-detail' app.company.id %}">{{ app.company.name }}</a>
+                                    {% trans "Заявка для:" %} <a href="{% url 'company-detail' app.company.id %}">{{ app.company.name }}</a>
                                 </h3>
                                 <div class="card-meta">
                                     <i class="fa-solid fa-calendar"></i>
@@ -604,7 +605,7 @@
                             <div class="card-attachment">
                                 <a href="{{ app.attachment.url }}" target="_blank">
                                     <i class="fa-solid fa-paperclip"></i>
-                                    Посмотреть вложение
+                                    {% trans "Посмотреть вложение" %}
                                 </a>
                             </div>
                         {% endif %}
@@ -613,8 +614,8 @@
             {% else %}
                 <div class="empty-state">
                     <div class="empty-icon"><i class="fa-solid fa-paper-plane"></i></div>
-                    <h3 class="empty-title">Нет отправленных заявок</h3>
-                    <p class="empty-text">Вы еще не отправляли заявки компаниям</p>
+                    <h3 class="empty-title">{% trans "Нет отправленных заявок" %}</h3>
+                    <p class="empty-text">{% trans "Вы еще не отправляли заявки компаниям" %}</p>
                 </div>
             {% endif %}
         </div>
@@ -623,7 +624,7 @@
     <!-- Tab: Reviews -->
     <div id="reviews" class="tab-content {% if active_tab == 'reviews' %}active{% endif %}">
         <div class="section">
-            <h2 class="section-title">Мои отзывы</h2>
+            <h2 class="section-title">{% trans "Мои отзывы" %}</h2>
             
             {% if review_list %}
                 {% for review in review_list %}
@@ -631,7 +632,7 @@
                         <div class="card-header">
                             <div>
                                 <h3 class="card-title">
-                                    Отзыв для: <a href="{% url 'company-detail' review.company.id %}">{{ review.company.name }}</a>
+                                    {% trans "Отзыв для:" %} <a href="{% url 'company-detail' review.company.id %}">{{ review.company.name }}</a>
                                 </h3>
                                 <div class="card-meta">
                                     <i class="fa-solid fa-calendar"></i>
@@ -655,19 +656,23 @@
                         
                         <div class="card-content">{{ review.comment|linebreaks }}</div>
                         
-                        <form action="{% url 'delete-review' review.id %}" method="POST" onsubmit="return confirm('Вы уверены, что хотите удалить этот отзыв?');">
-                            {% csrf_token %}
-                            <button type="submit" class="card-delete" title="Удалить отзыв">
-                                <i class="fa-solid fa-trash"></i>
-                            </button>
-                        </form>
+                    {% translate "Вы уверены, что хотите удалить этот отзыв?" as confirm_msg %}
+
+                    <form action="{% url 'delete-review' review.id %}"
+                        method="POST"
+                        onsubmit="return confirm('{{ confirm_msg|escapejs }}');">
+                        {% csrf_token %}
+                        <button type="submit" class="card-delete" title="{% trans 'Удалить отзыв' %}">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </form>
                     </div>
                 {% endfor %}
             {% else %}
                 <div class="empty-state">
                     <div class="empty-icon"><i class="fa-solid fa-comments"></i></div>
-                    <h3 class="empty-title">Нет отзывов</h3>
-                    <p class="empty-text">Вы еще не оставляли отзывы о компаниях</p>
+                    <h3 class="empty-title">{% trans "Нет отзывов" %}</h3>
+                    <p class="empty-text">{% trans "Вы еще не оставляли отзывы о компаниях" %}</p>
                 </div>
             {% endif %}
         </div>
@@ -676,7 +681,7 @@
     <!-- Tab: History -->
     <div id="history" class="tab-content {% if active_tab == 'history' %}active{% endif %}">
         <div class="section">
-            <h2 class="section-title">Недавно просмотренные компании</h2>
+            <h2 class="section-title">{% trans "Недавно просмотренные компании" %}</h2>
             
             {% if history_list %}
                 <div class="companies-grid">
@@ -687,8 +692,8 @@
             {% else %}
                 <div class="empty-state">
                     <div class="empty-icon"><i class="fa-solid fa-clock"></i></div>
-                    <h3 class="empty-title">История пуста</h3>
-                    <p class="empty-text">Ваша история просмотров компаний пока пуста</p>
+                    <h3 class="empty-title">{% trans "История пуста" %}</h3>
+                    <p class="empty-text">{% trans "Ваша история просмотров компаний пока пуста" %}</p>
                 </div>
             {% endif %}
         </div>

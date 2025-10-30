@@ -1,12 +1,11 @@
+{% load i18n %} {# ОЧЕНЬ ВАЖНО: загрузить теги i18n в начале файла #}
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Serviko — Каталог компаний{% endblock %}</title>
-    {# --- ФАВИКОНКИ И ИКОНКИ ДЛЯ ВСЕХ УСТРОЙСТВ --- #}
+    <title>{% block title %}Serviko — {% trans "Каталог компаний" %}{% endblock %}</title>    {# --- ФАВИКОНКИ И ИКОНКИ ДЛЯ ВСЕХ УСТРОЙСТВ --- #}
     <link rel="apple-touch-icon" sizes="180x180" href="{% static 'icons/apple-touch-icon.png' %}">
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'icons/favicon-32x32.png' %}">
     <link rel="icon" type="image/png" sizes="16x16" href="{% static 'icons/favicon-16x16.png' %}">
@@ -209,6 +208,110 @@
         .user-actions {
             margin-left: auto;
             flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: var(--s4);
+        }
+        
+        /* Language Switcher */
+        .language-switcher {
+            position: relative;
+        }
+        
+        .language-toggle {
+            display: flex;
+            align-items: center;
+            gap: var(--s2);
+            padding: var(--s2) var(--s3);
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border);
+            border-radius: var(--r-md);
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text);
+            cursor: pointer;
+            transition: all 0.15s;
+            white-space: nowrap;
+        }
+        
+        .language-toggle:hover {
+            background: var(--bg-secondary);
+            border-color: var(--text-lighter);
+        }
+        
+        .language-toggle i {
+            font-size: 1rem;
+        }
+        
+        .current-lang {
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.8125rem;
+        }
+        
+        .language-dropdown {
+            position: absolute;
+            top: calc(100% + var(--s2));
+            right: 0;
+            background: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: var(--r-md);
+            box-shadow: var(--shadow-lg);
+            min-width: 140px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.2s;
+            z-index: 1000;
+        }
+        
+        .language-dropdown.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .language-dropdown form {
+            margin: 0;
+        }
+        
+        .language-dropdown button {
+            width: 100%;
+            padding: var(--s3) var(--s4);
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 0.875rem;
+            color: var(--text);
+            cursor: pointer;
+            transition: background 0.15s;
+            display: flex;
+            align-items: center;
+            gap: var(--s2);
+        }
+        
+        .language-dropdown button:hover {
+            background: var(--bg-tertiary);
+        }
+        
+        .language-dropdown button:first-child {
+            border-radius: var(--r-md) var(--r-md) 0 0;
+        }
+        
+        .language-dropdown button:last-child {
+            border-radius: 0 0 var(--r-md) var(--r-md);
+        }
+        
+        .language-dropdown .lang-code {
+            font-weight: 600;
+            text-transform: uppercase;
+            min-width: 24px;
+            font-size: 0.75rem;
+        }
+        
+        .language-dropdown .lang-name {
+            color: var(--text-light);
+            font-size: 0.8125rem;
         }
 
         /* User Menu */
@@ -667,6 +770,26 @@
             .btn-primary {
                 padding: var(--s2) var(--s3);
             }
+            
+            /* Language Switcher на мобильных */
+            .language-toggle {
+                padding: var(--s2);
+                gap: var(--s1);
+            }
+            
+            .language-toggle .current-lang {
+                font-size: 0.75rem;
+            }
+            
+            .language-toggle i:last-child {
+                display: none;
+            }
+            
+            .language-dropdown {
+                right: 0;
+                left: auto;
+                min-width: 130px;
+            }
 
             .footer-section h4 {
                 margin-bottom: var(--s3);
@@ -694,6 +817,30 @@
 
             .footer-grid {
                 gap: var(--s4);
+            }
+            
+            /* Language Switcher - очень маленькие экраны */
+            .language-toggle {
+                padding: var(--s2);
+                min-width: 36px;
+                justify-content: center;
+            }
+            
+            .language-toggle .current-lang {
+                display: none;
+            }
+            
+            .language-toggle i:first-child {
+                font-size: 1.125rem;
+                margin: 0;
+            }
+            
+            .language-dropdown {
+                min-width: 120px;
+            }
+            
+            .language-dropdown .lang-name {
+                font-size: 0.75rem;
             }
 
             .messages {
@@ -729,23 +876,48 @@
             <div class="nav-wrapper" id="navWrapper">
                 <nav>
                     <ul class="main-nav">
-                    <li><a href="{% url 'company-list' %}"><i class="fa-solid fa-search"></i> Каталог</a></li>
-                    <li><a href="{% url 'homepage' %}#about"><i class="fa-solid fa-info-circle"></i> О нас</a></li>
-                    <li><a href="{% url 'partnership-request' %}"><i class="fa-solid fa-handshake"></i> Партнерам</a></li>
+                        <li><a href="{% url 'company-list' %}"><i class="fa-solid fa-search"></i> {% trans "Каталог" %}</a></li>
+                        <li><a href="{% url 'homepage' %}#about"><i class="fa-solid fa-info-circle"></i> {% trans "О нас" %}</a></li>
+                        <li><a href="{% url 'partnership-request' %}"><i class="fa-solid fa-handshake"></i> {% trans "Партнерам" %}</a></li>
                     </ul>
                 </nav>
             </div>
 
-            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Меню">
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="{% trans 'Меню' %}">
                 <i class="fa-solid fa-bars"></i>
             </button>
 
             <div class="user-actions">
+                <!-- Language Switcher -->
+                <div class="language-switcher">
+                    <button class="language-toggle" id="languageToggle" type="button">
+                        <i class="fa-solid fa-globe"></i>
+                        <span class="current-lang">{% get_current_language as LANGUAGE_CODE %}{{ LANGUAGE_CODE|upper }}</span>
+                        <i class="fa-solid fa-chevron-down" style="font-size: 0.75rem;"></i>
+                    </button>
+                    <div class="language-dropdown" id="languageDropdown">
+                        {% get_available_languages as LANGUAGES %}
+                        {% get_language_info_list for LANGUAGES as languages %}
+                        {% for language in languages %}
+                            <form action="{% url 'set_language' %}" method="post" class="language-form">
+                                {% csrf_token %}
+                                <input type="hidden" name="language" value="{{ language.code }}">
+                                <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                                <input type="hidden" name="scroll_position" id="scroll_pos_{{ language.code }}" value="0">
+                                <button type="submit" onclick="saveScrollPosition('{{ language.code }}')">
+                                    <span class="lang-code">{{ language.code|upper }}</span>
+                                    <span class="lang-name">{{ language.name_local }}</span>
+                                </button>
+                            </form>
+                        {% endfor %}
+                    </div>
+                </div>
+
                 {% if user.is_authenticated %}
                     <div class="user-menu-wrapper">
                         <img 
                             src="{{ user.userprofile.avatar.url }}" 
-                            alt="Аватар" 
+                            alt="{% trans 'Аватар' %}" 
                             class="user-avatar" 
                             id="avatarMenuButton"
                         >
@@ -754,22 +926,22 @@
                                 <strong>{{ user.get_full_name|default:user.username }}</strong>
                                 <small>{{ user.email }}</small>
                             </div>
-                            <a href="{% url 'profile' %}?tab=edit"><i class="fa-solid fa-user"></i> Личный кабинет</a>
-                            <a href="{% url 'profile' %}?tab=favorites"><i class="fa-solid fa-star"></i> Мои избранные</a>
-                            <a href="{% url 'profile' %}?tab=applications"><i class="fa-solid fa-file-lines"></i> Мои заявки</a>
-                            <a href="{% url 'profile' %}?tab=reviews"><i class="fa-solid fa-comment"></i> Мои отзывы</a>
-                            <a href="{% url 'profile' %}?tab=history"><i class="fa-solid fa-clock-rotate-left"></i> История просмотров</a>
+                            <a href="{% url 'profile' %}?tab=edit"><i class="fa-solid fa-user"></i> {% trans "Личный кабинет" %}</a>
+                            <a href="{% url 'profile' %}?tab=favorites"><i class="fa-solid fa-star"></i> {% trans "Мои избранные" %}</a>
+                            <a href="{% url 'profile' %}?tab=applications"><i class="fa-solid fa-file-lines"></i> {% trans "Мои заявки" %}</a>
+                            <a href="{% url 'profile' %}?tab=reviews"><i class="fa-solid fa-comment"></i> {% trans "Мои отзывы" %}</a>
+                            <a href="{% url 'profile' %}?tab=history"><i class="fa-solid fa-clock-rotate-left"></i> {% trans "История просмотров" %}</a>
                             <div class="dropdown-divider"></div>
                             <form action="{% url 'logout' %}" method="post" class="logout-form">
                                 {% csrf_token %}
-                                <button type="submit"><i class="fa-solid fa-arrow-right-from-bracket"></i> Выйти</button>
+                                <button type="submit"><i class="fa-solid fa-arrow-right-from-bracket"></i> {% trans "Выйти" %}</button>
                             </form>
                         </div>
                     </div>
                 {% else %}
                     <div class="auth-links">
-                        <a href="{% url 'login' %}">Войти</a>
-                        <a href="{% url 'register' %}" class="btn-primary">Регистрация</a>
+                        <a href="{% url 'login' %}">{% trans "Войти" %}</a>
+                        <a href="{% url 'register' %}" class="btn-primary">{% trans "Регистрация" %}</a>
                     </div>
                 {% endif %}
             </div>
@@ -788,32 +960,31 @@
                 <div class="footer-brand">
                     <div class="footer-logo">Serviko</div>
                     <p class="footer-description">
-                        Найдите лучших исполнителей для любых задач. 
-                        Проверенные компании, реальные отзывы.
+                    {% trans "Найдите лучших исполнителей для любых задач. Проверенные компании, реальные отзывы." %}
                     </p>
                 </div>
 
                 <div class="footer-section">
-                    <h4>Компания</h4>
+                    <h4>{% trans "Компания" %}</h4>
                     <ul class="footer-links">
-                        <li><a href="{% url 'homepage' %}">О нас</a></li>
-                        <li><a href="{% url 'company-list' %}">Каталог</a></li>
-                        <li><a href="{% url 'partnership-request' %}">Партнерам</a></li>
+                    <li><a href="{% url 'homepage' %}">{% trans "О нас" %}</a></li>
+                    <li><a href="{% url 'company-list' %}">{% trans "Каталог" %}</a></li>
+                    <li><a href="{% url 'partnership-request' %}">{% trans "Партнерам" %}</a></li>
                     </ul>
                 </div>
 
 
 
                 <div class="footer-section">
-                    <h4>Поддержка</h4>
+                    <h4>{% trans "Поддержка" %}</h4>
                     <ul class="footer-links">
-                        <li><a href="{% url 'legal-info' %}#user-terms">Условия Использования</a></li>
-                        <li><a href="{% url 'legal-info' %}#user-privacy">Конфиденциальность</a></li>
+                    <li><a href="{% url 'legal-info' %}#user-terms">{% trans "Условия Использования" %}</a></li>
+                    <li><a href="{% url 'legal-info' %}#user-privacy">{% trans "Конфиденциальность" %}</a></li>
                     </ul>
                 </div>
 
                                 <div class="footer-section">
-                <h4>Контакты</h4>
+                <h4>{% trans "Контакты" %}</h4>
                 <ul class="footer-links">
                     <li>
                         <a href="tel:+7712224664">
@@ -831,7 +1002,7 @@
                     <a href="#" title="Twitter"><i class="fa-brands fa-twitter"></i></a>
                     <a href="#" title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
                 </div> -->
-                <p class="footer-copyright">© {% now "Y" %} Serviko. Все права защищены.</p>
+                <p class="footer-copyright">© {% now "Y" %} Serviko. {% trans "Все права защищены." %}</p>
             </div>
         </div>
     </footer>
@@ -924,7 +1095,7 @@
                                 icon.classList.remove('fa-regular');
                                 icon.classList.add('fa-solid');
                             } else {
-                                button.innerHTML = '<i class="fa-solid fa-star"></i> В избранном';
+                                button.innerHTML = '<i class="fa-solid fa-star"></i> {% trans "В избранном" %}';
                             }
                         } else {
                             button.classList.remove('favorited');
@@ -932,7 +1103,7 @@
                                 icon.classList.remove('fa-solid');
                                 icon.classList.add('fa-regular');
                             } else {
-                                button.innerHTML = '<i class="fa-regular fa-star"></i> В избранное';
+                                button.innerHTML = '<i class="fa-regular fa-star"></i> {% trans "В избранное" %}';
                             }
                         }
                     }
@@ -965,7 +1136,37 @@
                     setTimeout(() => msg.remove(), 300);
                 }, 5000);
             });
+
+            // Language Switcher Dropdown
+            const languageToggle = document.getElementById('languageToggle');
+            const languageDropdown = document.getElementById('languageDropdown');
+
+            if (languageToggle && languageDropdown) {
+                languageToggle.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    languageDropdown.classList.toggle('show');
+                });
+
+                // Close dropdown when clicking outside
+                window.addEventListener('click', function(e) {
+                    if (!languageDropdown.contains(e.target) && !languageToggle.contains(e.target)) {
+                        languageDropdown.classList.remove('show');
+                    }
+                });
+            }
+
+            // Restore scroll position after language change
+            const scrollPos = sessionStorage.getItem('scrollPosition');
+            if (scrollPos) {
+                window.scrollTo(0, parseInt(scrollPos));
+                sessionStorage.removeItem('scrollPosition');
+            }
         });
+
+        // Save scroll position before language change
+        function saveScrollPosition(langCode) {
+            sessionStorage.setItem('scrollPosition', window.pageYOffset || document.documentElement.scrollTop);
+        }
     </script>
 
     <!-- Yandex.Metrika -->

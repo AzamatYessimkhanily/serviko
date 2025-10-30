@@ -1,4 +1,5 @@
 {% extends 'directory/base.html' %}
+{% load i18n %}
 
 {% block title %}Подтвердите Email | Serviko{% endblock %}
 
@@ -167,33 +168,33 @@
             <div class="message-icon">
                 <i class="fa-solid fa-envelope"></i>
             </div>
-            <h1 class="message-title">Почти готово!</h1>
+            <h1 class="message-title">{% trans "Почти готово!" %}</h1>
             <p class="message-text">
-                Мы отправили письмо для активации на ваш email
+                {% trans "Мы отправили письмо для активации на ваш email" %}
             </p>
 
             <div class="message-steps">
-                <h3>Что делать дальше:</h3>
+                <h3>{% trans "Что делать дальше:" %}</h3>
                 <div class="step-item">
                     <div class="step-number">1</div>
-                    <div class="step-text">Проверьте свою почту</div>
+                    <div class="step-text">{% trans "Проверьте свою почту" %}</div>
                 </div>
                 <div class="step-item">
                     <div class="step-number">2</div>
-                    <div class="step-text">Откройте письмо от Serviko</div>
+                    <div class="step-text">{% trans "Откройте письмо от Serviko" %}</div>
                 </div>
                 <div class="step-item">
                     <div class="step-number">3</div>
-                    <div class="step-text">Нажмите на ссылку активации</div>
+                    <div class="step-text">{% trans "Нажмите на ссылку активации" %}</div>
                 </div>
             </div>
 
             <p style="font-size: 0.875rem; color: var(--text-lighter); margin-bottom: var(--s6);">
-                Не видите письмо? Проверьте папку "Спам"
+                {% trans 'Не видите письмо? Проверьте папку "Спам"' %}
             </p>
 
             <a href="{% url 'homepage' %}" class="message-button">
-                <i class="fa-solid fa-house"></i> На главную
+                <i class="fa-solid fa-house"></i> {% trans "На главную" %}
             </a>
         </div>
     </div>
