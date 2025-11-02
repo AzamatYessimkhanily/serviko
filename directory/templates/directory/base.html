@@ -210,43 +210,45 @@
             flex-shrink: 0;
             display: flex;
             align-items: center;
-            gap: var(--s4);
+            gap: var(--s3);
         }
-        
+                
         /* Language Switcher */
-        .language-switcher {
-            position: relative;
-        }
-        
-        .language-toggle {
-            display: flex;
-            align-items: center;
-            gap: var(--s2);
-            padding: var(--s2) var(--s3);
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border);
-            border-radius: var(--r-md);
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--text);
-            cursor: pointer;
-            transition: all 0.15s;
-            white-space: nowrap;
-        }
+.language-switcher {
+    position: relative;
+}
+
+.language-toggle {
+    display: flex;
+    align-items: center;
+    gap: var(--s2);
+    padding: var(--s2) var(--s3);
+    height: 36px; /* Фиксированная высота как у аватара */
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.15s;
+    white-space: nowrap;
+}
         
         .language-toggle:hover {
             background: var(--bg-secondary);
             border-color: var(--text-lighter);
         }
-        
+
         .language-toggle i {
-            font-size: 1rem;
+            font-size: 0.875rem; /* Уменьшил иконку */
         }
-        
+
         .current-lang {
             text-transform: uppercase;
             letter-spacing: 0.05em;
             font-size: 0.8125rem;
+            line-height: 1;
         }
         
         .language-dropdown {
@@ -319,15 +321,16 @@
             position: relative;
         }
 
-        .user-avatar {
-            width: 36px;
-            height: 36px;
-            border-radius: var(--r-full);
-            object-fit: cover;
-            cursor: pointer;
-            border: 2px solid var(--border);
-            transition: border-color 0.15s;
-        }
+.user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--r-full);
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid var(--border);
+    transition: border-color 0.15s;
+    display: block; /* Важно! */
+}
 
         .user-avatar:hover {
             border-color: var(--text-light);

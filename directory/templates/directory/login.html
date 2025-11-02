@@ -1,7 +1,7 @@
 {% extends 'directory/base.html' %}
 {% load i18n %}
 
-{% block title %}Вход | Serviko{% endblock %}
+{% block title %}{% trans "Вход | Serviko"%}{% endblock %}
 
 {% block styles %}
 <style>
@@ -170,11 +170,6 @@
         color: var(--text-lighter);
     }
 
-    .auth-links {
-        display: flex;
-        justify-content: space-between;
-        gap: var(--s4);
-    }
 
     .auth-link {
         font-size: 0.875rem;
@@ -203,10 +198,6 @@
             font-size: 1.5rem;
         }
 
-        .auth-links {
-            flex-direction: column;
-            text-align: center;
-        }
     }
 </style>
 {% endblock %}
