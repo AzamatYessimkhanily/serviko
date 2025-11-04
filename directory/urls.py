@@ -44,4 +44,6 @@ urlpatterns = [
     path('api/admin-dashboard-data/', views.admin_dashboard_data, name='admin-dashboard-data'),
     path('partnership/', views.partnership_request_view, name='partnership-request'),
      path('legal-info/', views.legal_info_view, name='legal-info'), # <-- Добавьте эту строку
+     path('about-us/', views.about_us_view, name='about-us'),
+     
 ]

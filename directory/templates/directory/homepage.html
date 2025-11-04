@@ -516,8 +516,7 @@
 
 
     /* About Section */
-/* About Section - Main */
-.about-section-main {
+.about-section {
     padding: var(--s12) 0;
     background: var(--bg);
 }
@@ -528,17 +527,14 @@
     padding: 0 var(--s6);
 }
 
-/* Header */
-/* Hero Grid with Image */
-.about-hero-grid {
+.about-content {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--s10);
+    gap: var(--s12);
     align-items: center;
-    margin-bottom: var(--s10);
 }
 
-.about-hero-text {
+.about-text {
     max-width: 600px;
 }
 
@@ -572,298 +568,53 @@
     font-weight: 400;
     color: var(--text-light);
     line-height: 1.7;
-    margin-bottom: var(--s6);
-}
-
-/* Mission Inline */
-.mission-inline {
-    display: flex;
-    gap: var(--s4);
-    align-items: start;
-    padding: var(--s5);
-    background: var(--bg-secondary);
-    border-left: 4px solid var(--text);
-    border-radius: var(--r-md);
-}
-
-.mission-icon-small {
-    width: 48px;
-    height: 48px;
-    background: var(--text);
-    color: white;
-    border-radius: var(--r-md);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.25rem;
-    flex-shrink: 0;
-}
-
-.mission-inline h4 {
-    font-size: 1.125rem;
-    font-weight: 600;
-    margin-bottom: var(--s2);
-}
-
-.mission-inline p {
-    font-size: 0.9375rem;
-    color: var(--text-light);
-    line-height: 1.6;
-}
-
-/* Hero Image */
-.about-hero-image {
-    position: relative;
-}
-
-.image-wrapper {
-    position: relative;
-    border-radius: var(--r-lg);
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-}
-
-.hero-img {
-    width: 100%;
-    height: 500px;
-    object-fit: cover;
-    display: block;
-}
-
-/* Responsive for Hero */
-@media (max-width: 1024px) {
-    .about-hero-grid {
-        grid-template-columns: 1fr;
-        gap: var(--s8);
-    }
-
-    .about-hero-image {
-        order: -1;
-    }
-
-    .about-title {
-        font-size: 2rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .about-title {
-        font-size: 1.75rem;
-    }
-
-    .about-description {
-        font-size: 1rem;
-    }
-
-    .hero-img {
-        height: 400px;
-    }
-}
-
-@media (max-width: 640px) {
-    .about-title {
-        font-size: 1.5rem;
-    }
-
-    .mission-inline {
-        flex-direction: column;
-    }
-}
-
-/* Features Section */
-.features-section {
-    margin-bottom: var(--s12);
-}
-
-.section-subtitle {
-    font-size: 2rem;
-    font-weight: 600;
-    letter-spacing: -0.02em;
-    margin-bottom: var(--s4);
-    text-align: center;
-}
-
-.features-intro {
-    font-size: 1.125rem;
-    color: var(--text-light);
-    text-align: center;
     margin-bottom: var(--s8);
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
 }
 
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+/* Features */
+.about-features {
+    display: flex;
+    flex-direction: column;
     gap: var(--s5);
-    margin-bottom: var(--s6);
+    margin-bottom: var(--s8);
 }
 
-.feature-card {
+.feature-item {
     display: flex;
     gap: var(--s4);
     align-items: start;
-    padding: var(--s6);
-    background: var(--bg-secondary);
-    border: 1px solid var(--border);
-    border-radius: var(--r-lg);
-    transition: all 0.2s;
 }
 
-.feature-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-}
-
-.feature-icon-small {
-    width: 48px;
-    height: 48px;
-    background: linear-gradient(135deg, #141920 0%, #111827 100%);
-    border-radius: var(--r-md);
+.feature-icon {
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, #141920 0%, #111827 100%);    border-radius: var(--r-lg);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     color: white;
     flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
 }
 
-.feature-content h4 {
+.feature-text h4 {
     font-size: 1.125rem;
     font-weight: 600;
     margin-bottom: var(--s2);
 }
 
-.feature-content p {
+.feature-text p {
     font-size: 0.9375rem;
+    font-weight: 400;
     color: var(--text-light);
     line-height: 1.6;
 }
 
-.features-summary {
-    font-size: 1.125rem;
-    color: var(--text-light);
-    text-align: center;
-    line-height: 1.7;
-    max-width: 700px;
-    margin: 0 auto;
-    padding: var(--s6);
-    background: var(--bg-tertiary);
-    border-radius: var(--r-lg);
-}
-
-/* Values Section */
-.values-section {
-    margin-bottom: var(--s12);
-}
-
-.values-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--s5);
-    margin-top: var(--s8);
-}
-
-.value-card {
-    padding: var(--s6);
-    background: var(--bg);
-    border: 1px solid var(--border);
-    border-radius: var(--r-lg);
-    text-align: center;
-    transition: all 0.2s;
-}
-
-.value-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-    border-color: var(--text);
-}
-
-.value-number {
-    font-size: 3rem;
-    font-weight: 700;
-    color: var(--text);
-    opacity: 0.1;
-    margin-bottom: var(--s3);
-}
-
-.value-card h4 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: var(--s3);
-}
-
-.value-card p {
-    font-size: 0.9375rem;
-    color: var(--text-light);
-    line-height: 1.6;
-}
-
-/* Team & Location */
-.team-location-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: var(--s6);
-    margin-bottom: var(--s12);
-}
-
-.info-card {
-    padding: var(--s8);
-    background: var(--bg-secondary);
-    border: 1px solid var(--border);
-    border-radius: var(--r-lg);
-}
-
-.info-icon {
-    width: 64px;
-    height: 64px;
-    background: linear-gradient(135deg, #141920 0%, #111827 100%);
-    border-radius: var(--r-lg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2rem;
-    color: white;
-    margin-bottom: var(--s5);
-}
-
-.info-card h4 {
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: var(--s4);
-}
-
-.info-card p {
-    font-size: 1rem;
-    color: var(--text-light);
-    line-height: 1.7;
-}
-
-/* CTA Section */
-.about-cta-section {
-    text-align: center;
-    padding: var(--s10);
-    background: var(--bg-secondary);
-    border-radius: var(--r-lg);
-}
-
-.about-cta-section h3 {
-    font-size: 2rem;
-    font-weight: 600;
-    margin-bottom: var(--s3);
-}
-
-.about-cta-section > p {
-    font-size: 1.125rem;
-    color: var(--text-light);
-    margin-bottom: var(--s6);
-}
-
-.about-cta-buttons {
+/* CTA Buttons */
+.about-cta {
     display: flex;
     gap: var(--s4);
-    justify-content: center;
     flex-wrap: wrap;
 }
 
@@ -891,7 +642,7 @@
 }
 
 .btn-secondary {
-    background: var(--bg);
+    background: var(--bg-secondary);
     color: var(--text);
     border: 1px solid var(--border);
 }
@@ -900,84 +651,23 @@
     background: var(--bg-tertiary);
 }
 
-/* Responsive */
-@media (max-width: 1024px) {
-    .about-main-title {
-        font-size: 2.25rem;
-    }
-
-    .values-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .features-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .team-location-grid {
-        grid-template-columns: 1fr;
-    }
+/* Image Side */
+.about-image {
+    position: relative;
 }
 
-@media (max-width: 768px) {
-    .about-section-main {
-        padding: var(--s8) 0;
-    }
-
-    .about-main-title {
-        font-size: 2rem;
-    }
-
-    .about-lead {
-        font-size: 1rem;
-    }
-
-    .mission-card {
-        flex-direction: column;
-        padding: var(--s6);
-    }
-
-    .mission-icon {
-        width: 64px;
-        height: 64px;
-        font-size: 2rem;
-    }
-
-    .mission-content h3 {
-        font-size: 1.5rem;
-    }
-
-    .mission-content p {
-        font-size: 1rem;
-    }
-
-    .section-subtitle {
-        font-size: 1.75rem;
-    }
-
-    .values-grid {
-        grid-template-columns: 1fr;
-    }
+.about-image-wrapper {
+    position: relative;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 640px) {
-    .about-main-title {
-        font-size: 1.75rem;
-    }
-
-    .section-subtitle {
-        font-size: 1.5rem;
-    }
-
-    .about-cta-buttons {
-        flex-direction: column;
-    }
-
-    .btn-primary1,
-    .btn-secondary {
-        width: 100%;
-        justify-content: center;
-    }
+.about-img {
+    width: 100%;
+    height: 600px;
+    object-fit: cover;
+    display: block;
 }
 
 /* Floating Stats */
@@ -1087,157 +777,69 @@
 {% block content %}
 
 
-<!-- About Section - Main -->
-<section id="about" class="about-section-main">
+        <!-- About Section -->
+<!-- About Section -->
+<section id="about" class="about-section">
     <div class="about-container">
-        <!-- Header -->
-        <div class="about-hero-grid">
-            <div class="about-hero-text">
-                <h2 class="about-title">{% trans "Serviko - инновационная B2B-платформа Центральной Азии" %}</h2>
-                <p class="about-description">
-                    {% trans "Мы объединяем компании Казахстана и стран Центральной Азии в единую цифровую экосистему. Создаём пространство, где бизнес находит надёжных партнёров, поставщиков и подрядчиков быстро, прозрачно и безопасно." %}
-                </p>
+        <div class="about-content">
+            <div class="about-text">
+
+            <h2 class="about-title">{% trans "Serviko - умная B2B-платформа Центральной Азии" %}</h2>
+            <p class="about-description">
+                {% trans "Партнёры и поставщики с рейтингами, КП, чатами и AI-рекомендациями - быстро, прозрачно и безопасно." %}
+            </p>
                 
-                <!-- Mission Inline -->
-                <div class="mission-inline">
-                    <div class="mission-icon-small">
-                        <i class="fa-solid fa-bullseye"></i>
+                <div class="about-features">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>{% trans "Проверенные компании" %}</h4>
+                            <p>{% trans "Все исполнители проходят верификацию" %}</p>
+                        </div>
                     </div>
-                    <div>
-                        <h4>{% trans "Наша миссия" %}</h4>
-                        <p>{% trans "Повысить эффективность делового взаимодействия и доверие на рынке B2B-услуг через современные технологии и искусственный интеллект." %}</p>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>{% trans "Реальные отзывы" %}</h4>
+                            <p>{% trans "Прозрачная система рейтингов и оценок" %}</p>
+                        </div>
                     </div>
+                    
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <div class="feature-text">
+                            <h4>{% trans "Быстрый отклик" %}</h4>
+                            <p>{% trans "Получайте предложения в течение часа" %}</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="about-cta">
+                    <a href="{% url 'partnership-request' %}" class="btn-primary1">
+                        <i class="fa-solid fa-handshake"></i> {% trans "Стать партнером" %}
+                    </a>
+                    <a href="{% url 'company-list' %}" class="btn-secondary">
+                        <i class="fa-solid fa-search"></i> {% trans "Найти компанию" %}
+                    </a>
                 </div>
             </div>
             
-            <div class="about-hero-image">
-                <div class="image-wrapper">
-                    <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&h=600&fit=crop" alt="{% trans 'О нас' %}" class="hero-img">
+            <div class="about-image">
+                <div class="about-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&h=600&fit=crop" alt="{% trans 'О нас' %}" class="about-img">
+                    <!-- локализуемые стат-лейблы закомментированы, поэтому не трогал -->
                 </div>
-            </div>
-        </div>
-        <!-- What We Do -->
-        <div class="features-section">
-            <h3 class="section-subtitle">{% trans "Что мы делаем" %}</h3>
-            <p class="features-intro">
-                {% trans "Serviko - это интеллектуальная платформа с фильтрами, рейтингами, отзывами и инструментами коммуникации. Она помогает:" %}
-            </p>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon-small">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h4>{% trans "Поиск партнёров" %}</h4>
-                        <p>{% trans "Находить партнёров и поставщиков по отраслям и регионам" %}</p>
-                    </div>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon-small">
-                        <i class="fa-solid fa-file-invoice"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h4>{% trans "КП онлайн" %}</h4>
-                        <p>{% trans "Запрашивать коммерческие предложения онлайн" %}</p>
-                    </div>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon-small">
-                        <i class="fa-solid fa-comments"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h4>{% trans "Коммуникация" %}</h4>
-                        <p>{% trans "Использовать встроенные чаты и систему отзывов" %}</p>
-                    </div>
-                </div>
-
-                <div class="feature-card">
-                    <div class="feature-icon-small">
-                        <i class="fa-solid fa-brain"></i>
-                    </div>
-                    <div class="feature-content">
-                        <h4>{% trans "AI-рекомендации" %}</h4>
-                        <p>{% trans "Анализировать рынок и тенденции с помощью искусственного интеллекта" %}</p>
-                    </div>
-                </div>
-            </div>
-
-            <p class="features-summary">
-                {% trans "Сервис упрощает цикл сделки, повышает доверие и открывает возможности масштабирования бизнеса." %}
-            </p>
-        </div>
-
-        <!-- Values -->
-        <div class="values-section">
-            <h3 class="section-subtitle">{% trans "Наши ценности" %}</h3>
-            
-            <div class="values-grid">
-                <div class="value-card">
-                    <div class="value-number">01</div>
-                    <h4>{% trans "Прозрачность" %}</h4>
-                    <p>{% trans "Рейтинги и отзывы формируют доверие" %}</p>
-                </div>
-
-                <div class="value-card">
-                    <div class="value-number">02</div>
-                    <h4>{% trans "Инновации" %}</h4>
-                    <p>{% trans "Мы внедряем AI-алгоритмы подбора партнёров" %}</p>
-                </div>
-
-                <div class="value-card">
-                    <div class="value-number">03</div>
-                    <h4>{% trans "Эффективность" %}</h4>
-                    <p>{% trans "Экономим время и ресурсы клиентов" %}</p>
-                </div>
-
-                <div class="value-card">
-                    <div class="value-number">04</div>
-                    <h4>{% trans "Надёжность" %}</h4>
-                    <p>{% trans "Все данные и транзакции защищены" %}</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Team & Location -->
-        <div class="team-location-grid">
-            <div class="info-card">
-                <div class="info-icon">
-                    <i class="fa-solid fa-users"></i>
-                </div>
-                <h4>{% trans "Команда" %}</h4>
-                <p>{% trans "Serviko Limited - команда профессионалов с опытом в IT, маркетинге и управлении B2B-проектами. Базируемся в г. Астана (БЦ Olymp Palace) и развиваем международное присутствие." %}</p>
-            </div>
-
-            <div class="info-card">
-                <div class="info-icon">
-                    <i class="fa-solid fa-rocket"></i>
-                </div>
-                <h4>{% trans "Наши цели" %}</h4>
-                <p>{% trans "К 2028 году Serviko станет ведущей B2B-платформой Центральной Азии, объединяющей более 700 компаний и создающей 20+ рабочих мест в сфере IT. Работаем в юрисдикции МФЦА (AIFC) и развиваемся в рамках Astana Hub." %}</p>
-            </div>
-        </div>
-
-        <!-- CTA -->
-        <div class="about-cta-section">
-            <h3>{% trans "Готовы начать?" %}</h3>
-            <p>{% trans "Присоединяйтесь к растущей экосистеме бизнеса Центральной Азии" %}</p>
-            <div class="about-cta-buttons">
-                <a href="{% url 'partnership-request' %}" class="btn-primary1">
-                    <i class="fa-solid fa-handshake"></i> {% trans "Стать партнером" %}
-                </a>
-                <a href="{% url 'company-list' %}" class="btn-secondary">
-                    <i class="fa-solid fa-search"></i> {% trans "Найти компанию" %}
-                </a>
             </div>
         </div>
     </div>
 </section>
-
-
-
 
 <!-- How It Works -->
 <section class="section">
@@ -1261,7 +863,7 @@
                     <i class="fa-solid fa-paper-plane" style="color: white;"></i>
                 </div>
                 <h3>{% trans "Свяжитесь" %}</h3>
-                <p>{% trans "Отправьте заявку компании - укажите детали запроса и получите обратную связь напрямую от исполнителя." %}</p>
+                <p>{% trans "Отправьте заявку компании — укажите детали запроса и получите обратную связь напрямую от исполнителя." %}</p>
             </div>
 
             <div class="timeline-item">

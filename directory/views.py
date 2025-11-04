@@ -700,3 +700,8 @@ def partnership_request_view(request):
 def legal_info_view(request):
     """Отображает страницу с юридической информацией (условия, политика конфиденциальности)."""
     return render(request, 'directory/legal_info.html')
+
+
+def about_us_view(request):
+    """Отображает страницу с юридической информацией (условия, политика конфиденциальности)."""
+    return render(request, 'directory/about_us.html')
