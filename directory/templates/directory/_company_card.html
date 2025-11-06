@@ -203,9 +203,7 @@
     }
 }
 </style>
-
 {% load i18n %}
-
 <a href="{% url 'company-detail' company.id %}" class="company-card" aria-label="{{ company.name }}">
     {% if company.is_verified or company.is_popular %}
         <div class="premium-badge">
