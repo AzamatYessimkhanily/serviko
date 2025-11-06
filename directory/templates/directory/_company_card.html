@@ -1,22 +1,25 @@
 <style>
-/* Базовая карточка компании */
+/* ==== КАРТОЧКА (якорь как корневой элемент) ==== */
 .company-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     background: var(--bg);
     border: 1px solid var(--border);
     border-radius: var(--r-lg);
     overflow: hidden;
     transition: all 0.3s ease;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    position: relative;
+    text-decoration: none;   /* чтобы не было подчёркивания */
+    color: inherit;          /* цвета текста не меняем */
+    cursor: pointer;
 }
 .company-card:hover {
     transform: translateY(-4px);
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
-/* 💛 Премиум бейдж (остался ярко-жёлтым) */
+/* ==== ПРЕМИУМ БЕЙДЖ ==== */
 .premium-badge {
     position: absolute;
     top: 12px;
@@ -35,11 +38,9 @@
     align-items: center;
     gap: 4px;
 }
-.premium-badge i {
-    font-size: 0.7rem;
-}
+.premium-badge i { font-size: 0.7rem; }
 
-/* Header */
+/* ==== HEADER ==== */
 .company-card-header {
     position: relative;
     height: 200px;
@@ -79,7 +80,7 @@
     color: var(--text-lighter);
 }
 
-/* Избранное */
+/* ==== ИЗБРАННОЕ (НЕ ВЕДЁТ НА ДЕТАЛИ) ==== */
 .favorite-btn-card {
     position: absolute;
     top: var(--s3);
@@ -95,7 +96,7 @@
     cursor: pointer;
     font-size: 1.125rem;
     transition: all 0.2s;
-    z-index: 2;
+    z-index: 4; /* выше контента карточки */
 }
 .favorite-btn-card:hover {
     background: var(--bg-secondary);
@@ -107,7 +108,7 @@
     color: white;
 }
 
-/* Тело */
+/* ==== BODY ==== */
 .company-card-body {
     padding: var(--s5);
     flex: 1;
@@ -120,14 +121,6 @@
     font-weight: 600;
     margin: 0;
     line-height: 1.3;
-}
-.company-name a {
-    color: var(--text);
-    text-decoration: none;
-    transition: color 0.2s;
-}
-.company-name a:hover {
-    color: var(--primary);
 }
 .company-meta {
     display: flex;
@@ -168,11 +161,9 @@
     color: var(--text-light);
     transition: all 0.15s;
 }
-.tag:hover {
-    background: var(--bg-tertiary);
-}
+.tag:hover { background: var(--bg-tertiary); }
 
-/* Footer */
+/* ==== FOOTER ==== */
 .company-card-footer {
     padding: var(--s4) var(--s5);
     border-top: 1px solid var(--border);
@@ -190,7 +181,6 @@
     font-weight: 600;
     text-align: center;
     text-decoration: none;
-    cursor: pointer;
     transition: all 0.2s;
 }
 .btn-detail:hover {
@@ -198,7 +188,7 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* Адаптив */
+/* ==== АДАПТИВ ==== */
 @media (max-width: 640px) {
     .company-card-header { height: 170px; }
     .company-logo-wrapper { width: 110px; height: 110px; padding: 8px; }
@@ -213,8 +203,10 @@
     }
 }
 </style>
+
 {% load i18n %}
-<div class="company-card {% if company.is_verified or company.is_popular %}premium{% endif %}">
+
+<a href="{% url 'company-detail' company.id %}" class="company-card" aria-label="{{ company.name }}">
     {% if company.is_verified or company.is_popular %}
         <div class="premium-badge">
             <i class="fa-solid fa-crown"></i> {% trans "Премиум" %}
@@ -234,6 +226,7 @@
 
         {% if user.is_authenticated %}
             <button 
+                type="button"
                 class="favorite-btn-card {% if user in company.favorited_by.all %}favorited{% endif %}"
                 data-url="{% url 'toggle-favorite' company.id %}"
                 title="{% trans 'В избранное' %}">
@@ -247,9 +240,7 @@
     </div>
 
     <div class="company-card-body">
-        <h3 class="company-name">
-            <a href="{% url 'company-detail' company.id %}">{{ company.name }}</a>
-        </h3>
+        <h3 class="company-name">{{ company.name }}</h3>
 
         <div class="company-meta">
             {% if company.service_area %}
@@ -274,6 +265,40 @@
     </div>
 
     <div class="company-card-footer">
-        <a href="{% url 'company-detail' company.id %}" class="btn-detail">{% trans "Подробнее" %}</a>
+        <span class="btn-detail">{% trans "Подробнее" %}</span>
     </div>
-</div>
+</a>
+
+<script>
+/* Кнопка "Избранное" не должна открывать детали */
+document.addEventListener('click', function(e) {
+  const fav = e.target.closest('.favorite-btn-card');
+  if (!fav) return;
+
+  e.stopPropagation(); // не пускаем событие к ссылке-карточке
+  e.preventDefault();  // не переходим по ссылке
+
+  const url = fav.getAttribute('data-url');
+  if (!url) return;
+
+  // Добавь заголовок с CSRF токеном, если у тебя POST (пример ниже)
+  fetch(url, {
+    method: 'POST',
+    headers: {
+      'X-Requested-With': 'XMLHttpRequest',
+      // 'X-CSRFToken': getCookie('csrftoken'),
+    },
+    credentials: 'same-origin'
+  })
+  .then(() => {
+    // оптимистично переключаем UI
+    fav.classList.toggle('favorited');
+    const icon = fav.querySelector('i');
+    if (icon) {
+      icon.classList.toggle('fa-regular');
+      icon.classList.toggle('fa-solid');
+    }
+  })
+  .catch(() => {});
+});
+</script>
