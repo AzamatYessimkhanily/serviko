@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-03 21:30+0500\n"
+"POT-Creation-Date: 2025-11-14 20:50+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -110,21 +110,21 @@ msgstr "Сайт"
 msgid "Дополнительно о себе"
 msgstr "Өзіңіз туралы қосымша ақпарат"
 
-#: directory/templates/directory/_company_card.html:220
+#: directory/templates/directory/_company_card.html:210
 msgid "Премиум"
 msgstr "Премиум"
 
-#: directory/templates/directory/_company_card.html:239
-#: directory/templates/directory/base.html:1109
+#: directory/templates/directory/_company_card.html:230
+#: directory/templates/directory/base.html:1110
 #: directory/templates/directory/company_detail.html:995
 msgid "В избранное"
 msgstr "Таңдаулыларда"
 
-#: directory/templates/directory/_company_card.html:264
+#: directory/templates/directory/_company_card.html:253
 msgid "Описание компании отсутствует"
 msgstr "Компания сипаттамасы жоқ"
 
-#: directory/templates/directory/_company_card.html:277
+#: directory/templates/directory/_company_card.html:266
 msgid "Подробнее"
 msgstr "Толығырақ"
 
@@ -133,11 +133,11 @@ msgstr "Толығырақ"
 msgid "Serviko — найди своего партнёра"
 msgstr "Serviko — өз серіктесіңді тап"
 
-#: directory/templates/directory/about_us.html:1096
+#: directory/templates/directory/about_us.html:196
 msgid "Serviko - инновационная B2B-платформа Центральной Азии"
 msgstr "Serviko - Орталық Азиядағы инновациялық B2B платформасы"
 
-#: directory/templates/directory/about_us.html:1098
+#: directory/templates/directory/about_us.html:198
 msgid ""
 "Мы объединяем компании Казахстана и стран Центральной Азии в единую цифровую "
 "экосистему. Создаём пространство, где бизнес находит надёжных партнёров, "
@@ -147,11 +147,11 @@ msgstr ""
 "экожүйеге біріктіреміз. Мұнда бизнес сенімді серіктестерді, жеткізушілерді "
 "және мердігерлерді тез, ашық және қауіпсіз таба алады."
 
-#: directory/templates/directory/about_us.html:1107
+#: directory/templates/directory/about_us.html:203
 msgid "Наша миссия"
 msgstr "Біздің миссиямыз"
 
-#: directory/templates/directory/about_us.html:1108
+#: directory/templates/directory/about_us.html:204
 msgid ""
 "Повысить эффективность делового взаимодействия и доверие на рынке B2B-услуг "
 "через современные технологии и искусственный интеллект."
@@ -159,18 +159,18 @@ msgstr ""
 "Заманауи технологиялар мен жасанды интеллект арқылы B2B қызметтері нарығында "
 "іскерлік өзара әрекеттестік тиімділігін және сенімділікті арттыру."
 
-#: directory/templates/directory/about_us.html:1115
+#: directory/templates/directory/about_us.html:211
 #: directory/templates/directory/base.html:883
-#: directory/templates/directory/base.html:973
+#: directory/templates/directory/base.html:974
 #: directory/templates/directory/homepage.html:836
 msgid "О нас"
 msgstr "Біз туралы"
 
-#: directory/templates/directory/about_us.html:1121
+#: directory/templates/directory/about_us.html:218
 msgid "Что мы делаем"
 msgstr "Біз не істейміз"
 
-#: directory/templates/directory/about_us.html:1123
+#: directory/templates/directory/about_us.html:220
 msgid ""
 "Serviko - это интеллектуальная платформа с фильтрами, рейтингами, отзывами и "
 "инструментами коммуникации. Она помогает:"
@@ -179,87 +179,79 @@ msgstr ""
 "құралдарымен жабдықталған интеллектуалды платформа. Ол келесілерге "
 "көмектеседі:"
 
-#: directory/templates/directory/about_us.html:1132
+#: directory/templates/directory/about_us.html:227
 msgid "Поиск партнёров"
 msgstr "Серіктестерді іздеу"
 
-#: directory/templates/directory/about_us.html:1133
+#: directory/templates/directory/about_us.html:228
 msgid "Находить партнёров и поставщиков по отраслям и регионам"
 msgstr "Серіктестер мен жеткізушілерді сала және аймақ бойынша табу"
 
-#: directory/templates/directory/about_us.html:1142
+#: directory/templates/directory/about_us.html:234
 msgid "КП онлайн"
 msgstr "Онлайн коммерциялық ұсыныс"
 
-#: directory/templates/directory/about_us.html:1143
+#: directory/templates/directory/about_us.html:235
 msgid "Запрашивать коммерческие предложения онлайн"
 msgstr "Коммерциялық ұсыныстарды онлайн сұрау"
 
-#: directory/templates/directory/about_us.html:1152
+#: directory/templates/directory/about_us.html:241
 msgid "Коммуникация"
 msgstr "Коммуникация"
 
-#: directory/templates/directory/about_us.html:1153
+#: directory/templates/directory/about_us.html:242
 msgid "Использовать встроенные чаты и систему отзывов"
 msgstr "Құрамындағы чаттар мен пікір жүйесін пайдалану"
 
-#: directory/templates/directory/about_us.html:1162
+#: directory/templates/directory/about_us.html:248
 msgid "AI-рекомендации"
 msgstr "AI ұсыныстары"
 
-#: directory/templates/directory/about_us.html:1163
+#: directory/templates/directory/about_us.html:249
 msgid "Анализировать рынок и тенденции с помощью искусственного интеллекта"
 msgstr "Жасанды интеллект көмегімен нарық пен үрдістерді талдау"
 
-#: directory/templates/directory/about_us.html:1169
-msgid ""
-"Сервис упрощает цикл сделки, повышает доверие и открывает возможности "
-"масштабирования бизнеса."
-msgstr ""
-"Қызмет мәміле циклін жеңілдетеді, сенімді арттырады және бизнесті кеңейту "
-"мүмкіндіктерін ашады."
-
-#: directory/templates/directory/about_us.html:1175
+#: directory/templates/directory/about_us.html:257
 msgid "Наши ценности"
 msgstr "Біздің құндылықтарымыз"
 
-#: directory/templates/directory/about_us.html:1180
+#: directory/templates/directory/about_us.html:261
 msgid "Прозрачность"
 msgstr "Ашықтық"
 
-#: directory/templates/directory/about_us.html:1181
+#: directory/templates/directory/about_us.html:262
 msgid "Рейтинги и отзывы формируют доверие"
 msgstr "Рейтингтер мен пікірлер сенімділікті қалыптастырады"
 
-#: directory/templates/directory/about_us.html:1186
+#: directory/templates/directory/about_us.html:266
 msgid "Инновации"
 msgstr "Инновациялар"
 
-#: directory/templates/directory/about_us.html:1187
+#: directory/templates/directory/about_us.html:267
 msgid "Мы внедряем AI-алгоритмы подбора партнёров"
 msgstr "Біз серіктестерді таңдау үшін AI алгоритмдерін енгіземіз"
 
-#: directory/templates/directory/about_us.html:1192
+#: directory/templates/directory/about_us.html:271
 msgid "Эффективность"
 msgstr "Тиімділік"
 
-#: directory/templates/directory/about_us.html:1193
+#: directory/templates/directory/about_us.html:272
 msgid "Экономим время и ресурсы клиентов"
 msgstr "Клиенттердің уақытын және ресурстарын үнемдейміз"
 
-#: directory/templates/directory/about_us.html:1198
+#: directory/templates/directory/about_us.html:276
 msgid "Надёжность"
 msgstr "Сенімділік"
 
-#: directory/templates/directory/about_us.html:1199
+#: directory/templates/directory/about_us.html:277
 msgid "Все данные и транзакции защищены"
 msgstr "Барлық деректер мен транзакциялар қорғалған"
 
-#: directory/templates/directory/about_us.html:1210
+#: directory/templates/directory/about_us.html:286
 msgid "Команда"
 msgstr "Команда"
 
-#: directory/templates/directory/about_us.html:1211
+#: directory/templates/directory/about_us.html:287
 msgid ""
 "Serviko Limited - команда профессионалов с опытом в IT, маркетинге и "
 "управлении B2B-проектами. Базируемся в г. Астана (БЦ Olymp Palace) и "
@@ -269,11 +261,11 @@ msgstr ""
 "тәжірибесі бар кәсіби команда. Астана қаласында (Olymp Palace БО) орналасқан "
 "және халықаралық деңгейде дамуда."
 
-#: directory/templates/directory/about_us.html:1218
+#: directory/templates/directory/about_us.html:291
 msgid "Наши цели"
 msgstr "Біздің мақсаттарымыз"
 
-#: directory/templates/directory/about_us.html:1219
+#: directory/templates/directory/about_us.html:292
 msgid ""
 "К 2028 году Serviko станет ведущей B2B-платформой Центральной Азии, "
 "объединяющей более 700 компаний и создающей 20+ рабочих мест в сфере IT. "
@@ -284,35 +276,24 @@ msgstr ""
 "платформасына айналады. Біз AIFC юрисдикциясында жұмыс істейміз және Astana "
 "Hub аясында дамып келеміз."
 
-#: directory/templates/directory/about_us.html:1225
-#: directory/templates/directory/about_us.html:1251
+#: directory/templates/directory/about_us.html:298
 #: directory/templates/directory/homepage.html:938
 msgid "Готовы начать?"
 msgstr "Бастауға дайынсыз ба?"
 
-#: directory/templates/directory/about_us.html:1226
+#: directory/templates/directory/about_us.html:299
 msgid "Присоединяйтесь к растущей экосистеме бизнеса Центральной Азии"
 msgstr "Орталық Азияның өсіп келе жатқан бизнес экожүйесіне қосылыңыз"
 
-#: directory/templates/directory/about_us.html:1229
+#: directory/templates/directory/about_us.html:302
 #: directory/templates/directory/homepage.html:826
 msgid "Стать партнером"
 msgstr "Серіктес болу"
 
-#: directory/templates/directory/about_us.html:1232
+#: directory/templates/directory/about_us.html:305
 #: directory/templates/directory/homepage.html:829
 msgid "Найти компанию"
 msgstr "Компания табу"
-
-#: directory/templates/directory/about_us.html:1252
-#: directory/templates/directory/homepage.html:939
-msgid "Найдите идеального партнера для вашего проекта прямо сейчас"
-msgstr "Жобаңыз үшін тамара серіктесті дәл қазір табыңыз"
-
-#: directory/templates/directory/about_us.html:1253
-#: directory/templates/directory/homepage.html:940
-msgid "Смотреть все компании"
-msgstr "Барлық компанияларды қарау"
 
 #: directory/templates/directory/activation_sent.html:4
 msgid "Подтвердите Email | Serviko"
@@ -356,66 +337,70 @@ msgid "Каталог компаний"
 msgstr "Компаниялар каталогы"
 
 #: directory/templates/directory/base.html:882
-#: directory/templates/directory/base.html:974
-msgid "Каталог"
-msgstr "Каталог"
+msgid "Главная"
+msgstr "Басты бет"
 
 #: directory/templates/directory/base.html:884
 #: directory/templates/directory/base.html:975
+msgid "Каталог"
+msgstr "Каталог"
+
+#: directory/templates/directory/base.html:885
+#: directory/templates/directory/base.html:976
 msgid "Партнерам"
 msgstr "Серіктестерге"
 
-#: directory/templates/directory/base.html:889
+#: directory/templates/directory/base.html:890
 msgid "Меню"
 msgstr "Мәзір"
 
-#: directory/templates/directory/base.html:923
+#: directory/templates/directory/base.html:924
 #: directory/templates/directory/company_detail.html:1252
 #: directory/templates/directory/profile.html:492
 #: directory/templates/directory/profile.html:539
 msgid "Аватар"
 msgstr "Аватар"
 
-#: directory/templates/directory/base.html:932
+#: directory/templates/directory/base.html:933
 msgid "Личный кабинет"
 msgstr "Жеке кабинет"
 
-#: directory/templates/directory/base.html:933
+#: directory/templates/directory/base.html:934
 msgid "Мои избранные"
 msgstr "Таңдаулыларым"
 
-#: directory/templates/directory/base.html:934
+#: directory/templates/directory/base.html:935
 #: directory/templates/directory/profile.html:523
 msgid "Мои заявки"
 msgstr "Өтінімдерім"
 
-#: directory/templates/directory/base.html:935
+#: directory/templates/directory/base.html:936
 #: directory/templates/directory/profile.html:526
 #: directory/templates/directory/profile.html:627
 msgid "Мои отзывы"
 msgstr "Пікірлерім"
 
-#: directory/templates/directory/base.html:936
+#: directory/templates/directory/base.html:937
 msgid "История просмотров"
 msgstr "Қараулар тарихы"
 
-#: directory/templates/directory/base.html:940
+#: directory/templates/directory/base.html:941
 msgid "Выйти"
 msgstr "Шығу"
 
-#: directory/templates/directory/base.html:946
+#: directory/templates/directory/base.html:947
 #: directory/templates/directory/company_detail.html:1356
 #: directory/templates/directory/login.html:232
 #: directory/templates/directory/register.html:307
 msgid "Войти"
 msgstr "Кіру"
 
-#: directory/templates/directory/base.html:947
+#: directory/templates/directory/base.html:948
 #: directory/templates/directory/company_detail.html:1357
 msgid "Регистрация"
 msgstr "Тіркелу"
 
-#: directory/templates/directory/base.html:966
+#: directory/templates/directory/base.html:967
 msgid ""
 "Найдите лучших исполнителей для любых задач. Проверенные компании, реальные "
 "отзывы."
@@ -423,31 +408,31 @@ msgstr ""
 "Кез келген тапсырмаға ең үздік орындаушыларды табыңыз. Тексерілген "
 "компаниялар, шынайы пікірлер."
 
-#: directory/templates/directory/base.html:971
+#: directory/templates/directory/base.html:972
 msgid "Компания"
 msgstr "Компания"
 
-#: directory/templates/directory/base.html:982
+#: directory/templates/directory/base.html:983
 msgid "Поддержка"
 msgstr "Қолдау"
 
-#: directory/templates/directory/base.html:984
+#: directory/templates/directory/base.html:985
 msgid "Условия Использования"
 msgstr "Қолдану шарттары"
 
-#: directory/templates/directory/base.html:985
+#: directory/templates/directory/base.html:986
 msgid "Конфиденциальность"
 msgstr "Құпиялылық"
 
-#: directory/templates/directory/base.html:990
+#: directory/templates/directory/base.html:991
 msgid "Контакты"
 msgstr "Байланыс"
 
-#: directory/templates/directory/base.html:1008
+#: directory/templates/directory/base.html:1009
 msgid "Все права защищены."
 msgstr "Барлық құқықтар қорғалған."
 
-#: directory/templates/directory/base.html:1101
+#: directory/templates/directory/base.html:1102
 #: directory/templates/directory/company_detail.html:993
 msgid "В избранном"
 msgstr "Таңдаулыларда"
@@ -830,7 +815,9 @@ msgstr "Serviko - Орталық Азиядағы инновациялық B2B �
 msgid ""
 "Партнёры и поставщики с рейтингами, КП, чатами и AI-рекомендациями - быстро, "
 "прозрачно и безопасно."
-msgstr "Рейтингтері, бағалары, чаттар және жасанды интеллект бойынша ұсыныстары бар серіктестер мен жеткізушілер – жылдам, ашық және қауіпсіз."
+msgstr ""
+"Рейтингтері, бағалары, чаттар және жасанды интеллект бойынша ұсыныстары бар "
+"серіктестер мен жеткізушілер – жылдам, ашық және қауіпсіз."
 
 #: directory/templates/directory/homepage.html:798
 msgid "Проверенные компании"
@@ -881,7 +868,8 @@ msgid "Свяжитесь"
 msgstr "Байланысыңыз"
 
 #: directory/templates/directory/homepage.html:866
-msgid "Отправьте заявку компании — укажите детали запроса и получите обратную связь "
+msgid ""
+"Отправьте заявку компании — укажите детали запроса и получите обратную связь "
 "напрямую от исполнителя."
 msgstr ""
 "Компанияға өтініш жіберіңіз — сұраныс толықтаймаларын көрсетіп, орындаушыдан "
@@ -916,6 +904,14 @@ msgstr "Аватар"
 #: directory/templates/directory/homepage.html:925
 msgid "Клиент"
 msgstr "Клиент"
+
+#: directory/templates/directory/homepage.html:939
+msgid "Найдите идеального партнера для вашего проекта прямо сейчас"
+msgstr "Жобаңыз үшін тамара серіктесті дәл қазір табыңыз"
+
+#: directory/templates/directory/homepage.html:940
+msgid "Смотреть все компании"
+msgstr "Барлық компанияларды қарау"
 
 #: directory/templates/directory/legal_info.html:6
 msgid "Условия и Политика конфиденциальности | Serviko"
@@ -1756,7 +1752,7 @@ msgstr "Мақұлданғаннан кейін 24 сағат ішinde өтін�
 
 #: directory/templates/directory/partnership_request.html:395
 msgid "Ответ в течение 24 часов"
-msgstr "24 сағат ішinde жауап"
+msgstr "24 сағат ішiндe жауап"
 
 #: directory/templates/directory/partnership_request.html:397
 msgid "Заявка на партнерство"
@@ -3278,6 +3274,13 @@ msgstr ""
 #: venv/lib/python3.11/site-packages/modeltranslation/widgets.py:32
 msgid "None"
 msgstr ""
+
+#~ msgid ""
+#~ "Сервис упрощает цикл сделки, повышает доверие и открывает возможности "
+#~ "масштабирования бизнеса."
+#~ msgstr ""
+#~ "Қызмет мәміле циклін жеңілдетеді, сенімді арттырады және бизнесті кеңейту "
+#~ "мүмкіндіктерін ашады."
 
 #~ msgid "Найдите лучших исполнителей для любой задачи"
 #~ msgstr "Кез келген тапсырма үшін ең үздік орындаушыларды табыңыз"

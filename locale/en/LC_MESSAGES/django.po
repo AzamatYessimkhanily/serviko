@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-03 21:30+0500\n"
+"POT-Creation-Date: 2025-11-14 20:50+0500\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -110,21 +110,21 @@ msgstr "Website"
 msgid "Дополнительно о себе"
 msgstr "Additional information about yourself"
 
-#: directory/templates/directory/_company_card.html:220
+#: directory/templates/directory/_company_card.html:210
 msgid "Премиум"
 msgstr "Premium"
 
-#: directory/templates/directory/_company_card.html:239
-#: directory/templates/directory/base.html:1109
+#: directory/templates/directory/_company_card.html:230
+#: directory/templates/directory/base.html:1110
 #: directory/templates/directory/company_detail.html:995
 msgid "В избранное"
 msgstr "Add to favorites"
 
-#: directory/templates/directory/_company_card.html:264
+#: directory/templates/directory/_company_card.html:253
 msgid "Описание компании отсутствует"
 msgstr "No company description"
 
-#: directory/templates/directory/_company_card.html:277
+#: directory/templates/directory/_company_card.html:266
 msgid "Подробнее"
 msgstr "Learn more"
 
@@ -133,11 +133,11 @@ msgstr "Learn more"
 msgid "Serviko — найди своего партнёра"
 msgstr "Serviko — find your partner"
 
-#: directory/templates/directory/about_us.html:1096
+#: directory/templates/directory/about_us.html:196
 msgid "Serviko - инновационная B2B-платформа Центральной Азии"
 msgstr "Serviko - the innovative B2B platform of Central Asia"
 
-#: directory/templates/directory/about_us.html:1098
+#: directory/templates/directory/about_us.html:198
 msgid ""
 "Мы объединяем компании Казахстана и стран Центральной Азии в единую цифровую "
 "экосистему. Создаём пространство, где бизнес находит надёжных партнёров, "
@@ -147,11 +147,11 @@ msgstr ""
 "ecosystem. We create a space where businesses can find reliable partners, "
 "suppliers, and contractors — fast, transparently, and securely."
 
-#: directory/templates/directory/about_us.html:1107
+#: directory/templates/directory/about_us.html:203
 msgid "Наша миссия"
 msgstr "Our mission"
 
-#: directory/templates/directory/about_us.html:1108
+#: directory/templates/directory/about_us.html:204
 msgid ""
 "Повысить эффективность делового взаимодействия и доверие на рынке B2B-услуг "
 "через современные технологии и искусственный интеллект."
@@ -159,18 +159,18 @@ msgstr ""
 "To enhance business efficiency and trust in the B2B services market through "
 "modern technologies and artificial intelligence."
 
-#: directory/templates/directory/about_us.html:1115
+#: directory/templates/directory/about_us.html:211
 #: directory/templates/directory/base.html:883
-#: directory/templates/directory/base.html:973
+#: directory/templates/directory/base.html:974
 #: directory/templates/directory/homepage.html:836
 msgid "О нас"
 msgstr "About us"
 
-#: directory/templates/directory/about_us.html:1121
+#: directory/templates/directory/about_us.html:218
 msgid "Что мы делаем"
 msgstr "What we do"
 
-#: directory/templates/directory/about_us.html:1123
+#: directory/templates/directory/about_us.html:220
 msgid ""
 "Serviko - это интеллектуальная платформа с фильтрами, рейтингами, отзывами и "
 "инструментами коммуникации. Она помогает:"
@@ -178,87 +178,79 @@ msgstr ""
 "Serviko is an intelligent platform with filters, ratings, reviews, and "
 "communication tools. It helps you:"
 
-#: directory/templates/directory/about_us.html:1132
+#: directory/templates/directory/about_us.html:227
 msgid "Поиск партнёров"
 msgstr "Partner search"
 
-#: directory/templates/directory/about_us.html:1133
+#: directory/templates/directory/about_us.html:228
 msgid "Находить партнёров и поставщиков по отраслям и регионам"
 msgstr "Find partners and suppliers by industry and region"
 
-#: directory/templates/directory/about_us.html:1142
+#: directory/templates/directory/about_us.html:234
 msgid "КП онлайн"
 msgstr "Online proposals"
 
-#: directory/templates/directory/about_us.html:1143
+#: directory/templates/directory/about_us.html:235
 msgid "Запрашивать коммерческие предложения онлайн"
 msgstr "Request commercial proposals online"
 
-#: directory/templates/directory/about_us.html:1152
+#: directory/templates/directory/about_us.html:241
 msgid "Коммуникация"
 msgstr "Communication"
 
-#: directory/templates/directory/about_us.html:1153
+#: directory/templates/directory/about_us.html:242
 msgid "Использовать встроенные чаты и систему отзывов"
 msgstr "Use built-in chats and feedback system"
 
-#: directory/templates/directory/about_us.html:1162
+#: directory/templates/directory/about_us.html:248
 msgid "AI-рекомендации"
 msgstr "AI recommendations"
 
-#: directory/templates/directory/about_us.html:1163
+#: directory/templates/directory/about_us.html:249
 msgid "Анализировать рынок и тенденции с помощью искусственного интеллекта"
 msgstr "Analyze markets and trends using artificial intelligence"
 
-#: directory/templates/directory/about_us.html:1169
-msgid ""
-"Сервис упрощает цикл сделки, повышает доверие и открывает возможности "
-"масштабирования бизнеса."
-msgstr ""
-"The service simplifies the deal cycle, builds trust, and opens opportunities "
-"for business scaling."
-
-#: directory/templates/directory/about_us.html:1175
+#: directory/templates/directory/about_us.html:257
 msgid "Наши ценности"
 msgstr "Our values"
 
-#: directory/templates/directory/about_us.html:1180
+#: directory/templates/directory/about_us.html:261
 msgid "Прозрачность"
 msgstr "Transparency"
 
-#: directory/templates/directory/about_us.html:1181
+#: directory/templates/directory/about_us.html:262
 msgid "Рейтинги и отзывы формируют доверие"
 msgstr "Ratings and reviews build trust"
 
-#: directory/templates/directory/about_us.html:1186
+#: directory/templates/directory/about_us.html:266
 msgid "Инновации"
 msgstr "Innovation"
 
-#: directory/templates/directory/about_us.html:1187
+#: directory/templates/directory/about_us.html:267
 msgid "Мы внедряем AI-алгоритмы подбора партнёров"
 msgstr "We implement AI algorithms for partner matching"
 
-#: directory/templates/directory/about_us.html:1192
+#: directory/templates/directory/about_us.html:271
 msgid "Эффективность"
 msgstr "Efficiency"
 
-#: directory/templates/directory/about_us.html:1193
+#: directory/templates/directory/about_us.html:272
 msgid "Экономим время и ресурсы клиентов"
 msgstr "We save clients' time and resources"
 
-#: directory/templates/directory/about_us.html:1198
+#: directory/templates/directory/about_us.html:276
 msgid "Надёжность"
 msgstr "Reliability"
 
-#: directory/templates/directory/about_us.html:1199
+#: directory/templates/directory/about_us.html:277
 msgid "Все данные и транзакции защищены"
 msgstr "All data and transactions are protected"
 
-#: directory/templates/directory/about_us.html:1210
+#: directory/templates/directory/about_us.html:286
 msgid "Команда"
 msgstr "Team"
 
-#: directory/templates/directory/about_us.html:1211
+#: directory/templates/directory/about_us.html:287
 msgid ""
 "Serviko Limited - команда профессионалов с опытом в IT, маркетинге и "
 "управлении B2B-проектами. Базируемся в г. Астана (БЦ Olymp Palace) и "
@@ -268,11 +260,11 @@ msgstr ""
 "and B2B project management. We are based in Astana (Olymp Palace BC) and "
 "expanding our international presence."
 
-#: directory/templates/directory/about_us.html:1218
+#: directory/templates/directory/about_us.html:291
 msgid "Наши цели"
 msgstr "Our goals"
 
-#: directory/templates/directory/about_us.html:1219
+#: directory/templates/directory/about_us.html:292
 msgid ""
 "К 2028 году Serviko станет ведущей B2B-платформой Центральной Азии, "
 "объединяющей более 700 компаний и создающей 20+ рабочих мест в сфере IT. "
@@ -282,35 +274,24 @@ msgstr ""
 "uniting over 700 companies and creating 20+ IT jobs. We operate under the "
 "AIFC jurisdiction and grow within the Astana Hub ecosystem."
 
-#: directory/templates/directory/about_us.html:1225
-#: directory/templates/directory/about_us.html:1251
+#: directory/templates/directory/about_us.html:298
 #: directory/templates/directory/homepage.html:938
 msgid "Готовы начать?"
 msgstr "Ready to start?"
 
-#: directory/templates/directory/about_us.html:1226
+#: directory/templates/directory/about_us.html:299
 msgid "Присоединяйтесь к растущей экосистеме бизнеса Центральной Азии"
 msgstr "Join the growing business ecosystem of Central Asia"
 
-#: directory/templates/directory/about_us.html:1229
+#: directory/templates/directory/about_us.html:302
 #: directory/templates/directory/homepage.html:826
 msgid "Стать партнером"
 msgstr "Become a partner"
 
-#: directory/templates/directory/about_us.html:1232
+#: directory/templates/directory/about_us.html:305
 #: directory/templates/directory/homepage.html:829
 msgid "Найти компанию"
 msgstr "Find a company"
-
-#: directory/templates/directory/about_us.html:1252
-#: directory/templates/directory/homepage.html:939
-msgid "Найдите идеального партнера для вашего проекта прямо сейчас"
-msgstr "Find the perfect partner for your project right now"
-
-#: directory/templates/directory/about_us.html:1253
-#: directory/templates/directory/homepage.html:940
-msgid "Смотреть все компании"
-msgstr "View all companies"
 
 #: directory/templates/directory/activation_sent.html:4
 msgid "Подтвердите Email | Serviko"
@@ -354,97 +335,101 @@ msgid "Каталог компаний"
 msgstr "Company catalog"
 
 #: directory/templates/directory/base.html:882
-#: directory/templates/directory/base.html:974
-msgid "Каталог"
-msgstr "Catalog"
+msgid "Главная"
+msgstr "Home"
 
 #: directory/templates/directory/base.html:884
 #: directory/templates/directory/base.html:975
+msgid "Каталог"
+msgstr "Catalog"
+
+#: directory/templates/directory/base.html:885
+#: directory/templates/directory/base.html:976
 msgid "Партнерам"
 msgstr "Partners"
 
-#: directory/templates/directory/base.html:889
+#: directory/templates/directory/base.html:890
 msgid "Меню"
 msgstr "Menu"
 
-#: directory/templates/directory/base.html:923
+#: directory/templates/directory/base.html:924
 #: directory/templates/directory/company_detail.html:1252
 #: directory/templates/directory/profile.html:492
 #: directory/templates/directory/profile.html:539
 msgid "Аватар"
 msgstr "Avatar"
 
-#: directory/templates/directory/base.html:932
+#: directory/templates/directory/base.html:933
 msgid "Личный кабинет"
 msgstr "Profile"
 
-#: directory/templates/directory/base.html:933
+#: directory/templates/directory/base.html:934
 msgid "Мои избранные"
 msgstr "My favorites"
 
-#: directory/templates/directory/base.html:934
+#: directory/templates/directory/base.html:935
 #: directory/templates/directory/profile.html:523
 msgid "Мои заявки"
 msgstr "My applications"
 
-#: directory/templates/directory/base.html:935
+#: directory/templates/directory/base.html:936
 #: directory/templates/directory/profile.html:526
 #: directory/templates/directory/profile.html:627
 msgid "Мои отзывы"
 msgstr "My reviews"
 
-#: directory/templates/directory/base.html:936
+#: directory/templates/directory/base.html:937
 msgid "История просмотров"
 msgstr "View history"
 
-#: directory/templates/directory/base.html:940
+#: directory/templates/directory/base.html:941
 msgid "Выйти"
 msgstr "Log out"
 
-#: directory/templates/directory/base.html:946
+#: directory/templates/directory/base.html:947
 #: directory/templates/directory/company_detail.html:1356
 #: directory/templates/directory/login.html:232
 #: directory/templates/directory/register.html:307
 msgid "Войти"
 msgstr "Log in"
 
-#: directory/templates/directory/base.html:947
+#: directory/templates/directory/base.html:948
 #: directory/templates/directory/company_detail.html:1357
 msgid "Регистрация"
 msgstr "Sign up"
 
-#: directory/templates/directory/base.html:966
+#: directory/templates/directory/base.html:967
 msgid ""
 "Найдите лучших исполнителей для любых задач. Проверенные компании, реальные "
 "отзывы."
 msgstr ""
 "Find the best contractors for any task. Verified companies, real reviews."
 
-#: directory/templates/directory/base.html:971
+#: directory/templates/directory/base.html:972
 msgid "Компания"
 msgstr "Company"
 
-#: directory/templates/directory/base.html:982
+#: directory/templates/directory/base.html:983
 msgid "Поддержка"
 msgstr "Support"
 
-#: directory/templates/directory/base.html:984
+#: directory/templates/directory/base.html:985
 msgid "Условия Использования"
 msgstr "Terms of Use"
 
-#: directory/templates/directory/base.html:985
+#: directory/templates/directory/base.html:986
 msgid "Конфиденциальность"
 msgstr "Privacy Policy"
 
-#: directory/templates/directory/base.html:990
+#: directory/templates/directory/base.html:991
 msgid "Контакты"
 msgstr "Contacts"
 
-#: directory/templates/directory/base.html:1008
+#: directory/templates/directory/base.html:1009
 msgid "Все права защищены."
 msgstr "All rights reserved."
 
-#: directory/templates/directory/base.html:1101
+#: directory/templates/directory/base.html:1102
 #: directory/templates/directory/company_detail.html:993
 msgid "В избранном"
 msgstr "In favorites"
@@ -801,8 +786,12 @@ msgid "Serviko - умная B2B-платформа Центральной Ази
 msgstr "Serviko - the innovative B2B platform of Central Asia"
 
 #: directory/templates/directory/homepage.html:789
-msgid "Партнёры и поставщики с рейтингами, КП, чатами и AI-рекомендациями - быстро, прозрачно и безопасно."
-msgstr "Partners and suppliers with ratings, quotes, chats, and AI recommendations – fast, transparent, and secure."
+msgid ""
+"Партнёры и поставщики с рейтингами, КП, чатами и AI-рекомендациями - быстро, "
+"прозрачно и безопасно."
+msgstr ""
+"Partners and suppliers with ratings, quotes, chats, and AI recommendations – "
+"fast, transparent, and secure."
 
 #: directory/templates/directory/homepage.html:798
 msgid "Проверенные компании"
@@ -853,10 +842,12 @@ msgid "Свяжитесь"
 msgstr "Get in touch"
 
 #: directory/templates/directory/homepage.html:866
-msgid "Отправьте заявку компании — укажите детали запроса и получите обратную связь "
+msgid ""
+"Отправьте заявку компании — укажите детали запроса и получите обратную связь "
 "напрямую от исполнителя."
-msgstr "Submit a request to the company — provide details of your request and receive feedback directly from the contractor."
-
+msgstr ""
+"Submit a request to the company — provide details of your request and "
+"receive feedback directly from the contractor."
 
 #: directory/templates/directory/homepage.html:873
 msgid "Начните работу"
@@ -886,6 +877,14 @@ msgstr "Avatar of %(uname)s"
 #: directory/templates/directory/homepage.html:925
 msgid "Клиент"
 msgstr ""
+
+#: directory/templates/directory/homepage.html:939
+msgid "Найдите идеального партнера для вашего проекта прямо сейчас"
+msgstr "Find the perfect partner for your project right now"
+
+#: directory/templates/directory/homepage.html:940
+msgid "Смотреть все компании"
+msgstr "View all companies"
 
 #: directory/templates/directory/legal_info.html:6
 msgid "Условия и Политика конфиденциальности | Serviko"
@@ -3223,6 +3222,13 @@ msgstr ""
 #: venv/lib/python3.11/site-packages/modeltranslation/widgets.py:32
 msgid "None"
 msgstr ""
+
+#~ msgid ""
+#~ "Сервис упрощает цикл сделки, повышает доверие и открывает возможности "
+#~ "масштабирования бизнеса."
+#~ msgstr ""
+#~ "The service simplifies the deal cycle, builds trust, and opens "
+#~ "opportunities for business scaling."
 
 #~ msgid "Найдите лучших исполнителей для любой задачи"
 #~ msgstr "Find the best contractors for any task"
