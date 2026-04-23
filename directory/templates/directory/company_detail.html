@@ -63,37 +63,28 @@
 
     /* Logo */
 .company-logo-hero {
-    /* больше площадь под логотип */
     width: 180px;
     height: 180px;
-
-    /* делаем аккуратную «рамку-витрину» */
     background: #fff;
     padding: 12px;
     border-radius: 16px;
     border: 1.5px solid rgba(0,0,0,0.08);
     box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-
-    /* выравнивание */
     display: flex;
     align-items: center;
     justify-content: center;
-
-    /* фиксируем квадрат и убираем прежнее обрезание */
-    aspect-ratio: 1 / 1;       /* держим квадрат даже если размеры поменяются */
-    overflow: visible;         /* раньше было hidden — из-за этого «резало» */
+    aspect-ratio: 1 / 1;
+    overflow: visible;
     flex-shrink: 0;
-
-    /* убираем старую белую жирную рамку, которая съедала площадь */
     border-width: 1.5px;
 }
 
 .company-logo-hero img {
     width: 100%;
     height: 100%;
-    object-fit: contain;       /* ключ: больше не cover */
+    object-fit: contain;
     object-position: center;
-    background: #fff;          /* PNG/SVG с прозрачностью выглядят чисто */
+    background: #fff;
     border-radius: 12px;
     border: 0;
     box-shadow: none;
@@ -784,127 +775,6 @@
             flex-direction: column;
         }
     }
-
-    /* ==== Locked / Blurred Contacts ==== */
-.locked {
-  position: relative;
-  border: 1px dashed var(--border);
-  border-radius: var(--r-lg);
-  overflow: hidden;
-}
-
-.locked-inner {
-  filter: blur(6px);
-  pointer-events: none; /* контакты не кликаются */
-  user-select: none;
-}
-
-.locked-overlay {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  background:
-    radial-gradient(60% 60% at 50% 40%, rgba(255,255,255,0.6), rgba(255,255,255,0.9)),
-    linear-gradient(135deg, rgba(0,0,0,0.03), rgba(0,0,0,0.05));
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  padding: var(--s6);
-}
-
-.locked-panel {
-  background: rgba(255,255,255,0.85);
-  border: 1px solid var(--border);
-  border-radius: var(--r-lg);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-  padding: var(--s6);
-  text-align: center;
-  max-width: 420px;
-}
-
-.locked-title {
-  font-size: 1.125rem;
-  font-weight: 700;
-  margin-bottom: var(--s2);
-  letter-spacing: -0.01em;
-}
-
-.locked-text {
-  font-size: 0.9375rem;
-  color: var(--text-light);
-  margin-bottom: var(--s5);
-  line-height: 1.6;
-}
-
-.locked-actions {
-  display: flex;
-  gap: var(--s3);
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.locked-btn {
-  padding: var(--s3) var(--s5);
-  border-radius: var(--r-md);
-  font-weight: 600;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  gap: var(--s2);
-  border: 1px solid var(--border);
-  background: white;
-  color: var(--text);
-  transition: all .2s;
-}
-
-.locked-btn.primary {
-  background: var(--text);
-  color: var(--bg);
-  border-color: var(--text);
-}
-
-.locked-btn:hover { transform: translateY(-1px); }
-.locked-btn.primary:hover { box-shadow: 0 8px 16px rgba(0,0,0,0.12); }
-
-/* маленькие маскированные значения — «**** 34» */
-.masked {
-  letter-spacing: 0.06em;
-  font-variant-numeric: tabular-nums;
-  background: var(--bg-secondary);
-  border-radius: var(--r-md);
-  padding: 2px 6px;
-}
-
-/* чтобы тень в «заблюренной» карточке не уезжала */
-.sidebar-card.lock-aside { padding: 0; }
-.sidebar-card.lock-aside .locked-inner { padding: var(--s6); }
-
-/* Размытие контактов для гостей */
-.blurred {
-  filter: blur(6px);
-  opacity: .85;
-  pointer-events: none;  /* не кликается */
-  user-select: none;     /* нельзя скопировать */
-  position: relative;
-}
-
-/* Поясняющая плашка под блоком */
-.locked-note {
-  margin-top: var(--s4);
-  font-size: 0.875rem;
-  color: var(--text-light);
-  background: var(--bg-secondary);
-  border: 1px dashed var(--border);
-  border-radius: var(--r-md);
-  padding: var(--s3) var(--s4);
-  text-align: center;
-}
-.locked-note a {
-  color: var(--text);
-  font-weight: 600;
-  text-decoration: none;
-}
-.locked-note a:hover { text-decoration: underline; }
 </style>
 {% endblock %}
 
@@ -1044,91 +914,76 @@
                 {% endif %}
             </div>
 
-<!-- Sidebar -->
-<aside>
-  <div class="sidebar-card">
-    <h3>{% trans "Информация" %}</h3>
-    <ul class="info-list">
-      {% if company.categories.all %}
-        <li class="info-item">
-          <div class="info-label">{% trans "Категории" %}</div>
-          <div class="info-value">
-            {% for category in company.categories.all %}
-              {{ category.name }}{% if not forloop.last %}, {% endif %}
-            {% endfor %}
-          </div>
-        </li>
-      {% endif %}
+            <!-- Sidebar — контакты открыты для всех -->
+            <aside>
+                <div class="sidebar-card">
+                    <h3>{% trans "Информация" %}</h3>
+                    <ul class="info-list">
+                        {% if company.categories.all %}
+                            <li class="info-item">
+                                <div class="info-label">{% trans "Категории" %}</div>
+                                <div class="info-value">
+                                    {% for category in company.categories.all %}
+                                        {{ category.name }}{% if not forloop.last %}, {% endif %}
+                                    {% endfor %}
+                                </div>
+                            </li>
+                        {% endif %}
 
-      {% if company.phone_number %}
-        <li class="info-item">
-          <div class="info-label">{% trans "Телефон" %}</div>
-          <div class="info-value {% if not user.is_authenticated %}blurred{% endif %}">
-            <a href="tel:{{ company.phone_number }}">{{ company.phone_number }}</a>
-          </div>
-        </li>
-      {% endif %}
+                        {% if company.phone_number %}
+                            <li class="info-item">
+                                <div class="info-label">{% trans "Телефон" %}</div>
+                                <div class="info-value">
+                                    <a href="tel:{{ company.phone_number }}">{{ company.phone_number }}</a>
+                                </div>
+                            </li>
+                        {% endif %}
 
-      {% if company.email %}
-        <li class="info-item">
-          <div class="info-label">{% trans "Email" %}</div>
-          <div class="info-value {% if not user.is_authenticated %}blurred{% endif %}">
-            <a href="mailto:{{ company.email }}">{{ company.email }}</a>
-          </div>
-        </li>
-      {% endif %}
+                        {% if company.email %}
+                            <li class="info-item">
+                                <div class="info-label">{% trans "Email" %}</div>
+                                <div class="info-value">
+                                    <a href="mailto:{{ company.email }}">{{ company.email }}</a>
+                                </div>
+                            </li>
+                        {% endif %}
 
-      {% if company.website %}
-        <li class="info-item">
-          <div class="info-label">{% trans "Сайт" %}</div>
-          <div class="info-value {% if not user.is_authenticated %}blurred{% endif %}">
-            <a href="{{ company.website }}" target="_blank" rel="noopener">{% trans "Перейти" %}</a>
-          </div>
-        </li>
-      {% endif %}
-    </ul>
+                        {% if company.website %}
+                            <li class="info-item">
+                                <div class="info-label">{% trans "Сайт" %}</div>
+                                <div class="info-value">
+                                    <a href="{{ company.website }}" target="_blank" rel="noopener">{% trans "Перейти" %}</a>
+                                </div>
+                            </li>
+                        {% endif %}
+                    </ul>
 
-    {% if company.instagram_url or company.facebook_url or company.whatsapp_contact or company.telegram_contact %}
-      <div class="social-links {% if not user.is_authenticated %}blurred{% endif %}">
-        {% if company.instagram_url %}
-          <a href="{{ company.instagram_url }}" target="_blank" class="social-link" title="{% trans 'Instagram' %}" rel="noopener">
-            <i class="fa-brands fa-instagram"></i>
-          </a>
-        {% endif %}
-        {% if company.facebook_url %}
-          <a href="{{ company.facebook_url }}" target="_blank" class="social-link" title="{% trans 'Facebook' %}" rel="noopener">
-            <i class="fa-brands fa-facebook-f"></i>
-          </a>
-        {% endif %}
-        {% if company.whatsapp_contact %}
-          <a href="https://wa.me/{{ company.whatsapp_contact }}" target="_blank" class="social-link" title="{% trans 'WhatsApp' %}" rel="noopener">
-            <i class="fa-brands fa-whatsapp"></i>
-          </a>
-        {% endif %}
-        {% if company.telegram_contact %}
-          <a href="https://t.me/{{ company.telegram_contact }}" target="_blank" class="social-link" title="{% trans 'Telegram' %}" rel="noopener">
-            <i class="fa-brands fa-telegram"></i>
-          </a>
-        {% endif %}
-      </div>
-    {% endif %}
-
-        {% if not user.is_authenticated %}
-        <div class="locked-note">
-            <i class="fa-solid fa-lock"></i>
-            {% url 'login' as login_base %}
-            {% with login_url=login_base|add:'?next='|add:request.path %}
-            {% url 'register' as register_url %}
-            {% blocktrans trimmed with login_url=login_url register_url=register_url %}
-            Контактные данные скрыты. <a href="{{ login_url }}">Войдите</a> или
-            <a href="{{ register_url }}">зарегистрируйтесь</a>, чтобы увидеть номер, email, сайт и соцсети.
-            {% endblocktrans %}
-            {% endwith %}
-
-        </div>
-        {% endif %}
-  </div>
-</aside>
+                    {% if company.instagram_url or company.facebook_url or company.whatsapp_contact or company.telegram_contact %}
+                        <div class="social-links">
+                            {% if company.instagram_url %}
+                                <a href="{{ company.instagram_url }}" target="_blank" class="social-link" title="{% trans 'Instagram' %}" rel="noopener">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                            {% endif %}
+                            {% if company.facebook_url %}
+                                <a href="{{ company.facebook_url }}" target="_blank" class="social-link" title="{% trans 'Facebook' %}" rel="noopener">
+                                    <i class="fa-brands fa-facebook-f"></i>
+                                </a>
+                            {% endif %}
+                            {% if company.whatsapp_contact %}
+                                <a href="https://wa.me/{{ company.whatsapp_contact }}" target="_blank" class="social-link" title="{% trans 'WhatsApp' %}" rel="noopener">
+                                    <i class="fa-brands fa-whatsapp"></i>
+                                </a>
+                            {% endif %}
+                            {% if company.telegram_contact %}
+                                <a href="https://t.me/{{ company.telegram_contact }}" target="_blank" class="social-link" title="{% trans 'Telegram' %}" rel="noopener">
+                                    <i class="fa-brands fa-telegram"></i>
+                                </a>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </div>
+            </aside>
         </div>
     </div>
 
@@ -1230,69 +1085,69 @@
                         </div>
                     {% endif %}
                 {% else %}
-                <div class="info-message">
-                <p>
-                    {% blocktrans trimmed with login_url=login_url register_url=register_url %}
-                    Для того чтобы оставить отзыв, пожалуйста, <a href="{{ login_url }}">войдите в свой аккаунт</a> или
-                    <a href="{{ register_url }}">зарегистрируйтесь</a>.
-                    {% endblocktrans %}
-                </p>
-                </div>
+                    <div class="info-message">
+                        <p>
+                            {% blocktrans trimmed with login_url=login_url register_url=register_url %}
+                            Для того чтобы оставить отзыв, пожалуйста, <a href="{{ login_url }}">войдите в свой аккаунт</a> или
+                            <a href="{{ register_url }}">зарегистрируйтесь</a>.
+                            {% endblocktrans %}
+                        </p>
+                    </div>
                 {% endif %}
             </div>
 
-                <!-- Reviews List -->
-                {% for review in reviews %}
-                <div class="review-card">
-                    <div class="review-header">
-                        <div class="review-author-info">
-                            <div class="review-avatar">
-                                <img
-                                    src="{{ review.user.userprofile.avatar.url }}"
-                                    alt="{% trans 'Аватар' %}"
-                                >
-                            </div>
-                            <div>
-                                <div class="review-author">{{ review.user.get_full_name|default:review.user.username }}</div>
-                                <div class="review-date">{{ review.created_at|date:"d.m.Y" }}</div>
-                            </div>
+            <!-- Reviews List -->
+            {% for review in reviews %}
+            <div class="review-card">
+                <div class="review-header">
+                    <div class="review-author-info">
+                        <div class="review-avatar">
+                            <img
+                                src="{{ review.user.userprofile.avatar.url }}"
+                                alt="{% trans 'Аватар' %}"
+                            >
                         </div>
-                        <div class="review-rating">
-                            <div class="review-stars">
-                                {% for i in "12345" %}
-                                    {% if forloop.counter <= review.rating %}
-                                        <i class="fa-solid fa-star"></i>
-                                    {% else %}
-                                        <i class="fa-regular fa-star"></i>
-                                    {% endif %}
-                                {% endfor %}
-                            </div>
+                        <div>
+                            <div class="review-author">{{ review.user.get_full_name|default:review.user.username }}</div>
+                            <div class="review-date">{{ review.created_at|date:"d.m.Y" }}</div>
                         </div>
                     </div>
-                    
-                    <div class="review-content-wrapper">
-                        <div class="review-content">{{ review.comment|linebreaks }}</div>
-                        
-                        {% if review.user == user %}
-                            {% trans "Вы уверены, что хотите удалить этот отзыв?" as delete_confirm %}
-                            <form action="{% url 'delete-review' review.id %}"
-                                method="POST"
-                                onsubmit="return confirm('{{ delete_confirm|escapejs }}');"
-                                style="display: inline;">
-                                {% csrf_token %}
-                                <button type="submit" class="review-delete-inline" title="{% trans 'Удалить отзыв' %}">
-                                    <i class="fa-solid fa-trash"></i>
-                                </button>
-                            </form>
-                        {% endif %}
+                    <div class="review-rating">
+                        <div class="review-stars">
+                            {% for i in "12345" %}
+                                {% if forloop.counter <= review.rating %}
+                                    <i class="fa-solid fa-star"></i>
+                                {% else %}
+                                    <i class="fa-regular fa-star"></i>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
                     </div>
                 </div>
-                {% empty %}
-                <div class="empty-state">
-                    <div class="empty-icon"><i class="fa-solid fa-comments"></i></div>
-                    <p class="empty-text">{% trans "Для этой компании еще нет отзывов. Станьте первым!" %}</p>
+
+                <div class="review-content-wrapper">
+                    <div class="review-content">{{ review.comment|linebreaks }}</div>
+
+                    {% if review.user == user %}
+                        {% trans "Вы уверены, что хотите удалить этот отзыв?" as delete_confirm %}
+                        <form action="{% url 'delete-review' review.id %}"
+                            method="POST"
+                            onsubmit="return confirm('{{ delete_confirm|escapejs }}');"
+                            style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="review-delete-inline" title="{% trans 'Удалить отзыв' %}">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </form>
+                    {% endif %}
                 </div>
-                {% endfor %}
+            </div>
+            {% empty %}
+            <div class="empty-state">
+                <div class="empty-icon"><i class="fa-solid fa-comments"></i></div>
+                <p class="empty-text">{% trans "Для этой компании еще нет отзывов. Станьте первым!" %}</p>
+            </div>
+            {% endfor %}
         </div>
     </div>
 
@@ -1311,72 +1166,61 @@
                             <button type="submit" name="submit_request" class="btn-primary">{% trans "Отправить" %}</button>
                         </form>
                     {% else %}
-                    <div class="empty-state">
-                    <p class="empty-text">
-                        {% blocktrans trimmed with login_url=login_url register_url=register_url %}
-                        <a href="{{ login_url }}">Войдите</a> или <a href="{{ register_url }}">зарегистрируйтесь</a>, чтобы отправить заявку.
-                        {% endblocktrans %}
-                    </p>
-                    </div>
+                        <div class="empty-state">
+                            <p class="empty-text">
+                                {% blocktrans trimmed with login_url=login_url register_url=register_url %}
+                                <a href="{{ login_url }}">Войдите</a> или <a href="{{ register_url }}">зарегистрируйтесь</a>, чтобы отправить заявку.
+                                {% endblocktrans %}
+                            </p>
+                        </div>
                     {% endif %}
                     </div>
                 </div>
             </div>
 
-            <!-- Sidebar -->
+            <!-- Sidebar — контакты открыты для всех -->
             <aside>
-            {% if user.is_authenticated %}
                 <div class="sidebar-card">
-                <h3>{% trans "Контактная информация" %}</h3>
-                <ul class="info-list">
-                    <li class="info-item"><div class="info-label">{% trans "Адрес" %}</div><div class="info-value">{{ company.address }}</div></li>
-                    <li class="info-item"><div class="info-label">{% trans "График работы" %}</div><div class="info-value">{{ company.working_hours }}</div></li>
-                    <li class="info-item"><div class="info-label">{% trans "Телефон" %}</div><div class="info-value"><a href="tel:{{ company.phone_number }}">{{ company.phone_number }}</a></div></li>
-                    <li class="info-item"><div class="info-label">{% trans "Email" %}</div><div class="info-value"><a href="mailto:{{ company.email }}">{{ company.email }}</a></div></li>
-                </ul>
-                </div>
-            {% else %}
-                <div class="sidebar-card lock-aside">
-                <div class="locked">
-                    <div class="locked-inner">
-                    <h3 style="padding: var(--s6) var(--s6) 0;">{% trans "Контактная информация" %}</h3>
-                    <ul class="info-list" style="padding: 0 var(--s6) var(--s6); margin:0;">
-                        <li class="info-item"><div class="info-label">{% trans "Адрес" %}</div><div class="info-value"><span class="masked">*********</span></div></li>
-                        <li class="info-item"><div class="info-label">{% trans "График работы" %}</div><div class="info-value"><span class="masked">**:**–**:**</span></div></li>
-                        <li class="info-item"><div class="info-label">{% trans "Телефон" %}</div><div class="info-value"><span class="masked">+7 (***) ***-**-**</span></div></li>
-                        <li class="info-item"><div class="info-label">{% trans "Email" %}</div><div class="info-value"><span class="masked">****@****.**</span></div></li>
+                    <h3>{% trans "Контактная информация" %}</h3>
+                    <ul class="info-list">
+                        <li class="info-item">
+                            <div class="info-label">{% trans "Адрес" %}</div>
+                            <div class="info-value">{{ company.address }}</div>
+                        </li>
+                        <li class="info-item">
+                            <div class="info-label">{% trans "График работы" %}</div>
+                            <div class="info-value">{{ company.working_hours }}</div>
+                        </li>
+                        <li class="info-item">
+                            <div class="info-label">{% trans "Телефон" %}</div>
+                            <div class="info-value">
+                                <a href="tel:{{ company.phone_number }}">{{ company.phone_number }}</a>
+                            </div>
+                        </li>
+                        <li class="info-item">
+                            <div class="info-label">{% trans "Email" %}</div>
+                            <div class="info-value">
+                                <a href="mailto:{{ company.email }}">{{ company.email }}</a>
+                            </div>
+                        </li>
                     </ul>
-                    </div>
+                </div>
 
-                    <div class="locked-overlay">
-                    <div class="locked-panel">
-                        <div class="locked-title"><i class="fa-solid fa-lock"></i> {% trans "Контакты доступны после входа" %}</div>
-                        <div class="locked-text">{% trans "Войдите, чтобы связаться с компанией напрямую." %}</div>
-                        <div class="locked-actions">
-                        <a class="locked-btn primary" href="{% url 'login' %}?next={{ request.path }}"><i class="fa-solid fa-right-to-bracket"></i> {% trans "Войти" %}</a>
-                        <a class="locked-btn" href="{% url 'register' %}"><i class="fa-solid fa-user-plus"></i> {% trans "Регистрация" %}</a>
+                {% if company.certificates.all %}
+                    <div class="sidebar-card" style="margin-top: var(--s6);">
+                        <h3>{% trans "Сертификаты" %}</h3>
+                        <div class="certificates-list">
+                            {% for certificate in company.certificates.all %}
+                                <div class="certificate-item">
+                                    <a href="{{ certificate.file.url }}" target="_blank">
+                                        <i class="fa-solid fa-file-certificate"></i>
+                                        {{ certificate.description }}
+                                    </a>
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
-                    </div>
-                </div>
-                </div>
-            {% endif %}
-
-            {% if company.certificates.all %}
-                <div class="sidebar-card" style="margin-top: var(--s6);">
-                <h3>{% trans "Сертификаты" %}</h3>
-                <div class="certificates-list">
-                    {% for certificate in company.certificates.all %}
-                    <div class="certificate-item">
-                        <a href="{{ certificate.file.url }}" target="_blank">
-                        <i class="fa-solid fa-file-certificate"></i>
-                        {{ certificate.description }}
-                        </a>
-                    </div>
-                    {% endfor %}
-                </div>
-                </div>
-            {% endif %}
+                {% endif %}
             </aside>
         </div>
     </div>
