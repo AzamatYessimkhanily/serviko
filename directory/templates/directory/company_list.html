@@ -167,21 +167,24 @@
         font-weight: 600;
     }
 
-    .filters-reset {
-        padding: var(--s2) var(--s3);
-        background: transparent;
-        border: 1px solid var(--border);
-        border-radius: var(--r-md);
-        font-size: 0.8125rem;
-        font-weight: 500;
-        color: var(--text-light);
-        cursor: pointer;
-        transition: all 0.2s;
-    }
+ 
+.filters-reset {
+    padding: var(--s2) var(--s3);
+    background: var(--text);
+    border: 1px solid var(--text);
+    border-radius: var(--r-md);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.filters-reset:hover {
+    background: #374151;
+    border-color: #374151;
+}
 
-    .filters-reset:hover {
-        background: var(--bg-secondary);
-    }
+
 
 .filters-body {
   padding: var(--s5);
