@@ -338,7 +338,7 @@ def company_detail_view(request, company_id):
     if company.whatsapp_number:
         from urllib.parse import quote
         from django.utils.translation import gettext
-        wa_text = gettext('Здравствуйте! Пишу с сайта Serviko, хочу оставить заявку для компании «%(name)s».') % {'name': company.name}
+        wa_text = gettext('Здравствуйте! Пишу с сайта Serviko, хочу оставить заявку для компании %(name)s.') % {'name': company.name}
         wa_url = f"https://wa.me/{company.whatsapp_number}?text={quote(wa_text)}"
 
     context = {

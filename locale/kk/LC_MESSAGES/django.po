@@ -474,8 +474,8 @@ msgstr "WhatsApp-қа жазу"
 
 #: directory/views.py
 #, python-format
-msgid "Здравствуйте! Пишу с сайта Serviko, хочу оставить заявку для компании «%(name)s»."
-msgstr "Сәлеметсіз бе! Serviko сайтынан жазып отырмын, «%(name)s» компаниясына өтінім қалдырғым келеді."
+msgid "Здравствуйте! Пишу с сайта Serviko, хочу оставить заявку для компании %(name)s."
+msgstr "Сәлеметсіз бе! Serviko сайтынан жазып отырмын, %(name)s компаниясына өтінім қалдырғым келеді."
 
 #: directory/templates/directory/company_detail.html:1006
 msgid "Обзор"
