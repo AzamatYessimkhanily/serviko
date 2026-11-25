@@ -461,6 +461,19 @@ msgstr "Founded in %(year)s"
 msgid "Отправить заявку"
 msgstr "Send request"
 
+#: directory/templates/directory/company_detail.html
+msgid "Напишите компании в WhatsApp — ответят напрямую."
+msgstr "Message the company on WhatsApp — they will reply directly."
+
+#: directory/templates/directory/company_detail.html
+msgid "Написать в WhatsApp"
+msgstr "Message on WhatsApp"
+
+#: directory/views.py
+#, python-format
+msgid "Здравствуйте! Пишу с сайта Serviko, хочу оставить заявку для компании «%(name)s»."
+msgstr "Hello! I'm writing from the Serviko website and would like to submit a request to “%(name)s”."
+
 #: directory/templates/directory/company_detail.html:1006
 msgid "Обзор"
 msgstr "Overview"

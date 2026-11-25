@@ -660,6 +660,27 @@
         text-decoration: underline;
     }
 
+    .btn-whatsapp {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--s2);
+        margin-top: var(--s4);
+        padding: var(--s3) var(--s6);
+        background: #25D366;
+        color: #fff;
+        border-radius: var(--r-md);
+        font-size: 0.9375rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s;
+    }
+
+    .btn-whatsapp:hover {
+        background: #1ebe5b;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+    }
+
     /* Social Links */
     .social-links {
         display: flex;
@@ -852,9 +873,15 @@
 
             <!-- Actions -->
             <div class="hero-actions">
-                <a href="#request" class="btn-primary">
-                    <i class="fa-solid fa-paper-plane"></i> {% trans "Отправить заявку" %}
-                </a>
+                {% if not user.is_authenticated and wa_url %}
+                    <a href="{{ wa_url }}" target="_blank" rel="noopener" class="btn-primary">
+                        <i class="fa-brands fa-whatsapp"></i> {% trans "Отправить заявку" %}
+                    </a>
+                {% else %}
+                    <a href="#request" class="btn-primary">
+                        <i class="fa-solid fa-paper-plane"></i> {% trans "Отправить заявку" %}
+                    </a>
+                {% endif %}
                 {% if user.is_authenticated %}
                     <button 
                         class="btn-secondary favorite-btn {% if user in company.favorited_by.all %}favorited{% endif %}"
@@ -1165,6 +1192,13 @@
                             {{ request_form.as_p }}
                             <button type="submit" name="submit_request" class="btn-primary">{% trans "Отправить" %}</button>
                         </form>
+                    {% elif wa_url %}
+                        <div class="empty-state">
+                            <p class="empty-text">{% trans "Напишите компании в WhatsApp — ответят напрямую." %}</p>
+                            <a href="{{ wa_url }}" target="_blank" rel="noopener" class="btn-whatsapp">
+                                <i class="fa-brands fa-whatsapp"></i> {% trans "Написать в WhatsApp" %}
+                            </a>
+                        </div>
                     {% else %}
                         <div class="empty-state">
                             <p class="empty-text">
@@ -1246,8 +1280,8 @@ tabButtons.forEach(button => {
     });
 });
 
-// Handle click on request button in hero section
-document.querySelector('a[href="#request"]').addEventListener('click', function(e) {
+// Handle click on request button in hero section (у гостей кнопка ведёт сразу в WhatsApp)
+document.querySelector('a[href="#request"]')?.addEventListener('click', function(e) {
     e.preventDefault();
     
     // Switch to contacts tab

@@ -449,6 +449,19 @@ msgstr ""
 msgid "Отправить заявку"
 msgstr ""
 
+#: directory/templates/directory/company_detail.html
+msgid "Напишите компании в WhatsApp — ответят напрямую."
+msgstr ""
+
+#: directory/templates/directory/company_detail.html
+msgid "Написать в WhatsApp"
+msgstr ""
+
+#: directory/views.py
+#, python-format
+msgid "Здравствуйте! Пишу с сайта Serviko, хочу оставить заявку для компании «%(name)s»."
+msgstr ""
+
 #: directory/templates/directory/company_detail.html:1006
 msgid "Обзор"
 msgstr ""

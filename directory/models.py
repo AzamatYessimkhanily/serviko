@@ -79,6 +79,18 @@ class Company(models.Model):
     def __str__(self):
         return self.name
 
+    @property
+    def whatsapp_number(self):
+        """Номер для ссылки wa.me: WhatsApp-контакт, а если его нет — телефон компании.
+        Возвращает только цифры в международном формате (77071234567) или пустую строку."""
+        raw = self.whatsapp_contact or self.phone_number or ''
+        digits = ''.join(ch for ch in raw if ch.isdigit())
+        if len(digits) == 11 and digits.startswith('8'):
+            digits = '7' + digits[1:]  # 8 777 ... -> 7 777 ...
+        elif len(digits) == 10:
+            digits = '7' + digits  # 777 ... без кода страны
+        return digits
+
 # --- НОВЫЕ МОДЕЛИ ---
 
 # [cite_start]Модель для услуг компании [cite: 54-59, 122-130]

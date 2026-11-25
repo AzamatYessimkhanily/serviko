@@ -332,8 +332,17 @@ def company_detail_view(request, company_id):
         company.tag_list = [tag.strip() for tag in company.tags.split(',')]
     else:
         company.tag_list = []
-        
+
+    # Ссылка на WhatsApp компании — гости отправляют заявку туда без входа на сайт
+    wa_url = ''
+    if company.whatsapp_number:
+        from urllib.parse import quote
+        from django.utils.translation import gettext
+        wa_text = gettext('Здравствуйте! Пишу с сайта Serviko, хочу оставить заявку для компании «%(name)s».') % {'name': company.name}
+        wa_url = f"https://wa.me/{company.whatsapp_number}?text={quote(wa_text)}"
+
     context = {
+        'wa_url': wa_url,
         'company': company,
         'reviews': sorted_reviews,
         'average_rating': average_rating,
